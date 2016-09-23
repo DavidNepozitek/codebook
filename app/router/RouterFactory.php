@@ -18,9 +18,8 @@ class RouterFactory
 	{
 		$router = new RouteList;
 
-		$backRouter = new RouteList("Front");
+		$backRouter = new RouteList("Back");
 		$backRouter[] = new Route("admin/<presenter>/<action>[/<id>]", array(
-			"module" => "Back",
 			"presenter" => "Dashboard",
 			"action" => "default",
 		));
