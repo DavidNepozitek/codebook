@@ -1,0 +1,28 @@
+{
+  "name": "codebook",
+  "version": "1.0.0",
+  "description": "Front-end handbook for students",
+  "main": "gulpfile.js",
+  "author": "David Nepožitek",
+  "contributors": [
+    "Martin Kučera",
+    "Jan Piechaczek",
+    "Jakub Szarowski"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DavidNepozitek/codebook.git"
+  },
+  "license": "none",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-less": "*",
+    "gulp-clean-css": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*",
+    "browser-sync": "*",
+    "gulp-plumber": "*"
+  }
+}
