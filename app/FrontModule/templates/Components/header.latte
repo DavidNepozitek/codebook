@@ -3,12 +3,13 @@
         <div class="row">
             <nav class="main-navigation">
                 <ul>
-                    <li class="main-navigation__item">
-                        <a href="#">Úvod</a>
-                    </li>
-                    <li class="main-navigation__item">
-                        <a href="#">Návody</a>
-                    </li>
+                    {foreach $menu as $item}
+                        <li class="main-navigation__item {ifCurrent $item["active"]}main-navigation__item--active{/ifCurrent}">
+                            <a n:href="$item['link']">
+                                {$item["name"]}
+                            </a>
+                        </li>
+                    {/foreach}
                 </ul>
             </nav>
         </div>
