@@ -3,4 +3,4 @@
 * PROJECT: Codebook - Frontend handbook for students and teachers | Admin section.
 * AUTHORS: David Nepožitek, Martin Kučera, Jan Piechaczek, Jakub Szarowski
 *
-*/.main-navigation__item a{color:#f8534b}.main-navigation__item a:hover{color:#307ceb}
+*/.js .loader,.no-js .loader{display:none}.js .preload{background-image:none!important}.js .preload *{visibility:hidden!important}.js .loader{position:fixed;top:0;bottom:0;left:0;right:0;margin:auto}.main-navigation__item a{color:#f8534b}.main-navigation__item a:hover{color:#307ceb}

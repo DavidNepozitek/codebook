@@ -1,1 +1,10 @@
 {block content}
+
+    <ul>
+        {foreach $sotds as $sotd}
+            <li>
+                {$sotd->getName()}
+                {$sotd->getPubDate()|date:'j. n. Y'}
+            </li>
+        {/foreach}
+    </ul>

@@ -14,7 +14,7 @@ Front-end handbook for students and teachers.
 Requirements
 ------------
 
-- [WAMP server](http://www.wampserver.com/en/)
+- Local server (For example [WAMP server](http://www.wampserver.com/en/))
 - [Composer](https://getcomposer.org/)
 - [Node.js](https://nodejs.org/en/)
 
@@ -41,10 +41,11 @@ Instalation
     ```
 
 4. Create new database
-5. Prepare your ORM `$ php index.php orm:schema:up --force`
+5. Prepare your database `$ php index.php orm:schema:up --force`
 
 Startup
 -------
 
 1. Run **default** Gulp task
-2. Profit
+2. ...
+3. Profit ;)

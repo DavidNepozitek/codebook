@@ -26,10 +26,12 @@ gulp.task("watch", ["css-front", "css-back", "css-libs", "js-front", "js-back", 
 
     gulp.watch("assets/styles/front/**/*", ["css-front"]);
     gulp.watch("assets/styles/back/**/*", ["css-back"]);
+    gulp.watch("assets/styles/main.less", ["css-back", "css-front"]);
     gulp.watch("assets/styles/libs/*.css", ["css-libs"]);
     gulp.watch("assets/scripts/libs/*.js", ["js-libs"]);
     gulp.watch("assets/scripts/front/**/*", ["js-front"]);
     gulp.watch("assets/scripts/back/**/*", ["js-back"]);
+    gulp.watch("assets/scripts/main.js", ["js-back", "js-front"]);
     gulp.watch("assets/scripts/*.js").on("change", browserSync.reload);
     gulp.watch("app/**/*").on("change", browserSync.reload);
 });
@@ -95,7 +97,7 @@ gulp.task("js-back", function() {
 
 gulp.task("js-libs", function() {
     return gulp.src([
-            "assets/scripts/libs/jquery.min.js",
+            "assets/scripts/libs/jquery-1.11.2.min.js",
             "assets/scripts/libs/bootstrap.min.js"
         ])
         .pipe(concat("libs.min.js"))

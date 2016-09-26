@@ -11,6 +11,7 @@
  * SETTINGS
  * Global...............Global variables and settings.
  * Colours..............Useful colours variables.
+ * Loader...............Page loader styles.
  *
  */
 
@@ -52,5 +53,44 @@
   #COLOURS
 \*------------------------------------*/
 
+
 @blue: #307ceb;
 @orange: #f8534b;
+
+
+
+
+
+/*------------------------------------*\
+  #LOADER
+\*------------------------------------*/
+
+
+.js{
+  .preload{
+    background-image: none !important;
+
+    *{
+      visibility: hidden !important;
+    }
+
+  }
+
+
+  .loader{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+  }
+}
+
+
+.no-js{
+  .loader{
+    display: none;
+  }
+}
