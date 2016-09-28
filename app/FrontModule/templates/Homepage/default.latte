@@ -3,7 +3,7 @@
     <ul>
         {foreach $sotds as $sotd}
             <li>
-                {$sotd->getName()}
+                <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
                 {$sotd->getPubDate()|date:'j. n. Y'}
             </li>
         {/foreach}

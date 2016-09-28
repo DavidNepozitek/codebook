@@ -15,17 +15,10 @@ class HomepagePresenter extends BasePresenter
 
     public function renderDefault()
     {
-        
-        $this->sotdModel->importSotd();
 
-        $q = $this->sotdModel->getEm()->createQueryBuilder()
-            ->select("s")
-            ->from(Sotd::class, "s")
-            ->orderBy("s.pubDate", "DESC")
-            ->setMaxResults(5)
-            ->getQuery();
+        $q = $this->sotdModel->findBy(Sotd::class, array(), array("pubDate" => "DESC"), 5);
 
-        $this->template->sotds = $q->getResult();
+        $this->template->sotds = $q;
 
     }
     
