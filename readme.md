@@ -17,6 +17,7 @@ Requirements
 - Local server (For example [WAMP server](http://www.wampserver.com/en/))
 - [Composer](https://getcomposer.org/)
 - [Node.js](https://nodejs.org/en/)
+- [Git](https://git-scm.com/)
 
 
 Instalation
