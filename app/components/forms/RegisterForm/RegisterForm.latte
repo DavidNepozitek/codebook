@@ -17,6 +17,17 @@
             {input "password" class => "form-control"}
         </div>
         <button n:name="submit" type="submit">Registrovat se</button>
+        {if $flashes}
+            <div class="form-error-text-block">
+                <ul>
+                    {foreach $flashes as $flash}
+                        {if $flash->type == "error"}
+                            <li>{$flash->message}</li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </div>
+        {/if}
     </form>
 
 {/if}

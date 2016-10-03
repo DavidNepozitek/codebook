@@ -3,20 +3,22 @@
 namespace App\Model;
 
 use App\Model\Entities\User;
+use Nette\Security\AuthenticationException;
 use Nette\Security\Passwords;
 
 class UserModel extends BaseModel
 {
-
+    
     /**
-     * Registers a new guest user with given email and password
-     *
+     * Registers a new guest user with given e-mail and password
+     * 
      * @param $values
      * @return User|null
      */
     public function createUser($values)
     {
         $user = $this->getOne(User::class, array("email" => $values["email"]));
+
         if($user){
             return null;
         }
@@ -28,6 +30,17 @@ class UserModel extends BaseModel
 
         $this->persist($user);
         $this->flush();
+
+        return $user;
+    }
+
+    /**
+     * @param $email
+     * @return User
+     */
+    public function getUserByEmail($email)
+    {
+        $user = $this->getOne(User::class, array("email" => $email));
 
         return $user;
     }

@@ -16,7 +16,10 @@ services:
 	- App\Model\SotdModel
 	- App\Model\UserModel
 
+	- App\Model\Authenticator
+
 	- App\Components\IRegisterFormFactory
+	- App\Components\ILoginFormFactory
 
 extensions:
     console: Kdyby\Console\DI\ConsoleExtension

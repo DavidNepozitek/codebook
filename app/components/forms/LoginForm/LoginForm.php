@@ -5,8 +5,9 @@ namespace App\Components;
 use App\Model\UserModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
+use Nette\Security\AuthenticationException;
 
-class RegisterForm extends Control{
+class LoginForm extends Control{
 
     /** @var UserModel */
     public $userModel;
@@ -16,12 +17,10 @@ class RegisterForm extends Control{
         $this->userModel= $userModel;
     }
 
-    public function render($registered = false)
+    public function render()
     {
         $template = $this->template;
-
-        $template->registered = $registered;
-        $template->setFile(__DIR__ . "/RegisterForm.latte");
+        $template->setFile(__DIR__ . "/LoginForm.latte");
         $template->render();
     }
 
@@ -37,7 +36,7 @@ class RegisterForm extends Control{
             ->setAttribute("placeholder", "Heslo")
             ->setRequired("Vyplňte prosím své heslo");
 
-        $form->addSubmit("submit", "Registrovat se");
+        $form->addSubmit("submit", "Přihlásit se");
 
         $form->onSuccess[] = array($this, "processForm");
 
@@ -48,19 +47,18 @@ class RegisterForm extends Control{
     {
         $values = $form->getValues();
 
-        $user = $this->userModel->createUser($values);
-
-        if ($user) {
-            $this->presenter->redirect("this", array("registered" => true));
-        } else {
-            $this->flashMessage("Uživatel s tímto e-mailem již existuje.", "error");
+        try {
+            $this->presenter->getUser()->login($values["email"], $values["password"]);
+            $this->presenter->redirect("Dashboard:default");
+        } catch (AuthenticationException $e) {
+            $this->flashMessage($e->getMessage(), "error");
         }
     }
 
 }
 
-interface IRegisterFormFactory
+interface ILoginFormFactory
 {
-    /** @return RegisterForm */
+    /** @return LoginForm */
     function create();
 }
