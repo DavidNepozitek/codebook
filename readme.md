@@ -11,8 +11,8 @@ Front-end handbook for students and teachers.
 - Jakub Szarowski
 
 
-Requirements
-------------
+Development requirements
+------------------------
 
 - Local server (For example [WAMP server](http://www.wampserver.com/en/))
 - [Composer](https://getcomposer.org/)

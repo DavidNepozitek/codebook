@@ -19,6 +19,10 @@ class RouterFactory
 		$router = new RouteList;
 
 		$backRouter = new RouteList("Back");
+
+		$backRouter[] = new Route("register", "Login:register");
+		$backRouter[] = new Route("login", "Login:login");
+
 		$backRouter[] = new Route("admin/<presenter>/<action>[/<id>]", array(
 			"presenter" => "Dashboard",
 			"action" => "default",
