@@ -1,10 +1,10 @@
-<header>
+<header class="main-header {if $presenter->isLinkCurrent('Homepage:*')} main-header--big{/if}">
     <div class="container">
         <div class="row">
             <nav class="main-navigation">
                 <ul>
                     {foreach $menu as $item}
-                        <li class="main-navigation__item {ifCurrent $item["active"]}main-navigation__item--active{/ifCurrent}">
+                        <li class="main-navigation__item{if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}">
                             <a n:href="$item['link']">
                                 {$item["name"]}
                             </a>

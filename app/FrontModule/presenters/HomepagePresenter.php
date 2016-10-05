@@ -25,5 +25,5 @@ class HomepagePresenter extends BasePresenter
         $this->template->sotds = $q;
 
     }
-    
+
 }

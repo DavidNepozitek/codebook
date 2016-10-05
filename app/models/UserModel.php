@@ -8,10 +8,10 @@ use Nette\Security\Passwords;
 
 class UserModel extends BaseModel
 {
-    
+
     /**
      * Registers a new guest user with given e-mail and password
-     * 
+     *
      * @param $values
      * @return User|null
      */
@@ -19,7 +19,7 @@ class UserModel extends BaseModel
     {
         $user = $this->getOne(User::class, array("email" => $values["email"]));
 
-        if($user){
+        if ($user) {
             return null;
         }
 

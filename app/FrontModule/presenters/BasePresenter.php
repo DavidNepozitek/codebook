@@ -13,9 +13,9 @@ abstract class BasePresenter extends Presenter
 
         $this->template->menu = array(
             array(
-              "name" => "Úvod",
-              "link" => "Homepage:default",
-              "active" => "Homepage:default"
+                "name" => "Úvod",
+                "link" => "Homepage:default",
+                "active" => "Homepage:default"
             ),
             array(
                 "name" => "Návody",

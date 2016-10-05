@@ -6,14 +6,15 @@ use App\Model\UserModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 
-class RegisterForm extends Control{
+class RegisterForm extends Control
+{
 
     /** @var UserModel */
     public $userModel;
 
     public function __construct(UserModel $userModel)
     {
-        $this->userModel= $userModel;
+        $this->userModel = $userModel;
     }
 
     public function render($registered = false)

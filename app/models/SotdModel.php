@@ -19,7 +19,7 @@ class SotdModel extends BaseModel
         $lastImportedSotd = $this->getEm()->createQuery("SELECT MAX(s.pubDate) FROM App\Model\Entities\Sotd s")->getResult();
         $lastImportedPubDate = new \DateTime($lastImportedSotd[0][1]);
         $interval = $actualDate->diff($lastImportedPubDate);
-        
+
 
         if ($interval->d >= 1 OR $lastImportedSotd[0][1] == "") {
             return false;
@@ -36,8 +36,8 @@ class SotdModel extends BaseModel
     {
         $url = "http://feeds.feedburner.com/awwwards-sites-of-the-day?format=xml";
         $xml = simplexml_load_file($url) or die("Error: Cannot create object");
-        
-        for ($x = 0; $x <=4; $x++) {
+
+        for ($x = 0; $x <= 4; $x++) {
 
             $pubDate = new \DateTime($xml->channel->item[$x]->pubDate);
 
@@ -59,7 +59,7 @@ class SotdModel extends BaseModel
             $this->persist($newItem);
             $this->flush();
 
-            
+
         }
     }
 
