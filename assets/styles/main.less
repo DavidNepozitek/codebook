@@ -12,6 +12,7 @@
  * Global...............Global variables and settings.
  * Colours..............Useful colours variables.
  * Loader...............Page loader styles.
+ * Fonts................Imports of used fonts.
  *
  */
 
@@ -45,6 +46,10 @@
 @360h: ~"all and (max-height: 29.9375em)";
 @320h: ~"all and (max-height: 22.4375em)";
 
+body{
+  background-color: @bg;
+}
+
 
 
 
@@ -56,6 +61,7 @@
 
 @blue: #307ceb;
 @orange: #f8534b;
+@bg: #f4f8fb;
 
 
 
@@ -93,4 +99,33 @@
   .loader{
     display: none;
   }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #FONTS
+\*------------------------------------*/
+
+
+/**
+ * Fira sans - types: light italic, regular, bold
+ * Use following CSS rule: font-family: 'Fira Sans', sans-serif;
+ */
+@import 'https://fonts.googleapis.com/css?family=Fira+Sans:300i,400,700&subset=latin-ext';
+
+
+/**
+ * Jaapokki - types: regular
+ * Use following CSS rule: font-family: 'Jaapokki', sans-serif;
+ */
+@font-face {
+  font-family: 'Jaapokki';
+  src: url('../fonts/jaapokki-regular-webfont.woff2') format('woff2'),
+  url('../fonts/jaapokki-regular-webfont.woff') format('woff'),
+  url('../fonts/jaapokki-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

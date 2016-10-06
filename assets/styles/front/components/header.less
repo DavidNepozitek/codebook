@@ -2,17 +2,28 @@
   #HEADER
 \*------------------------------------*/
 
+.main-header{
+  background-image: url("../images/header.jpg");
+}
+
+.main-header--big{
+  height: 300px;
+}
+
+
 .main-navigation{
 
   &__item a{
-    color: @orange;
+    color: white;
+    font-family: "Fira Sans", sans-serif;
 
     &:hover{
       color: blue;
     }
   }
+}
 
-  .icon{
-    color: red;
-  }
+.main-navigation__logo{
+  height: 40px;
+  display: inline-block;
 }

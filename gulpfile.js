@@ -51,7 +51,7 @@ gulp.task("css-back", function() {
 });
 
 gulp.task("css-front", function() {
-    return gulp.src("assets/styles/back/core.less")
+    return gulp.src("assets/styles/front/core.less")
         .pipe(plumber(plumberOpts))
         .pipe(less())
         .pipe(autoprefixer({
