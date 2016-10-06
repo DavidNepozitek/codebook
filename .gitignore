@@ -4,3 +4,11 @@ temp/*
 log/*
 node_modules/
 .idea/
+/assets/styles/main.min.css
+/assets/styles/back.min.css
+/assets/styles/front.min.css
+/assets/styles/libs.min.css
+/assets/scripts/back.min.js
+/assets/scripts/scripts.min.js
+/assets/scripts/libs.min.js
+/assets/scripts/front.min.js
