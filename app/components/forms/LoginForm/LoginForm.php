@@ -49,6 +49,7 @@ class LoginForm extends Control{
 
         try {
             $this->presenter->getUser()->login($values["email"], $values["password"]);
+            $this->presenter->getUser()->setExpiration(0, TRUE);
             $this->presenter->redirect("Dashboard:default");
         } catch (AuthenticationException $e) {
             $this->flashMessage($e->getMessage(), "error");

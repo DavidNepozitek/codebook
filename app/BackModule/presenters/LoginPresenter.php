@@ -30,7 +30,7 @@ class LoginPresenter extends BasePresenter
     public function actionLogout()
     {
         $this->user->logout();
-        $this->redirect("Login");
+        $this->redirect("FrontModule:Homepage");
     }
 
     protected function createComponentRegisterForm()

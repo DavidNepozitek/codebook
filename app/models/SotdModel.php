@@ -44,7 +44,7 @@ class SotdModel extends BaseModel
             $item = $this->getOne(Sotd::class, array("pubDate" => $pubDate));
 
             if ($item) {
-                continue;
+                break;
             }
 
             $item = $xml->channel->item[$x];
