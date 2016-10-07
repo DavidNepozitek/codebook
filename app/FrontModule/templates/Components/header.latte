@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <nav class="main-navigation">
-                <img src="assets/images/logo-w.svg" class="main-navigation__logo">
+                <img src="{$basePath}/assets/images/logo-w.svg" class="main-navigation__logo">
                 <ul>
                     {foreach $menu as $item}
                         <li class="main-navigation__item{if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}">
