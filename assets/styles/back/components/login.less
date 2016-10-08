@@ -6,47 +6,107 @@
 .form-login {
   background-color: white;
   text-align: center;
-  font-family: "Fira Sans";
   font-size: 18px;
   font-style: italic;
   color: #2d476e;
-  width: 410px;
   position: relative;
   margin: auto;
-  border-bottom: 2px solid @blue;
+  border-bottom: 2px solid #4b8eef;
+  float: none;
+  padding: 0;
+
+  .btn{
+    height: 46px;
+  }
+
 }
+
 .form-group {
   text-align: center;
-  font-family: "Fira Sans";
   font-size: 18px;
-  font-style: italic;
+  font-weight: 700;
+  width: 100%;
   color: #2d476e;
+  margin-bottom: 25px;
 }
-.logo {
+
+.login-logo {
+  margin-top: 80px;
   width: 260px;
+  margin-right: 15px;
+  display: inline-block;
 }
-.heading {
+
+.form-login__heading {
   background-color: #4b8eef;
   color: white;
   font-style: normal;
   font-size: 28px;
-  width: 410px;
+  width: 100%;
   height: 100px;
   text-align: center;
   line-height: 100px;
   position: relative;
-  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 80px;
 }
-.button-register {
-  background-color: @blue;
+
+.btn {
+  background-color: #4b8eef;
   color: white;
   font-style: normal;
   font-size: 14px;
-  width: 140px;
-  height: 46px;
+  width: 100%;
   border: none;
+  margin-bottom: 15px;
+  position: center;
 }
-.container {
+
+.container--login {
   margin: auto;
   position: relative;
+  text-align: center;
+}
+
+.login-form {
+  display: inline-block;
+  width: 100%;
+}
+
+.login-logo__line {
+  width: 2px;
+  height: 70px;
+  background-color: #515c79;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.login-logo__heading {
+  font-size: 28px;
+  color: #515c79;
+  margin-left: 15px;
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  line-height: 70px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.form-error {
+  background-color: #feeded;
+  border: 1px solid #f9756f;
+  color: #f33b33;
+  text-align: center;
+  margin-top: 82px;
+  margin-bottom: 15px;
+  line-height: 46px;
+  width: 100%;
+  position: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
 }
