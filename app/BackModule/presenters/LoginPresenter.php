@@ -17,8 +17,8 @@ class LoginPresenter extends BasePresenter
     {
         parent::startup();
 
-        if ($this->getUser()->isLoggedIn()) {
-            $this->redirect("Dashboard:default");
+        if ($this->getUser()->isLoggedIn() AND $this->presenter->name != "Back:Login:Login" AND $this->presenter->name != "Back:Login:Register") {
+            //$this->redirect("Dashboard:default");
         }
     }
 
@@ -29,8 +29,8 @@ class LoginPresenter extends BasePresenter
 
     public function actionLogout()
     {
-        $this->user->logout();
-        $this->redirect("FrontModule:Homepage");
+        $this->getUser()->logout();
+        $this->redirect(":Front:Homepage:default");
     }
 
     protected function createComponentRegisterForm()

@@ -30,15 +30,15 @@ Instalation
     Example:
     
     ```    
-        parameters:
-        
+    parameters:
     
-        doctrine:
-            user: root
-            password:
-            dbname: codebook
-            metadata:
-                App: %appDir%
+
+    doctrine:
+        user: root
+        password:
+        dbname: codebook
+        metadata:
+            App: %appDir%
     ```
 
 4. Create new database

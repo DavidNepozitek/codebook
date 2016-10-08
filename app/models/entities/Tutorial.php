@@ -39,6 +39,11 @@ class Tutorial
     protected $content;
 
     /**
+     * @ORM\Column(type="integer",nullable=false)
+     */
+    protected $difficulty;
+
+    /**
      * @ORM\Column(type="datetime",nullable=false)
      */
     protected $pubDate;

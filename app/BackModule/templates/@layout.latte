@@ -15,6 +15,13 @@
 </head>
 
 <body>
+
+    {if !$presenter->isLinkCurrent("Login:*")}
+	{include Components/header.latte}
+
+	{/if}
+
+
 	{include content}
 
 	{block scripts}

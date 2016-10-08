@@ -14,9 +14,10 @@ class TutorialModel extends BaseModel
      * @param $title
      * @param $perex
      * @param $source
+     * @param $difficulty
      * @throws Exception
      */
-    public function createTutorial($title, $perex, $source)
+    public function createTutorial($title, $perex, $source, $difficulty)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("title" => $title));
@@ -34,6 +35,7 @@ class TutorialModel extends BaseModel
         $tutorial->setPerex($perex);
         $tutorial->setSource($source);
         $tutorial->setContent($content);
+        $tutorial->setDifficulty($difficulty);
 
         $this->getEm()->persist($tutorial);
         $this->flush();
