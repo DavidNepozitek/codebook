@@ -4,6 +4,7 @@ namespace App\BackModule\Presenters;
 
 use App\Components\ILoginFormFactory;
 use App\Components\IRegisterFormFactory;
+use Tracy\Debugger;
 
 class LoginPresenter extends BasePresenter
 {
@@ -17,20 +18,20 @@ class LoginPresenter extends BasePresenter
     {
         parent::startup();
 
-        if ($this->getUser()->isLoggedIn() AND $this->presenter->name != "Back:Login:Login" AND $this->presenter->name != "Back:Login:Register") {
+        if ($this->getUser()->isLoggedIn() AND !$this->isLinkCurrent("Login:Logout")) {
             $this->redirect("Dashboard:default");
         }
-    }
-
-    public function renderRegister($registered = false)
-    {
-        $this->template->registered = $registered;
     }
 
     public function actionLogout()
     {
         $this->getUser()->logout();
         $this->redirect(":Front:Homepage:default");
+    }
+
+    public function renderRegister($registered = false)
+    {
+        $this->template->registered = $registered;
     }
 
     protected function createComponentRegisterForm()

@@ -7,6 +7,40 @@ use Nette\Application\UI\Presenter;
 abstract class BasePresenter extends Presenter
 {
 
+    protected $menu = array(
+        array(
+            "name" => "Přehled",
+            "icon" => "home",
+            "link" => "Dashboard:default",
+            "active" => "Dashboard:default"
+        ),
+        array(
+            "name" => "Návody",
+            "icon" => "file-text-o",
+            "link" => "",
+            "active" => "Tutorial:*",
+            "sub" => array(
+                array(
+                    "name" => "Seznam",
+                    "link" => "Tutorial:list",
+                    "active" => "Tutorial:list",
+                ),
+                array(
+                    "name" => "Přidat",
+                    "link" => "Tutorial:add",
+                    "active" => "Tutorial:add",
+                )
+            )
+        ),
+        array(
+            "name" => "Stránky",
+            "icon" => "file",
+            "link" => "Page:default",
+            "active" => "Page:*"
+        ),
+
+    );
+
     public function startup()
     {
         parent::startup();
@@ -15,49 +49,26 @@ abstract class BasePresenter extends Presenter
             $this->redirect("Login:login");
         }
 
-        $this->template->menu = array(
-            array(
-                "name" => "Přehled",
-                "icon" => "home",
-                "link" => "Dashboard:default",
-                "active" => "Dashboard:default"
-            ),
-            array(
-                "name" => "Návody",
-                "icon" => "file-text-o",
-                "link" => "",
-                "active" => "Tutorial:*",
-                "sub" => array(
-                    array(
-                        "name" => "Seznam",
-                        "link" => "Tutorial:list",
-                        "active" => "Tutorial:list",
-                    ),
-                    array(
-                        "name" => "Přidat",
-                        "link" => "Tutorial:add",
-                        "active" => "Tutorial:add",
-                    )
-                )
-            ),
-            array(
+        
+        if ($this->user->isInRole("admin")) {
+
+            $this->menu[] = array(
                 "name" => "Uživatelé",
                 "icon" => "user",
                 "link" => "User:default",
                 "active" => "User:*"
-            ),
-            array(
-                "name" => "Stránky",
-                "icon" => "file",
-                "link" => "Page:default",
-                "active" => "Page:*"
-            ),
-            array(
+            );
+
+            $this->menu[] = array(
                 "name" => "Nastavení",
                 "icon" => "cogs",
                 "link" => "Setting:default",
                 "active" => "Setting:*"
-            ),
-        );
+            );
+
+            //TODO: Better adddition to array
+        }
+        
+        $this->template->menu = $this->menu;
     }
 }
