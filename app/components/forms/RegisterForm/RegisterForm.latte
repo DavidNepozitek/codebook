@@ -14,13 +14,13 @@
                 <div class="login-logo__line"></div>
                 <div class="login-logo__heading">Administrace</div>
         </div>
-                <div class="col-md-5 col-xs-12 form-login">
+                <div class="col-md-5 col-xs-12 col-sm-8 form-login">
                         <div class="form-login__heading">
                              Registrace
                         </div>
                             <form n:name="form" class="form-login__form">
                                 {if $flashes}
-                                    <div class="col-md-10 form-error">
+                                    <div class="col-md-8 form-error">
                                         <ul>
                                             {foreach $flashes as $flash}
                                                 {if $flash->type == "error"}
