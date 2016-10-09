@@ -12,7 +12,7 @@
                     </div>
                     <form n:name="form" class="form-login__form">
                         {if $flashes}
-                            <div class="col-md-8 form-error">
+                            <div class="col-xs-12 form-error">
                                 <ul>
                                     {foreach $flashes as $flash}
                                         {if $flash->type == "error"}
@@ -22,18 +22,18 @@
                                 </ul>
                             </div>
                         {/if}
-                        <div class="col-md-8 form-group--login">
+                        <div class="col-md-8 col-xs-12 form-group--login">
                             <label for="email">E-mail</label>
                             {input "email" class => "form-control form-login__input"}
                         </div>
-                        <div class="col-md-8 form-group--login">
+                        <div class="col-md-8 col-xs-12 form-group--login">
                             <label for="email">Heslo</label>
                             {input "password" class => "form-control form-login__input"}
                         </div>
-                        <button n:name="submit" class="btn btn--blue col-xs-4" type="submit">Přihlásit se</button>
+                        <button n:name="submit" class="btn btn--blue col-md-4 col-xs-8" type="submit">Přihlásit se</button>
                     </form>
                     <div class="login-account__redistrict">
-                        Ještě nemáte účet? <a class= "login-redistrict__link" href="{$basePath}/register">Zaregistrujte se</a>
+                        Ještě nemáte účet? <a class= "login-redistrict__link" href="{plink Login:register}"">Zaregistrujte se</a>
                     </div>
                 </div>
 </div>
