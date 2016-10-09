@@ -18,7 +18,7 @@ class LoginPresenter extends BasePresenter
         parent::startup();
 
         if ($this->getUser()->isLoggedIn() AND $this->presenter->name != "Back:Login:Login" AND $this->presenter->name != "Back:Login:Register") {
-            //$this->redirect("Dashboard:default");
+            $this->redirect("Dashboard:default");
         }
     }
 

@@ -1,0 +1,29 @@
+{block content}
+
+
+    <form n:name="form">
+        <div class="form-group">
+            {input "title" class => "form-control"}
+        </div>
+        <div class="form-group">
+            {input "difficulty" class => "form-control"}
+        </div>
+        <div class="form-group">
+            {input "perex" class => "form-control"}
+        </div>
+        <div class="form-group">
+            {input "source" class => "form-control"}
+        </div>
+        <button n:name="submit" type="submit">Přidat návod</button>
+        {if $flashes}
+            <div class="form-error-text-block">
+                <ul>
+                    {foreach $flashes as $flash}
+                        {if $flash->type == "error"}
+                            <li>{$flash->message}</li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </div>
+        {/if}
+    </form>

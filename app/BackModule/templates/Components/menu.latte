@@ -1,0 +1,29 @@
+<ul>
+    {foreach $menu as $item}
+        <li class="main-navigation__item
+        {if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}
+        {ifset $item['sub']}main-navigation__item--sub{/ifset}">
+            {ifset $item['sub']}
+                <a>
+                    <i class="fa fa-{$item['icon']}"></i>
+                    {$item["name"]}
+                </a>
+                <ul>
+                    {foreach $item['sub'] as $subitem}
+                        <li class="main-navigation__subitem {if $presenter->isLinkCurrent($subitem['active'])} main-navigation__subitem--active{/if}">
+                            <a n:href="$subitem['link']">
+                                {$subitem["name"]}
+                            </a>
+                        </li>
+                    {/foreach}
+                </ul>
+
+            {else}
+                <a n:href="$item['link']">
+                    <i class="fa fa-{$item['icon']}"></i>
+                    {$item["name"]}
+                </a>
+            {/ifset}
+        </li>
+    {/foreach}
+</ul>

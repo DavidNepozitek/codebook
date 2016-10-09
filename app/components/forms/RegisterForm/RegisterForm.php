@@ -14,6 +14,7 @@ class RegisterForm extends Control
 
     public function __construct(UserModel $userModel)
     {
+        parent::__construct();
         $this->userModel = $userModel;
     }
 

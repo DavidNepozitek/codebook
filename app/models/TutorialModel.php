@@ -8,6 +8,8 @@ use Nette\Neon\Exception;
 class TutorialModel extends BaseModel
 {
 
+    CONST Difficulties = Array("Začátečník", "Pokročilý", "Zkušený");
+
     /**
      * Creates a tutorial with given parameters
      *

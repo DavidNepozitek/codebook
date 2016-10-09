@@ -22,6 +22,8 @@ services:
 
 	- App\Components\IRegisterFormFactory
 	- App\Components\ILoginFormFactory
+	- App\Components\ITutorialFormFactory
+
 
 extensions:
     console: Kdyby\Console\DI\ConsoleExtension
