@@ -1,22 +1,39 @@
 {block content}
 
-<form n:name="form">
-    <div class="form-group">
-        {input "email" class => "form-control"}
-    </div>
-    <div class="form-group">
-        {input "password" class => "form-control"}
-    </div>
-    <button n:name="submit" type="submit">Přihlásit se</button>
-    {if $flashes}
-        <div class="form-error-text-block">
-            <ul>
-                {foreach $flashes as $flash}
-                    {if $flash->type == "error"}
-                        <li>{$flash->message}</li>
-                    {/if}
-                {/foreach}
-            </ul>
+<div class="container container--login">
+        <div class="login--header">
+            <div class="login-logo"><img src="{$basePath}/assets/images/logo-o.svg"/></div>
+            <div class="login-logo__line"></div>
+            <div class="login-logo__heading">Administrace</div>
         </div>
-    {/if}
-</form>
+                <div class="col-md-5 col-xs-12 form-login">
+                    <div class="form-login__heading">
+                        Přihlašte se, prosím
+                    </div>
+                    <form n:name="form" class="form-login__form">
+                        {if $flashes}
+                            <div class="col-md-10 form-error">
+                                <ul>
+                                    {foreach $flashes as $flash}
+                                        {if $flash->type == "error"}
+                                            <li>{$flash->message}</li>
+                                        {/if}
+                                    {/foreach}
+                                </ul>
+                            </div>
+                        {/if}
+                        <div class="col-md-8 form-group--login">
+                            <label for="email">E-mail</label>
+                            {input "email" class => "form-control form-login__input"}
+                        </div>
+                        <div class="col-md-8 form-group--login">
+                            <label for="email">Heslo</label>
+                            {input "password" class => "form-control form-login__input"}
+                        </div>
+                        <button n:name="submit" class="btn btn--blue col-xs-4" type="submit">Přihlásit se</button>
+                    </form>
+                    <div class="login-account__redistrict">
+                        Ještě nemáte účet? <a class= "login-redistrict__link" href="{$basePath}/register">Zaregistrujte se</a>
+                    </div>
+                </div>
+</div>

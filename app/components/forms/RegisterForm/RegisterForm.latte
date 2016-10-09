@@ -16,7 +16,7 @@
         </div>
                 <div class="col-md-5 col-xs-12 form-login">
                         <div class="form-login__heading">
-                             Zaregistrujte se, prosím
+                             Registrace
                         </div>
                             <form n:name="form" class="form-login__form">
                                 {if $flashes}
@@ -38,9 +38,11 @@
                                     <label for="email">Heslo</label>
                                     {input "password" class => "form-control form-login__input"}
                                 </div>
-                                <button n:name="submit" class="btn btn--blue col-xs-4" type="submit">Registrovat se</button>
-                        </form>
+                                <button n:name="submit" class="btn btn--blue col-xs-4" type="submit">Přihlásit se</button>
+                            </form>
+                            <div class="login-account__redistrict">
+                                Už máte účet? <a class= "login-redistrict__link" href="{$basePath}/login">Přihlaste se</a>
+                            </div>
                 </div>
 </div>
-
 {/if}
