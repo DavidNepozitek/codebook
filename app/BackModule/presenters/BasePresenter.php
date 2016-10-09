@@ -65,8 +65,7 @@ abstract class BasePresenter extends Presenter
                 "link" => "Setting:default",
                 "active" => "Setting:*"
             );
-
-            //TODO: Better adddition to array
+            
         }
         
         $this->template->menu = $this->menu;

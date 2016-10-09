@@ -37,7 +37,8 @@ class RegisterForm extends Control
             ->setRequired("Vyplňte prosím svůj email");
         $form->addPassword("password")
             ->setAttribute("placeholder", "Heslo")
-            ->setRequired("Vyplňte prosím své heslo");
+            ->setRequired("Vyplňte prosím své heslo")
+            ->addRule(Form::MIN_LENGTH, 'Heslo musí mít alespoň %d znaků', 5);;
 
         $form->addSubmit("submit", "Registrovat se");
 
