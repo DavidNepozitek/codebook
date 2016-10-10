@@ -23,7 +23,8 @@
 		"kdyby/doctrine": "^3.1",
 		"kdyby/events": "^3.0",
 		"erusev/parsedown": "^1.6",
-		"erusev/parsedown-extra": "^0.7.1"
+		"erusev/parsedown-extra": "^0.7.1",
+		"o5/grido": "^2.1"
 	},
 	"require-dev": {
 		"nette/tester": "^1.6"

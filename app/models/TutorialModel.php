@@ -8,7 +8,7 @@ use Nette\Neon\Exception;
 class TutorialModel extends BaseModel
 {
 
-    CONST Difficulties = Array("Začátečník", "Pokročilý", "Zkušený");
+    public $difficulties = Array("Začátečník", "Pokročilý", "Zkušený");
 
     /**
      * Creates a tutorial with given parameters
@@ -19,7 +19,7 @@ class TutorialModel extends BaseModel
      * @param $difficulty
      * @throws Exception
      */
-    public function createTutorial($title, $perex, $source, $difficulty)
+    public function createTutorial($title, $perex, $source, $difficulty, $published)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("title" => $title));
@@ -38,6 +38,7 @@ class TutorialModel extends BaseModel
         $tutorial->setSource($source);
         $tutorial->setContent($content);
         $tutorial->setDifficulty($difficulty);
+        $tutorial->setPublished($published);
 
         $this->getEm()->persist($tutorial);
         $this->flush();

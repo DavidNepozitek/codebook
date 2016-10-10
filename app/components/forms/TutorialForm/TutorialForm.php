@@ -32,7 +32,7 @@ class TutorialForm extends Control{
         $form->addText("title")
             ->setAttribute("placeholder", "Název návodu")
             ->setRequired("Vyplňte prosím svůj email");
-        $form->addSelect('difficulty', 'Obtížnost:')
+        $form->addSelect('difficulty', 'Obtížnost:', $this->tutorialModel->difficulties)
             ->setPrompt('Zvolte obtížnost');
         $form->addTextArea("perex")
             ->setAttribute("placeholder", "Perex")
@@ -40,6 +40,7 @@ class TutorialForm extends Control{
         $form->addTextArea("source")
             ->setAttribute("placeholder", "Obsah článku")
             ->setRequired("Návod musí obsahovat nějaký text");
+        $form->addCheckbox('published', 'Publikovat ihned');
 
         $form->addSubmit("submit", "Přidat článek");
 
@@ -54,8 +55,9 @@ class TutorialForm extends Control{
 
         try {
             $this->tutorialModel->createTutorial(
-                $values["title"], $values["perex"], $values["source"],$values["difficulty"]
+                $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"]
             );
+            $this->presenter->redirect("Tutorial:add");
         } catch (Exception $e) {
             $this->flashMessage($e->getMessage(), "error");
         }

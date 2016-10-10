@@ -99,6 +99,7 @@ gulp.task("js-libs", function() {
     return gulp.src([
             "assets/scripts/libs/jquery-1.11.2.min.js",
             "assets/scripts/libs/bootstrap.min.js",
+            "assets/scripts/libs/highlight.pack.js",
             "assets/scripts/libs/nette.ajax.js"
         ])
         .pipe(concat("libs.min.js"))

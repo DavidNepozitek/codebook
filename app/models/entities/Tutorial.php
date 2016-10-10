@@ -39,7 +39,7 @@ class Tutorial
     protected $content;
 
     /**
-     * @ORM\Column(type="integer",nullable=false)
+     * @ORM\Column(type="integer")
      */
     protected $difficulty;
 
@@ -49,9 +49,14 @@ class Tutorial
     protected $pubDate;
 
     /**
-     * @ORM\Column(type="integer",nullable=false)
+     * @ORM\Column(type="integer")
      */
     protected $seenCount;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $published;
 
     public function __construct()
     {
