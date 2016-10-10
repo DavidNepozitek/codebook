@@ -23,6 +23,7 @@ services:
 	- App\Components\IRegisterFormFactory
 	- App\Components\ILoginFormFactory
 	- App\Components\ITutorialFormFactory
+	- App\Components\IPasswordChangeFormFactory
 
 
 extensions:

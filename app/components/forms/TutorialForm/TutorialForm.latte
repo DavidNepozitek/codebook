@@ -19,10 +19,19 @@
         </div>
         <button n:name="submit" type="submit">Přidat návod</button>
         {if $flashes}
-            <div class="form-error-text-block">
-                <ul>
+            <div class="form-error">
+                <ul n:ifcontent>
                     {foreach $flashes as $flash}
                         {if $flash->type == "error"}
+                            <li>{$flash->message}</li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="form-success">
+                <ul n:ifcontent>
+                    {foreach $flashes as $flash}
+                        {if $flash->type == "success"}
                             <li>{$flash->message}</li>
                         {/if}
                     {/foreach}

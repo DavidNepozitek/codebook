@@ -57,7 +57,8 @@ class TutorialForm extends Control{
             $this->tutorialModel->createTutorial(
                 $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"]
             );
-            $this->presenter->redirect("Tutorial:add");
+            $this->flashMessage("Nový článek byl úspěšně přidán", "success");
+            $this->presenter->redirect("this");
         } catch (Exception $e) {
             $this->flashMessage($e->getMessage(), "error");
         }
