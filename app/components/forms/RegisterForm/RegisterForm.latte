@@ -1,10 +1,12 @@
 {block content}
 
 {if $registered == true}
-
-    <div>
-        <h3>Registrace dokončena</h3>
-        <p>Pro přihlášení do administrace musí učitel aktivovat váš účet</p>
+    <div class="col-md-5 col-xs-12 col-sm-8 form-login-registration__div">
+            <h3 class="form-login-registration__heading">Registrace proběhla úspěšně</h3>
+            <p>Pro přihlášení do administrace musí učitel aktivovat váš účet.</p>
+            <div class= "form-login-registration-redistrict__link">
+                <a class= "form-login-registration-redistrict__link" href="{$basePath}">Přejít na hlavní stranu</a>
+            </div>
     </div>
 
 {else}
@@ -40,8 +42,8 @@
                                 </div>
                                 <button n:name="submit" class="btn btn--blue col-md-4 col-xs-8" type="submit">Zaregistrovat se</button>
                             </form>
-                            <div class="login-account__redistrict">
-                                Už máte účet? <a class= "login-redistrict__link" href="{plink Login:login}">Přihlaste se</a>
+                            <div class="form-login-account__redistrict">
+                                Už máte účet? <a class= "form-login-redistrict__link" href="{plink Login:login}">Přihlaste se</a>
                             </div>
                 </div>
 </div>
