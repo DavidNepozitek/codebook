@@ -1,12 +1,56 @@
 {block content}
 
-    <ul>
-        {foreach $sotds as $sotd}
-            <li>
-                <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
-                {$sotd->getPubDate()|date:'j. n. Y'}
-            </li>
-        {/foreach}
-    </ul>
+<div class="container">
+    <div class="row">
 
-<i class="fa fa-cog" aria-hidden="true"></i>
+        <h1 class="title--left">vybraný návod</h1>
+        <div class="col-md-8">
+            <article class="article__top--left">
+
+                <h2 class="title__in--top">Jak na jednoduchou navigaci</h2>
+                <h3 class="select__category">zařazeno do<span class="article__category"> HTML &bull; CSS  </span></h3>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit purus sit amet massa egestas egestas at ut mauris. Praesent arcu dolor, laoreet eget odio eget, dignissim dapibus magna. Nam pulvinar malesuada libero, ut elementum nisl eleifend sed. Pellentesque at nisl justo.</p>
+
+                <i class="fa fa-cog article__icon--first" aria-hidden="true"></i><i class="fa fa-cog article__icon--second" aria-hidden="true"></i><i class="fa fa-cog article__icon--third" aria-hidden="true"></i><span class="article__number">5</span><i class="fa fa-thumbs-o-up thumb__up" aria-hidden="true"></i><button class="btn--blue btn__article--right">Číst více</button>
+
+            </article>
+        </div>
+
+        <h1 class="title--right">nejlepší stránky dne</h1>
+        <div class="col-md-4">
+            <article class="article__top--right">
+
+                <ul>
+                    {foreach $sotds as $sotd}
+                        <li>
+                            {$sotd->getPubDate()|date:'j. n. Y'} </br>
+                            <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+
+            </article>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1 class="title--middle">poslední návody</h1>
+        <div class="col-md-6">
+            <article class="article__col--6">
+                dasdas
+                Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a knihařském průmyslu. Lorem Ipsum je považováno za standard v této oblasti už od začátku 16. století, kdy dnes neznámý tiskař vzal kusy textu a na jejich základě vytvořil speciální vzorovou knihu. Jeho odkaz nevydržel pouze pět století, on přežil i nástup elektronické sazby v podstatě beze změny. Nejvíce popularizováno bylo Lorem Ipsum v šedesátých letech 20. století, kdy byly vydávány speciální vzorníky s jeho pasážemi a později pak díky počítačovým DTP programům jako Aldus PageMaker.
+            </article>
+        </div>
+
+        <div class="col-md-6">
+            <article class="article__col--6">
+                dasdasda
+                Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a knihařském průmyslu. Lorem Ipsum je považováno za standard v této oblasti už od začátku 16. století, kdy dnes neznámý tiskař vzal kusy textu a na jejich základě vytvořil speciální vzorovou knihu. Jeho odkaz nevydržel pouze pět století, on přežil i nástup elektronické sazby v podstatě beze změny. Nejvíce popularizováno bylo Lorem Ipsum v šedesátých letech 20. století, kdy byly vydávány speciální vzorníky s jeho pasážemi a později pak díky počítačovým DTP programům jako Aldus PageMaker.
+            </article>
+        </div>
+    </div>
+</div>
+
+
+
