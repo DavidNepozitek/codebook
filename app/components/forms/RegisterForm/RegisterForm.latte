@@ -1,11 +1,11 @@
 {block content}
 
 {if $registered == true}
-    <div class="col-md-5 col-xs-12 col-sm-8 form-login-registration__div">
-            <h3 class="form-login-registration__heading">Registrace proběhla úspěšně</h3>
+    <div class="col-md-5 col-sm-8 col-xs-12 form-login form-login--success">
+            <h3 class="form-login__heading">Registrace proběhla úspěšně</h3>
             <p>Pro přihlášení do administrace musí učitel aktivovat váš účet.</p>
-            <div class= "form-login-registration-redistrict__link">
-                <a class= "form-login-registration-redistrict__link" href="{$basePath}">Přejít na hlavní stranu</a>
+            <div class= "form-login__redirect form-login__redirect--success">
+                <a class= "form-login__redirect-link" href="{$basePath}">Přejít na hlavní stranu</a>
             </div>
     </div>
 
@@ -16,7 +16,7 @@
                 <div class="login-logo__line"></div>
                 <div class="login-logo__heading">Administrace</div>
         </div>
-                <div class="col-md-5 col-xs-12 col-sm-8 form-login">
+                <div class="col-md-5 col-sm-8 col-xs-12 form-login">
                         <div class="form-login__heading">
                              Registrace
                         </div>
@@ -42,7 +42,7 @@
                                 </div>
                                 <button n:name="submit" class="btn btn--blue col-md-4 col-xs-8" type="submit">Zaregistrovat se</button>
                             </form>
-                            <div class="form-login-account__redistrict">
+                            <div class="form-login__redirect">
                                 Už máte účet? <a class= "form-login-redistrict__link" href="{plink Login:login}">Přihlaste se</a>
                             </div>
                 </div>
