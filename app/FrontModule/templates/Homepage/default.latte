@@ -3,52 +3,61 @@
 <div class="container">
     <div class="row">
 
-        <h1 class="title--left">vybraný návod</h1>
         <div class="col-md-8">
-            <article class="article__top--left">
+            <h1 class="title__chosen">vybraný návod</h1>
+                <article class="article__top--left">
 
-                <h2 class="title__in--top">Jak na jednoduchou navigaci</h2>
-                <h3 class="select__category">zařazeno do<span class="article__category"> HTML &bull; CSS  </span></h3>
+                    <h2 class="article__title">Jak na jednoduchou navigaci</h2>
+                    <h3 class="article__tags">zařazeno do<span class="article__category"> HTML &bull; CSS  </span></h3>
+                    <p class="article__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit purus sit amet massa egestas egestas at ut mauris. Praesent arcu dolor, laoreet eget odio eget, dignissim dapibus magna. Nam pulvinar malesuada libero, ut elementum nisl eleifend sed. Pellentesque at nisl justo.</p>
+                    <i class="fa fa-cog article__icon--first" aria-hidden="true"></i><i class="fa fa-cog article__icon--second" aria-hidden="true"></i><i class="fa fa-cog article__icon--third" aria-hidden="true"></i><span class="article__likes">5</span><i class="fa fa-thumbs-o-up thumb__up" aria-hidden="true"></i><button class="btn--blue article__btn">Číst více</button>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit purus sit amet massa egestas egestas at ut mauris. Praesent arcu dolor, laoreet eget odio eget, dignissim dapibus magna. Nam pulvinar malesuada libero, ut elementum nisl eleifend sed. Pellentesque at nisl justo.</p>
-
-                <i class="fa fa-cog article__icon--first" aria-hidden="true"></i><i class="fa fa-cog article__icon--second" aria-hidden="true"></i><i class="fa fa-cog article__icon--third" aria-hidden="true"></i><span class="article__number">5</span><i class="fa fa-thumbs-o-up thumb__up" aria-hidden="true"></i><button class="btn--blue btn__article--right">Číst více</button>
-
-            </article>
+                </article>
         </div>
 
-        <h1 class="title--right">nejlepší stránky dne</h1>
         <div class="col-md-4">
-            <article class="article__top--right">
+            <h1 class="title__sotd">nejlepší stránky dne</h1>
+                <div class="sotd-list">
 
-                <ul>
-                    {foreach $sotds as $sotd}
-                        <li>
-                            {$sotd->getPubDate()|date:'j. n. Y'} </br>
-                            <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
-                        </li>
-                    {/foreach}
-                </ul>
+                    <ul>
+                        {foreach $sotds as $sotd}
+                            <li>
+                                {$sotd->getPubDate()|date:'j. n. Y'} <br>
+                                <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
+                            </li>
+                        {/foreach}
+                    </ul>
 
-            </article>
+                </div>
         </div>
+
     </div>
 
     <div class="row">
-        <h1 class="title--middle">poslední návody</h1>
-        <div class="col-md-6">
-            <article class="article__col--6">
-                dasdas
-                Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a knihařském průmyslu. Lorem Ipsum je považováno za standard v této oblasti už od začátku 16. století, kdy dnes neznámý tiskař vzal kusy textu a na jejich základě vytvořil speciální vzorovou knihu. Jeho odkaz nevydržel pouze pět století, on přežil i nástup elektronické sazby v podstatě beze změny. Nejvíce popularizováno bylo Lorem Ipsum v šedesátých letech 20. století, kdy byly vydávány speciální vzorníky s jeho pasážemi a později pak díky počítačovým DTP programům jako Aldus PageMaker.
-            </article>
-        </div>
 
-        <div class="col-md-6">
-            <article class="article__col--6">
-                dasdasda
-                Lorem Ipsum je demonstrativní výplňový text používaný v tiskařském a knihařském průmyslu. Lorem Ipsum je považováno za standard v této oblasti už od začátku 16. století, kdy dnes neznámý tiskař vzal kusy textu a na jejich základě vytvořil speciální vzorovou knihu. Jeho odkaz nevydržel pouze pět století, on přežil i nástup elektronické sazby v podstatě beze změny. Nejvíce popularizováno bylo Lorem Ipsum v šedesátých letech 20. století, kdy byly vydávány speciální vzorníky s jeho pasážemi a později pak díky počítačovým DTP programům jako Aldus PageMaker.
-            </article>
-        </div>
+        <h1 class="title__last">poslední návody</h1>
+            <div class="col-md-6">
+                <article class="article__col--6">
+
+                    <h2 class="article__title">Úvod do responzivních webů</h2>
+                    <h3 class="article__tags">zařazeno do<span class="article__category"> HTML &bull; CSS  </span></h3>
+                    <p class="article__text">Je obecně známou věcí, že člověk bývá při zkoumání grafického návrhu rozptylován okolním textem, pokud mu dává nějaký smysl. Úkolem Lorem Ipsum je pak nahradit klasický smysluplný text vhodnou bezvýznamovou alternativou s relativně běžným rozložením slov. To jej dělá narozdíl od opakujícího se "Tady bude text.</p>
+                    <i class="fa fa-cog article__icon--first" aria-hidden="true"></i><i class="fa fa-cog article__icon--second" aria-hidden="true"></i><i class="fa fa-cog article__icon--third" aria-hidden="true"></i><span class="article__likes">5</span><i class="fa fa-thumbs-o-up thumb__up" aria-hidden="true"></i><button class="btn--blue article__btn">Číst více</button>
+
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="article__col--6">
+
+                    <h2 class="article__title">Základy CSS preprocesorů</h2>
+                    <h3 class="article__tags">zařazeno do<span class="article__category"> HTML &bull; CSS  </span></h3>
+                    <p class="article__text">Je obecně známou věcí, že člověk bývá při zkoumání grafického návrhu rozptylován okolním textem, pokud mu dává nějaký smysl. Úkolem Lorem Ipsum je pak nahradit klasický smysluplný text vhodnou bezvýznamovou alternativou s relativně běžným rozložením slov. To jej dělá narozdíl od opakujícího se "Tady bude text.</p>
+                    <i class="fa fa-cog article__icon--first" aria-hidden="true"></i><i class="fa fa-cog article__icon--second" aria-hidden="true"></i><i class="fa fa-cog article__icon--third" aria-hidden="true"></i><span class="article__likes">5</span><i class="fa fa-thumbs-o-up thumb__up" aria-hidden="true"></i><button class="btn--blue article__btn">Číst více</button>
+
+                </article>
+            </div>
+
     </div>
 </div>
 
