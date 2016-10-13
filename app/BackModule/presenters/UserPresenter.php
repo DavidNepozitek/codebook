@@ -2,12 +2,10 @@
 
 namespace App\BackModule\Presenters;
 
-use App\Components\IRoleChangeFormFactory;
 use App\Model\Entities\User;
 use App\Model\UserModel;
 use Grido\DataSources\Doctrine;
 use Grido\Grid;
-use Nette\Application\UI\Form;
 use Nette\Utils\Html;
 
 class UserPresenter extends BasePresenter
@@ -16,13 +14,6 @@ class UserPresenter extends BasePresenter
     /** @var UserModel @inject */
     public $userModel;
 
-    /** @var  IRoleChangeFormFactory @inject */
-    public $roleChangeFormFactory;
-
-    protected function createComponentRoleChangeForm()
-    {
-        return $this->roleChangeFormFactory->create();
-    }
 
     public function startup()
     {

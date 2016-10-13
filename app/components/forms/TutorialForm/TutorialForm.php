@@ -2,6 +2,7 @@
 
 namespace App\Components;
 
+use App\Model\Entities\Tutorial;
 use App\Model\TutorialModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
@@ -12,10 +13,24 @@ class TutorialForm extends Control{
     /** @var TutorialModel */
     public $tutorialModel;
 
-    public function __construct(TutorialModel $tutorialModel)
+    private $id;
+
+    private $tutorial;
+
+    /**
+     * TutorialForm constructor.
+     * @param $id
+     * @param TutorialModel $tutorialModel
+     */
+    public function __construct($id, TutorialModel $tutorialModel)
     {
         parent::__construct();
         $this->tutorialModel= $tutorialModel;
+        $this->id = $id;
+
+        if ($this->id) {
+            $this->tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $this->id));
+        }
     }
 
     public function render()
@@ -23,6 +38,7 @@ class TutorialForm extends Control{
         $template = $this->template;
         $template->setFile(__DIR__ . "/TutorialForm.latte");
         $template->render();
+
     }
 
     protected function createComponentForm()
@@ -45,6 +61,19 @@ class TutorialForm extends Control{
         $form->addSubmit("submit", "Přidat článek");
 
         $form->onSuccess[] = array($this, "processForm");
+
+        if ($this->tutorial) {
+
+            $form->setDefaults(array(
+                "title" => $this->tutorial->getTitle(),
+                "perex" => $this->tutorial->getPerex(),
+                "source" => $this->tutorial->getSource(),
+                "difficulty" => $this->tutorial->getDifficulty(),
+                "published" => $this->tutorial->getPublished(),
+            ));
+
+            echo $this->tutorial->getTitle();
+        }
 
         return $form;
     }
@@ -69,6 +98,9 @@ class TutorialForm extends Control{
 
 interface ITutorialFormFactory
 {
-    /** @return TutorialForm */
-    function create();
+    /**
+     * @param $id
+     * @return TutorialForm
+     */
+    function create($id);
 }
