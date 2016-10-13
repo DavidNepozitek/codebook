@@ -55,7 +55,7 @@ abstract class BasePresenter extends Presenter
             $this->menu[] = array(
                 "name" => "Uživatelé",
                 "icon" => "user",
-                "link" => "User:default",
+                "link" => "User:list",
                 "active" => "User:*"
             );
 

@@ -37,7 +37,7 @@ class SotdModel extends BaseModel
         $url = "http://feeds.feedburner.com/awwwards-sites-of-the-day?format=xml";
         $xml = simplexml_load_file($url) or die("Error: Cannot create object");
 
-        for ($x = 0; $x <= 4; $x++) {
+        for ($x = 0; $x <= 3; $x++) {
 
             $pubDate = new \DateTime($xml->channel->item[$x]->pubDate);
 

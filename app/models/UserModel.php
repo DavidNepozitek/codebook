@@ -9,6 +9,8 @@ use Nette\Security\Passwords;
 class UserModel extends BaseModel
 {
 
+    public $roles = Array("guest", "editor", "admin");
+
     /**
      * Registers a new guest user with given e-mail and password
      *
