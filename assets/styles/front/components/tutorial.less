@@ -7,33 +7,45 @@
   max-width: 1111px;
 }
 
-article {
+.article {
   background-color: white;
   border-bottom: 2px solid #4b8eef;
-}
+  padding-right: 21px;
+  box-shadow: 1px 1px 2px 0 #f0f4f7;
+  height: 257px;
+  margin-bottom: 0;
 
-.article__top--left {
-  padding-bottom: 18px;
+  &:hover {
+    box-shadow: 2px 2px 8px 0 #e4e7ea;
+    border-bottom: 4px solid #4b8eef;
+  }
 
   .article__title {
-    font-size: 28px;
-    padding-left: 18px;
     padding-top: 23px;
+    padding-left: 18px;
   }
 
   .article__tags {
     padding-left: 17px;
+
+    .article__category {
+      color: #f8534b;
+    }
   }
 
-  .article__category {
-    color: #f8534b;
+  .article__text {
+    color: #727d98;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    padding-left: 18px;
   }
 
   .article__icon--first {
     color: #2d476e;
     font-size: 23px;
     padding-right: 5px;
-    padding-left: 20px;
+    padding-left: 16px;
   }
 
   .article__icon--second, .article__icon--third {
@@ -43,6 +55,10 @@ article {
 
   .article__icon--second {
     padding-right: 5px;
+  }
+
+  .article__icon--first, .article__icon--second, .article__icon--third {
+    padding-top: 2px;
   }
 
   .article__likes {
@@ -61,20 +77,91 @@ article {
   .article__btn {
     width: 120px;
     height: 36px;
+    margin-right: 1px;
+    margin-top: -7px;
   }
 }
+
+
+.article__chosen {
+  height: 220px;
+  background-color: white;
+  border-bottom: 2px solid #4b8eef;
+  padding-right: 20px;
+  box-shadow: 1px 1px 2px 0 #f0f4f7;
+
+  &:hover {
+    box-shadow: 2px 2px 8px 0 #e4e7ea;
+    border-bottom: 4px solid #4b8eef;
+  }
+
+  .article__title--bigger {
+    font-size: 28px;
+    padding-left: 18px;
+    padding-top: 23px;
+  }
+
+  .article__tags {
+    padding-left: 17px;
+
+    .article__category {
+      color: #f8534b;
+    }
+  }
+
+  .article__icon--first {
+    color: #2d476e;
+    font-size: 23px;
+    padding-right: 5px;
+    padding-left: 20px;
+  }
+
+  .article__icon--second, .article__icon--third {
+    font-size: 23px;
+    color: #dcdee2;
+  }
+
+  .article__icon--second {
+    padding-right: 5px;
+  }
+
+  .article__icon--first, .article__icon--second, .article__icon--third {
+    padding-top: 2px;
+  }
+
+  .article__likes {
+    color: #2d476e;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 20px;
+    padding-left: 22px;
+  }
+
+  .thumb__up {
+    font-size: 20px;
+    padding-left: 5px;
+    color: #2d476e;
+  }
+
+  .article__btn {
+    width: 120px;
+    height: 36px;
+    margin-right: 1px;
+    margin-top: -6px;
+  }
+
+  .article__text {
+    color: #727d98;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    padding-left: 18px;
+  }
+}
+
 
 .title__chosen {
   padding-left: 7px;
   padding-top: 16px;
-}
-
-.article__text {
-  color: #727d98;
-  font-family: "Fira Sans", sans-serif;
-  font-size: 15px;
-  font-weight: normal;
-  padding-left: 18px;
 }
 
 .article__top--right {
@@ -83,12 +170,18 @@ article {
 
 .title__last {
   text-align: center;
+  padding-top: 26px;
+  margin-bottom: 0;
 }
 
-.article__col--6 {
+.btn--down {
+  width: 160px;
+  margin: auto;
 
-}
-
-.article__col--6 {
-
+  .btn--orange {
+    width: 160px;
+    height: 40px;
+    margin-top: 64px;
+    margin-bottom: 92px;
+  }
 }
