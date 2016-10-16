@@ -99,6 +99,12 @@ class UserPresenter extends BasePresenter
 
     }
 
+    /**
+     * Changes a user's role
+     * 
+     * @param $id
+     * @param $role
+     */
     public function handleChangeRole($id, $role)
     {
         $user = $this->userModel->getOne(User::class, array("id" => $id));

@@ -54,6 +54,11 @@ class Tutorial
     protected $seenCount;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Tag")
+     */
+    protected $tags;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     protected $published;

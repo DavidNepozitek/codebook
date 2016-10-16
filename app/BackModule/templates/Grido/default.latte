@@ -65,8 +65,8 @@
                     {$column->getHeaderPrototype()->startTag()|noescape}
                     {if $column->isSortable()}
                         <a n:if="!$column->getSort()" n:href="sort! [$column->getName() => \Grido\Components\Columns\Column::ORDER_ASC]" class="ajax">{$column->getLabel()|noescape}</a>
-                        <a n:if="$column->getSort() == \Grido\Components\Columns\Column::ORDER_ASC" n:href="sort! [$column->getName() => \Grido\Components\Columns\Column::ORDER_DESC]" class="sort ajax asc">{$column->getLabel()|noescape} <i class="arrow"></i></a>
-                        <a n:if="$column->getSort() == \Grido\Components\Columns\Column::ORDER_DESC" n:href="sort! [$column->getName() => \Grido\Components\Columns\Column::ORDER_ASC]" class="sort ajax desc">{$column->getLabel()|noescape} <i class="arrow"></i></a>
+                        <a n:if="$column->getSort() == \Grido\Components\Columns\Column::ORDER_ASC" n:href="sort! [$column->getName() => \Grido\Components\Columns\Column::ORDER_DESC]" class="sort ajax asc">{$column->getLabel()|noescape} <i class="fa fa-sort-amount-asc"></i></a>
+                        <a n:if="$column->getSort() == \Grido\Components\Columns\Column::ORDER_DESC" n:href="sort! [$column->getName() => \Grido\Components\Columns\Column::ORDER_ASC]" class="sort ajax desc">{$column->getLabel()|noescape} <i class="fa fa-sort-amount-desc"></i></a>
                     {else}
                         <span>{$column->getLabel()|noescape}</span>
                     {/if}

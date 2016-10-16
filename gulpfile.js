@@ -83,11 +83,18 @@ gulp.task("js-front", function() {
         .pipe(gulp.dest("assets/scripts"));
 });
 
+
+//TODO: Create a libs folder
 gulp.task("js-back", function() {
     return gulp.src([
             "assets/scripts/main.js",
             "assets/scripts/back/*",
-            "assets/scripts/back/components/*"
+            "assets/scripts/back/components/grido.js",
+            "assets/scripts/back/components/grido.nette.ajax.js",
+            "assets/scripts/back/components/grido.bootstrap.paginator.js",
+            "assets/scripts/back/components/login.js",
+            "assets/scripts/back/components/table.js",
+            "assets/scripts/back/components/tutorial.js"
         ])
         .pipe(plumber(plumberOpts))
         .pipe(concat("back.min.js"))

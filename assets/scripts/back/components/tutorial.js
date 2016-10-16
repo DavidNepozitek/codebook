@@ -1,6 +1,6 @@
 /*------------------------------------*\
  #Markdown editor settings
- \*------------------------------------*/
+\*------------------------------------*/
 
 
 if ($("#frm-tutorialForm-form-source").length > 0) {
@@ -9,6 +9,10 @@ if ($("#frm-tutorialForm-form-source").length > 0) {
         spellChecker: false,
         renderingConfig: {
             codeSyntaxHighlighting: true
-        }
+        },
+        showIcons: [
+            "code",
+            "table"
+        ]
     });
 }

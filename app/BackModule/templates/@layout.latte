@@ -4,7 +4,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Codebook</title>
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Codebook administrace</title>
+
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{$basePath}/assets/favicon/apple-touch-icon-57x57.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{$basePath}/assets/favicon/apple-touch-icon-114x114.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{$basePath}/assets/favicon/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{$basePath}/assets/favicon/apple-touch-icon-144x144.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{$basePath}/assets/favicon/apple-touch-icon-120x120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{$basePath}/assets/favicon/apple-touch-icon-152x152.png" />
+	<link rel="icon" type="image/png" href="{$basePath}/assets/favicon/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="{$basePath}/assets/favicon/favicon-16x16.png" sizes="16x16" />
+	<meta name="application-name" content="Codebook - front-end handbook"/>
+	<meta name="msapplication-TileColor" content="#F46E42" />
+	<meta name="msapplication-TileImage" content="{$basePath}/assets/favicon/mstile-144x144.png" />
 
 	<script src="{$basePath}/assets/scripts/libs/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
@@ -25,7 +37,9 @@
 	{/if}
 
 
-	{include content}
+	<div class="container">
+	    {include content}
+    </div>
 
 	{block scripts}
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
