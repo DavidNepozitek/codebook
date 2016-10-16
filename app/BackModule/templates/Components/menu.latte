@@ -1,4 +1,4 @@
-<ul>
+<ul class="navigation__ul">
     {foreach $menu as $item}
         <li class="main-navigation__item
         {if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}
@@ -7,6 +7,7 @@
                 <a>
                     <i class="fa fa-{$item['icon']}"></i>
                     {$item["name"]}
+                    <i class="fa fa-caret-down"></i>
                 </a>
                 <ul>
                     {foreach $item['sub'] as $subitem}
