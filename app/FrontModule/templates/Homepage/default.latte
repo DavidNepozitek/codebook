@@ -22,7 +22,7 @@
                     <ul>
                         {foreach $sotds as $sotd}
                             <li>
-                                {$sotd->getPubDate()|date:'j. n. Y'} <br>
+                                <span class="sotd__date">{$sotd->getPubDate()|date:'j. n. Y'}</span><br>
                                 <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
                             </li>
                         {/foreach}
