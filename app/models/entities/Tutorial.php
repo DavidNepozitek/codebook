@@ -2,6 +2,7 @@
 
 namespace App\Model\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Kdyby\Doctrine\Entities\MagicAccessors;
 
@@ -67,6 +68,12 @@ class Tutorial
     {
         $this->pubDate = new \DateTime();
         $this->seenCount = 0;
+        $this->tags = new ArrayCollection();
+    }
+
+    public function clearTags()
+    {
+        $this->tags->clear();
     }
 
 }

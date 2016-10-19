@@ -1,6 +1,8 @@
 $(function(){
 
-    $.nette.init();
-    $('.grido').grido();
+
+    if ($('.grido')) {
+        $('.grido').grido();
+    }
 
 });

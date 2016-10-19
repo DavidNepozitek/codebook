@@ -7,6 +7,7 @@ use App\Model\TutorialModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Neon\Exception;
+use Tracy\Debugger;
 
 class TutorialForm extends Control{
 
@@ -41,6 +42,8 @@ class TutorialForm extends Control{
 
     }
 
+    //TODO: Required content
+
     protected function createComponentForm()
     {
         $form = new Form();
@@ -49,20 +52,25 @@ class TutorialForm extends Control{
             ->setAttribute("placeholder", "Název návodu")
             ->setRequired("Vyplňte prosím svůj email");
         $form->addSelect('difficulty', 'Obtížnost:', $this->tutorialModel->difficulties)
+            ->setRequired("Zvolte prosím kateogrii")
             ->setPrompt('Zvolte obtížnost');
+        $form->addText("tags")
+            ->setAttribute("placeholder", "Štítky");
         $form->addTextArea("perex")
             ->setAttribute("placeholder", "Perex")
             ->setRequired("Vyplňte prosím perex");
         $form->addTextArea("source")
-            ->setAttribute("placeholder", "Obsah článku")
-            ->setRequired("Návod musí obsahovat nějaký text");
+            ->setAttribute("placeholder", "Obsah článku");
         $form->addCheckbox('published', 'Publikovat ihned');
 
-        $form->addSubmit("submit", "Přidat článek");
-
-        $form->onSuccess[] = array($this, "processForm");
+        $form->addInteger("id", "id");
 
         if ($this->tutorial) {
+
+            foreach ($this->tutorial->getTags()->toArray() as $tag) {
+                $tags[] = $tag->getName();
+            }
+
 
             $form->setDefaults(array(
                 "title" => $this->tutorial->getTitle(),
@@ -70,10 +78,21 @@ class TutorialForm extends Control{
                 "source" => $this->tutorial->getSource(),
                 "difficulty" => $this->tutorial->getDifficulty(),
                 "published" => $this->tutorial->getPublished(),
+                "id" => $this->tutorial->getId(),
+
             ));
 
-            echo $this->tutorial->getTitle();
+            if (isset($tags)) {
+                $tags = json_encode($tags);
+                $form->setDefaults(array("tags" => $tags));
+            }
+
         }
+
+        $form->addSubmit("submit", "Přidat článek");
+
+        $form->onSuccess[] = array($this, "processForm");
+
 
         return $form;
     }
@@ -82,16 +101,29 @@ class TutorialForm extends Control{
     {
         $values = $form->getValues();
 
-        try {
-            $this->tutorialModel->createTutorial(
-                $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"]
-            );
-            $this->flashMessage("Nový článek byl úspěšně přidán", "success");
-            $this->presenter->redirect("this");
-        } catch (Exception $e) {
-            $this->flashMessage($e->getMessage(), "error");
-        }
+        if ($values["id"]) {
+            try {
+                $this->tutorialModel->editTutorial(
+                    $values["id"], $values["title"], $values["perex"], $values["source"],
+                    $values["difficulty"], $values["published"], $values["tags"]
+                );
+                $this->flashMessage("Článek byl úspěšně upraven", "success");
+            } catch (Exception $e) {
+                $this->flashMessage($e->getMessage(), "error");
+            }
 
+        } else {
+            try {
+                $this->tutorialModel->createTutorial(
+                    $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"],
+                    $values["tags"]
+                );
+                $this->flashMessage("Nový článek byl úspěšně přidán", "success");
+                $this->presenter->redirect("this");
+            } catch (Exception $e) {
+                $this->flashMessage($e->getMessage(), "error");
+            }
+        }
     }
 
 }

@@ -1,10 +1,22 @@
 /**
  * CONTENTS
  *
+ * Ajax init............Nette ajax initialization
  * Loader...............Reveals the page, when loaded.
  * Form validation......Validates form with data-rules
  *
  */
+
+
+/*------------------------------------*\
+ #Nette init
+\*------------------------------------*/
+
+
+$.nette.init();
+
+
+
 
 
 /*------------------------------------*\

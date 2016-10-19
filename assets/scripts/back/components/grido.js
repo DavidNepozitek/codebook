@@ -15,7 +15,7 @@
  * @param {Window} window
  * @param {Document} document
  */
-;(function($, window, document) {
+(function($, window, document) {
     /*jshint laxbreak: true, expr: true */
     "use strict";
 

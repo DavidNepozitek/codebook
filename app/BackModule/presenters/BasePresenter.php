@@ -35,8 +35,15 @@ abstract class BasePresenter extends Presenter
         array(
             "name" => "Stránky",
             "icon" => "file",
-            "link" => "Page:default",
-            "active" => "Page:*"
+            "link" => "",
+            "active" => "Page:*",
+            "sub" => array(
+                array(
+                    "name" => "Seznam",
+                    "link" => "Page:list",
+                    "active" => "Page:list",
+                )
+            )
         ),
 
     );
