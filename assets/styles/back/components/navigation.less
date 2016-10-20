@@ -28,10 +28,10 @@
 
 .main-navigation {
   display: inline-block;
-  padding: 0;
-  max-width: 260px;
-  width: 100%;
-  margin: 25px 40px 0 auto;
+  padding: 25px 0 0 0;
+  width: 260px;
+  height: 260px;
+  overflow: auto;
 }
 
 .main-navigation__item--active {
@@ -94,7 +94,8 @@
   height: 100%;
   display: block;
   position: fixed;
-  margin-top: 80px;
+  padding-top: 80px;
+  z-index: 1;
 }
 
 
@@ -107,5 +108,6 @@
 
   .navigation__background {
     margin-top: 128px;
+    padding: 0;
   }
 }
