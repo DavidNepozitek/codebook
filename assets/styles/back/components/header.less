@@ -1,6 +1,85 @@
 /*------------------------------------*\
-  #HEADER
+#HEADER
 \*------------------------------------*/
+
+
+.header__logo {
+  width: 150px;
+  margin: 0 55px 0 55px;
+  padding: 22px 0 22px 0;
+}
+
+.header__left {
+  max-width: 260px;
+  background-color: #48567d;
+  float: left;
+}
+
+.container--header {
+  padding: 0;
+  display: inline-block;
+  box-shadow: 0 1px 1px rgba(0,0,0,.075);
+  background-color: white;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+.header__right {
+  padding: 23px 0 23px 260px;
+
+  .header__overview {
+    font-size: 27px;
+  }
+}
+
+.header__overview-text {
+  font-size: 24px;
+  font-style: italic;
+  color: #383b40;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.header__overview {
+  margin-left: 40px;
+  font-size: 27px;
+  color: #323c58;
+}
+
+.header__settings {
+  margin-right: 20px;
+  font-size: 23px;
+  color: #b8becb;
+}
+
+.header__button-logout {
+  margin-right: 20px;
+  vertical-align: +20%;
+}
+
+.header__logged-as-email {
+  font-size: 14px;
+  color: #4b8eef;
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: +15%;
+}
+
+.header__logged-as-text {
+  display: inline-block;
+  font-size: 14px;
+  color: #383b40;
+  vertical-align: +15%;
+}
+
+.header__right--position {
+  float: right;
+
+  .header__settings {
+    font-size: 23px;
+  }
+}
 
 .main-navigation{
 
@@ -11,4 +90,36 @@
       color: @blue;
     }
   }
+}
+
+
+
+/*------------------------------------*\
+#RESPONSIVE
+\*------------------------------------*/
+
+@media (max-width: 992px) {
+
+  .container--header {
+    height: 128px;
+  }
+
+  .header__right {
+    height: 100%;
+    line-height: 37px;
+  }
+
+  .header__left {
+    height: 100%;
+  }
+
+  .header__logo {
+    padding: 42px 0 42px 0;
+  }
+
+  .header__right--position{
+    width: 100%;
+    text-align: right;
+  }
+
 }

@@ -31,15 +31,15 @@
 
     {if !$presenter->isLinkCurrent("Login:*")}
 
-	    {include Components/header.latte}
+	    {import Components/header.latte}
+		{include header}
         {include Components/menu.latte}
 
 	{/if}
 
-
-	<div class="container">
-	    {include content}
-    </div>
+<div class="container container--admin">
+	{include content}
+</div>
 
 	{block scripts}
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
