@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 
-.title__sotd {
+.title--sotd {
   padding-top: 16px;
   padding-bottom: 10px;
   padding-left: 7px;
@@ -48,5 +48,28 @@
 
   .sotd__date {
     opacity: 0.5;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #RESPONSIVE
+\*------------------------------------*/
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .sotd-list {
+    height: 240px;
+    padding-top: 24px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 991px) {
+  .title--sotd {
+    text-align: center;
+    padding-left: 0;
   }
 }

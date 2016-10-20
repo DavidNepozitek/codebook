@@ -10,19 +10,24 @@
 .article {
   background-color: white;
   border-bottom: 2px solid #4b8eef;
-  padding-right: 21px;
-  box-shadow: 1px 1px 2px 0 #f0f4f7;
-  height: 257px;
-  margin-bottom: 0;
-  transition: 0.1s;
+  box-shadow: 0 1px 2px 0 #f0f4f7;
+  transition: 0.2s;
 
   &:hover {
-    box-shadow: 2px 2px 8px 0 #e4e7ea;
-    border-bottom: 4px solid #4b8eef;
+    box-shadow: 0 2px 8px 0 #e4e7ea;
+  }
+}
+
+.article--casual {
+  padding-right: 21px;
+  height: 257px;
+  margin-bottom: 0;
+
+  .article__wrapper {
+    height: 50px;
   }
 
   .article__title {
-    padding-top: 23px;
     padding-left: 18px;
   }
 
@@ -30,7 +35,7 @@
     padding-left: 17px;
 
     .article__category {
-      color: #f8534b;
+      color: @orange;
     }
   }
 
@@ -84,23 +89,21 @@
 }
 
 
-.article__chosen {
+.article--chosen {
   height: 220px;
-  background-color: white;
-  border-bottom: 2px solid #4b8eef;
   padding-right: 20px;
-  box-shadow: 1px 1px 2px 0 #f0f4f7;
-  transition: 0.1s;
 
   &:hover {
     box-shadow: 2px 2px 8px 0 #e4e7ea;
-    border-bottom: 4px solid #4b8eef;
+  }
+
+  .article__wrapper {
+    height: 55px;
   }
 
   .article__title--bigger {
     font-size: 28px;
     padding-left: 18px;
-    padding-top: 23px;
   }
 
   .article__tags {
@@ -161,7 +164,7 @@
 }
 
 
-.title__chosen {
+.title--chosen {
   padding-left: 7px;
   padding-top: 16px;
 }
@@ -170,7 +173,7 @@
   background-color: white;
 }
 
-.title__last {
+.title--last {
   text-align: center;
   padding-top: 26px;
   margin-bottom: 0;
@@ -180,10 +183,70 @@
   width: 160px;
   margin: auto;
 
-  .btn--orange {
+  .btn--all {
     width: 160px;
     height: 40px;
     margin-top: 64px;
     margin-bottom: 92px;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #RESPONSIVE
+\*------------------------------------*/
+
+
+@media (min-width: 1200px) {
+  .article--chosen {
+    height: 220px;
+  }
+
+  .article--casual {
+    height: 257px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .article--chosen {
+    height: 240px;
+  }
+
+  .article--casual {
+    height: 277px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 991px) {
+  .article--chosen {
+    height: auto;
+    padding-bottom: 15px;
+  }
+
+  .article--casual {
+    height: auto;
+    padding-bottom: 15px;
+  }
+
+  .title--chosen {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .title--last {
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 370px) {
+  .article--chosen {
+
+    .thumb-up {
+      display: block;
+    }
   }
 }
