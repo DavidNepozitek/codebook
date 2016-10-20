@@ -104,6 +104,10 @@ $.fn.makeTags = function () {
         deleteTag(content);
 
     });
+
+    tags.click(function () {
+        newtag.focus();
+    });
     
     return this;
 };
