@@ -19,7 +19,8 @@
 
     {if !$presenter->isLinkCurrent("Login:*")}
 
-	    {include Components/header.latte}
+	    {import Components/header.latte}
+		{include header}
         {include Components/menu.latte}
 
 	{/if}
