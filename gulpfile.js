@@ -95,7 +95,8 @@ gulp.task("js-back", function() {
             "assets/scripts/back/components/login.js",
             "assets/scripts/back/components/table.js",
             "assets/scripts/back/components/tutorial.js",
-            "assets/scripts/back/components/tags.js"
+            "assets/scripts/back/components/tags.js",
+            "assets/scripts/back/components/navigation.js"
         ])
         .pipe(plumber(plumberOpts))
         .pipe(concat("back.min.js"))

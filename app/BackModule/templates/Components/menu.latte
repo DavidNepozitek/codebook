@@ -3,14 +3,14 @@
         {foreach $menu as $item}
             <li class="main-navigation__item
             {if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}
-            {ifset $item['sub']}main-navigation__item--sub{/ifset}">
+            {ifset $item['sub']}main-navigation__item--sub collapsed{/ifset}">
                 {ifset $item['sub']}
                     <a>
                         <i class="fa fa-{$item['icon']} fa-navigation"></i>
                         {$item["name"]}
                         <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul>
+                    <ul class="main-navigation__submenu">
                         {foreach $item['sub'] as $subitem}
                             <li class="main-navigation__subitem {if $presenter->isLinkCurrent($subitem['active'])} main-navigation__subitem--active{/if}">
                                 <a n:href="$subitem['link']">
