@@ -2,12 +2,14 @@
 
 namespace App\BackModule\Presenters;
 
+use App\Components\IImageUploadFormFactory;
 use App\Components\ITutorialFormFactory;
 use App\Model\Entities\Tutorial;
 use App\Model\TutorialModel;
 use Grido\DataSources\Doctrine;
 use Grido\Grid;
 use Nette\Utils\Html;
+use Tracy\Debugger;
 
 class TutorialPresenter extends BasePresenter
 {
@@ -15,14 +17,24 @@ class TutorialPresenter extends BasePresenter
     /** @var  ITutorialFormFactory @inject */
     public $tutorialFormFactory;
 
+    /** @var  IImageUploadFormFactory @inject */
+    public $imageUploadFormFactory;
+
     /** @var TutorialModel @inject */
     public $tutorialModel;
 
     private $tutorialId;
 
+    public $images;
+
     protected function createComponentTutorialForm()
     {
         return $this->tutorialFormFactory->create($this->tutorialId);
+    }
+
+    protected function createComponentImageUploadForm()
+    {
+        return $this->imageUploadFormFactory->create($this->tutorialId);
     }
 
     public function renderEdit($id)

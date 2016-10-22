@@ -60,6 +60,12 @@ class Tutorial
     protected $tags;
 
     /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="tutorial",
+     * cascade={"persist"})
+     */
+    protected $images;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     protected $published;
@@ -69,11 +75,23 @@ class Tutorial
         $this->pubDate = new \DateTime();
         $this->seenCount = 0;
         $this->tags = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function clearTags()
     {
         $this->tags->clear();
+    }
+
+    public function clearImages()
+    {
+        $this->images->clear();
+    }
+
+    public function addImage(Image $image)
+    {
+        $this->images->add($image);
+        $image->setTutorial($this);
     }
 
 }

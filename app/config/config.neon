@@ -17,6 +17,7 @@ services:
 	- App\Model\UserModel
 	- App\Model\TutorialModel
 	- App\Model\Parser
+	- App\Model\ImageModel
 
 	- App\Model\Authenticator
 
@@ -24,6 +25,7 @@ services:
 	- App\Components\ILoginFormFactory
 	- App\Components\ITutorialFormFactory
 	- App\Components\IPasswordChangeFormFactory
+	- App\Components\IImageUploadFormFactory
 
 
 extensions:

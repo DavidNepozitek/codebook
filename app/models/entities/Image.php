@@ -2,14 +2,13 @@
 
 namespace App\Model\Entities;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Kdyby\Doctrine\Entities\MagicAccessors;
 
 /**
  * @ORM\Entity
  */
-class User
+class Image
 {
     use MagicAccessors;
 
@@ -22,26 +21,21 @@ class User
     /**
      * @ORM\Column(type="string",nullable=false)
      */
-    protected $email;
+    protected $name;
 
     /**
      * @ORM\Column(type="string",nullable=false)
      */
-    protected $password;
-
-    /**
-     * @ORM\Column(type="string",nullable=false)
-     */
-    protected $role;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="user")
-     */
-    protected $images;
-
-    public function __construct()
-    {
-        $this->images = new ArrayCollection();
-    }
+    protected $extension;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="images")
+     */
+    protected $tutorial;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="images")
+     */
+    protected $user;
+
 }

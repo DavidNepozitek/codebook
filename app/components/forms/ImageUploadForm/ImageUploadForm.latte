@@ -1,0 +1,43 @@
+{block content}
+
+<form n:name="form" class="js-imageUpload" data-ajax-prepend>
+    <div class="form-group">
+        {input "images" class => "form-control"}
+    </div>
+    <button n:name="submit" type="submit" class="btn btn--blue">Nahrát soubory</button>
+    {if $flashes}
+        <div class="form-error">
+            <ul n:ifcontent>
+                {foreach $flashes as $flash}
+                    {if $flash->type == "error"}
+                        <li>{$flash->message}</li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <div class="form-success">
+            <ul n:ifcontent>
+                {foreach $flashes as $flash}
+                    {if $flash->type == "success"}
+                        <li>{$flash->message}</li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </div>
+    {/if}
+
+        <div n:snippet="images" data-ajax-append class="js-imageList">
+            {ifset $images}
+                {foreach $images as $image}
+                    <div data-image-id="{$image->getId()}" class="js-image">
+                        <img src="{$basePath}/assets/images/uploads/{$image->getName()}.{$image->getExtension()}">
+                        <label for="{$image->getName()}">Kód markdown</label>
+                        <input id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
+                        <a class="js-removeImage" n:href="remove!, $image->getId()">
+                            <i aria-hidden="true" class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                {/foreach}
+            {/ifset}
+        </div>
+</form>

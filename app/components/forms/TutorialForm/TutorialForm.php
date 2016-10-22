@@ -42,7 +42,6 @@ class TutorialForm extends Control{
 
     }
 
-    //TODO: Required content
 
     protected function createComponentForm()
     {
@@ -62,6 +61,7 @@ class TutorialForm extends Control{
         $form->addTextArea("source")
             ->setAttribute("placeholder", "Obsah článku");
         $form->addCheckbox('published', 'Publikovat ihned');
+        $form->addHidden("images");
 
         $form->addInteger("id", "id");
 
@@ -69,6 +69,10 @@ class TutorialForm extends Control{
 
             foreach ($this->tutorial->getTags()->toArray() as $tag) {
                 $tags[] = $tag->getName();
+            }
+
+            foreach ($this->tutorial->getImages()->toArray() as $image) {
+                $images[] = $image->getId();
             }
 
 
@@ -85,6 +89,11 @@ class TutorialForm extends Control{
             if (isset($tags)) {
                 $tags = json_encode($tags);
                 $form->setDefaults(array("tags" => $tags));
+            }
+
+            if (isset($images)) {
+                $images = json_encode($images);
+                $form->setDefaults(array("images" => $images));
             }
 
         }
@@ -105,24 +114,26 @@ class TutorialForm extends Control{
             try {
                 $this->tutorialModel->editTutorial(
                     $values["id"], $values["title"], $values["perex"], $values["source"],
-                    $values["difficulty"], $values["published"], $values["tags"]
+                    $values["difficulty"], $values["published"], $values["tags"], $values["images"]
                 );
                 $this->flashMessage("Článek byl úspěšně upraven", "success");
+                $this->redrawControl("flashMessages");
             } catch (Exception $e) {
                 $this->flashMessage($e->getMessage(), "error");
             }
+            $this->redrawControl("flashMessages");
 
         } else {
             try {
                 $this->tutorialModel->createTutorial(
                     $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"],
-                    $values["tags"]
+                    $values["tags"], $values["images"]
                 );
                 $this->flashMessage("Nový článek byl úspěšně přidán", "success");
-                $this->presenter->redirect("this");
             } catch (Exception $e) {
                 $this->flashMessage($e->getMessage(), "error");
             }
+            $this->redrawControl("flashMessages");
         }
     }
 

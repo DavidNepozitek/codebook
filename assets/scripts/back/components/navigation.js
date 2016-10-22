@@ -1,11 +1,7 @@
 $(function(){
 
     if ($(".main-navigation").length > 0) {
-        var navigation = $(".main-navigation");
-        var subMenu =  $(".main-navigation__submenu");
-        var item =  $(".main-navigation__item");
         var withSub =  $(".main-navigation__item--sub");
-        var subItem =  $(".main-navigation__subitem");
 
         $(".main-navigation__subitem--active").parent(".main-navigation__submenu").css("display", "block");
         $(".main-navigation__subitem--active").parents(".main-navigation__item").removeClass("collapsed");
@@ -23,8 +19,7 @@ $(function(){
                 thisParent.addClass("collapsed");
             }
         });
-
-
+        
     }
 
 });

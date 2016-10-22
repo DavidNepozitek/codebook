@@ -1,7 +1,6 @@
 {block content}
 
-
-    <form n:name="form">
+    <form n:name="form" class="ajax js-tutorialForm">
         <div class="form-group">
             {input "id" class => "form-control", type => "hidden"}
         </div>
@@ -13,7 +12,7 @@
         </div>
         <div class="form-group">
             <div class="form-control tags">
-                <input type="text" placeholder="Oddělujte čárkou či enterem" class="tags__new">
+                <input type="text" placeholder="Oddělujte čárkou či enterem" class="form-control tags__new">
                 <input n:name="tags" type="hidden" class="tags__result">
             </div>
         </div>
@@ -26,6 +25,7 @@
         <div class="form-group">
             {input "published" class => "form-control"}
         </div>
+        {input "images" class => "js-imageInput"}
         <button n:name="submit" type="submit">
             {if $presenter->isLinkCurrent("Tutorial:edit")}
                 Upravit návod
@@ -33,24 +33,27 @@
                 Přidat návod
             {/if}
         </button>
-        {if $flashes}
-            <div class="form-error">
-                <ul n:ifcontent>
-                    {foreach $flashes as $flash}
-                        {if $flash->type == "error"}
-                            <li>{$flash->message}</li>
-                        {/if}
-                    {/foreach}
-                </ul>
-            </div>
-            <div class="form-success">
-                <ul n:ifcontent>
-                    {foreach $flashes as $flash}
-                        {if $flash->type == "success"}
-                            <li>{$flash->message}</li>
-                        {/if}
-                    {/foreach}
-                </ul>
-            </div>
-        {/if}
+        {snippet flashMessages}
+            {if $flashes}
+                <div class="form-error">
+                    <ul n:ifcontent>
+                        {foreach $flashes as $flash}
+                            {if $flash->type == "error"}
+                                <li>{$flash->message}</li>
+                            {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="form-success">
+                    <ul n:ifcontent>
+                        {foreach $flashes as $flash}
+                            {if $flash->type == "success"}
+                                <li>{$flash->message}</li>
+                            {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+            {/if}
+        {/snippet}
+
     </form>

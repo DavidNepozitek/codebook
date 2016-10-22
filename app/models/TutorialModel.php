@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Model\Entities\Image;
 use App\Model\Entities\Tag;
 use App\Model\Entities\Tutorial;
 use Nette\Neon\Exception;
@@ -21,7 +22,7 @@ class TutorialModel extends BaseModel
      * @param $difficulty
      * @throws Exception
      */
-    public function createTutorial($title, $perex, $source, $difficulty, $published, $tags)
+    public function createTutorial($title, $perex, $source, $difficulty, $published, $tags, $images)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("title" => $title));
@@ -51,7 +52,11 @@ class TutorialModel extends BaseModel
                 $this->persist($tag);
             }
             $tutorial->addTag($tag);
+        }
 
+        foreach (json_decode($images) as $imageId) {
+            $image = $this->getOne(Image::class, array("id" => $imageId));
+            $image->setTutorial($tutorial);
         }
 
         $this->persist($tutorial);
@@ -59,7 +64,7 @@ class TutorialModel extends BaseModel
 
     }
 
-    public function editTutorial($id, $title, $perex, $source, $difficulty, $published, $tags)
+    public function editTutorial($id, $title, $perex, $source, $difficulty, $published, $tags, $images)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
@@ -70,7 +75,6 @@ class TutorialModel extends BaseModel
 
         $parser = new Parser();
         $content = $parser->text($source);
-        $oldTags = $this->getAll(Tag::class);
 
         $tutorial->setTitle($title);
         $tutorial->setPerex($perex);
@@ -90,10 +94,30 @@ class TutorialModel extends BaseModel
                 $this->persist($tag);
             }
             $tutorial->addTag($tag);
-
         }
 
-        $this->getEm()->flush();
+        $tutorial->clearImages();
+
+        foreach (json_decode($images) as $imageId) {
+            $image = $this->getOne(Image::class, array("id" => $imageId));
+            $tutorial->addImage($image);
+        }
+
+        $this->flush();
+
+    }
+
+
+    //TODO: Delete tutorial
+    public function seenIncrement($id)
+    {
+
+        $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
+        $newSeenCount =  $tutorial->getSeenCount() + 1;
+
+        $tutorial->setSeenCount($newSeenCount);
+
+        $this->flush();
 
     }
 }
