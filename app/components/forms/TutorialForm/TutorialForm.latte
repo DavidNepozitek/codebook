@@ -6,33 +6,41 @@
             {input "id" class => "form-control", type => "hidden"}
         </div>
         <div class="form-group">
+            <label class="form__create-article" n:name="title">Název</label>
             {input "title" class => "form-control"}
         </div>
         <div class="form-group">
+            <label class="form__create-article" n:name="difficulty">Obtížnost</label>
             {input "difficulty" class => "form-control"}
         </div>
         <div class="form-group">
+            <label class="form__create-article--tags" n:name="tags">Štítky</label>
+            <label class="tags__new-info" n:name="tags">Oddělujte čárkou či enterem</label>
             <div class="form-control tags">
                 <input type="text" placeholder="Oddělujte čárkou či enterem" class="tags__new">
                 <input n:name="tags" type="hidden" class="tags__result">
             </div>
         </div>
         <div class="form-group">
+            <label class="form__create-article" n:name="perex">Perex</label>
             {input "perex" class => "form-control"}
         </div>
         <div class="form-group">
+            <label class="form__create-article" n:name="source">Obsah článku</label>
             {input "source" class => "form-control"}
         </div>
-        <div class="form-group">
+        <div class="form-group form__create-article--publish">
             {input "published" class => "form-control"}
         </div>
-        <button n:name="submit" type="submit">
-            {if $presenter->isLinkCurrent("Tutorial:edit")}
-                Upravit návod
-            {else}
-                Přidat návod
-            {/if}
-        </button>
+        <div class="button__create-article">
+            <button n:name="submit" class="btn btn--blue" type="submit">
+                {if $presenter->isLinkCurrent("Tutorial:edit")}
+                    Upravit návod
+                {else}
+                    Přidat návod
+                {/if}
+            </button>
+        </div>
         {if $flashes}
             <div class="form-error">
                 <ul n:ifcontent>

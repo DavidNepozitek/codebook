@@ -33,7 +33,7 @@ $.fn.makeTags = function () {
 
         result.push(content);
         updateResultInput();
-        newtag.before("<span class='tags__tag' data-value='" + content + "'>" + content + "<i class='fa fa-trash tags__delete'></i></span>");
+        newtag.before("<span class='tags__tag' data-value='" + content + "'>" + content + "<i class='fa fa-times tags__delete'></i></span>");
         newtag.val("");
     }
 
