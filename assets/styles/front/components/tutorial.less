@@ -10,7 +10,7 @@
 .article {
   background-color: white;
   border-bottom: 2px solid #4b8eef;
-  box-shadow: 0 1px 2px 0 #f0f4f7;
+  box-shadow: 0 0 2px 0 #f0f4f7;
   transition: 0.3s;
   position: relative;
 
@@ -26,15 +26,17 @@
   margin-top: 20px;
 
   .article__wrapper {
-    height: 35px;
+    height: 64px;
     display: table;
-    padding-top: 22px;
+    padding-top: 10px;
+    padding-bottom: 0;
   }
 
   .article__wrapper--bottom {
     position: absolute;
     bottom: 0;
     margin-bottom: 14px;
+    width: 100%;
 
     .article__wrapper--difficulty {
       display: inline-block;
@@ -101,7 +103,7 @@
   .article__btn {
     width: 120px;
     height: 36px;
-    margin-right: 1px;
+    margin-right: 20px;
     margin-top: -5px;
   }
 }
@@ -121,6 +123,7 @@
     position: absolute;
     bottom: 0;
     margin-bottom: 14px;
+    width: 100%;
 
     .article__wrapper--difficulty {
       display: inline-block;
@@ -128,8 +131,10 @@
   }
 
   .article__wrapper {
-    height: 55px;
+    height: 60px;
     display: table;
+    padding-top: 10px;
+    padding-bottom: 0;
   }
 
   .article__title--bigger {
@@ -185,7 +190,7 @@
   .article__btn {
     width: 120px;
     height: 36px;
-    margin-right: 1px;
+    margin-right: 20px;
     margin-top: -5px;
   }
 
@@ -238,32 +243,64 @@
 @media (min-width: 1200px) {
   .article--chosen {
     height: 220px;
+
+    .article__wrapper {
+      margin-bottom: -8px;
+    }
+
+    .article__tags {
+      margin-bottom: 5px;
+    }
   }
 
   .article--casual {
     height: 257px;
+
+    .article__wrapper {
+      margin-bottom: -8px;
+    }
+
+    .article__tags {
+      margin-bottom: 6px;
+    }
   }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .article--chosen {
     height: 240px;
+
+    .article__wrapper {
+      margin-bottom: -8px;
+    }
+
+    .article__tags {
+      margin-bottom: 5px;
+    }
   }
 
   .article--casual {
-    height: 277px;
+    height: 317px;
+
+    .article__wrapper {
+      margin-bottom: -8px;
+    }
+
+    .article__tags {
+      margin-bottom: 6px;
+    }
   }
 }
 
 @media (min-width: 320px) and (max-width: 991px) {
   .article--chosen {
     height: auto;
-    padding-bottom: 15px;
+    padding-bottom: 45px;
   }
 
   .article--casual {
     height: auto;
-    padding-bottom: 15px;
+    padding-bottom: 45px;
   }
 
   .title--chosen {
