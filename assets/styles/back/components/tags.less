@@ -6,8 +6,8 @@
 .tags__tag {
   font-size: 14px;
   background-color: #4b8eef;
-  border-radius: 4px;
-  padding: 0 0 0 14px;
+  border-radius: 5px;
+  padding: 4px 0 4px 14px;
   text-transform: uppercase;
   margin-right: 5px;
   color: white;
@@ -16,8 +16,8 @@
 .tags__tag--removeable {
   color: white;
   background-color: #f8534b;
-  border-radius: 4px;
-  padding: 0 0 0 14px;
+  border-radius: 5px;
+  padding: 4px 0 4px 14px;
   text-transform: uppercase;
 
   .tags__delete {
@@ -32,19 +32,22 @@
 .tags__delete {
   background-color: #307be7;
   margin-left: 12px;
-  padding: 3px 10px 3px 10px;
-  border-radius: 0 4px 4px 0;
+  padding: 7px 10px 7px 10px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 
 .tags__delete:hover {
   background-color: #4b8eef;
+  transition: 0.3s;
 }
 
 .tags__new {
   border-radius: 4px;
-  width: 190px;
+  width: 100px;
   padding: 0 4px 0 4px;
   border: 1px solid transparent;
+  height: 32px;
 }
 
 .tags__new:focus {
@@ -60,4 +63,8 @@
   font-family: 'Fira Sans', sans-serif;
   font-weight: 300;
   font-style: italic;
+}
+
+.tags {
+  height: 44px;
 }

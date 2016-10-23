@@ -1,7 +1,7 @@
 {block content}
 
 
-    <form n:name="form">
+    <form class="form__add-page" n:name="form">
         <div class="form-group">
             {input "id" class => "form-control", type => "hidden"}
         </div>
@@ -17,7 +17,7 @@
             <label class="form__create-article--tags" n:name="tags">Štítky</label>
             <label class="tags__new-info" n:name="tags">Oddělujte čárkou či enterem</label>
             <div class="form-control tags">
-                <input type="text" placeholder="Oddělujte čárkou či enterem" class="tags__new">
+                <input type="text" placeholder="Přidejte štítek" class="tags__new">
                 <input n:name="tags" type="hidden" class="tags__result">
             </div>
         </div>
