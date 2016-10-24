@@ -106,7 +106,6 @@ body{
 
 
 
-
 /*------------------------------------*\
   #FONTS
 \*------------------------------------*/
@@ -116,6 +115,7 @@ body{
  * Fira sans - types: light italic, regular, bold
  * Use following CSS rule: font-family: 'Fira Sans', sans-serif;
  */
+@import 'https://fonts.googleapis.com/css?family=Fira+Sans:300i,400,700&subset=latin-ext';
 
 @font-face {
   font-family: 'Fira Sans';
@@ -169,3 +169,84 @@ body{
     padding-top: 153px;
   }
 }
+
+
+
+
+
+/*------------------------------------*\
+  #HEADINGS
+\*------------------------------------*/
+
+
+h1 {
+  text-transform: uppercase;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #5d7683;
+  padding-left: 1px;
+  font-style: normal;
+}
+
+h2 {
+  font-family: 'Jaapokki', sans-serif;
+  color: #2d476e;
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 14px;
+  color: #b9c1d4;
+  text-transform: uppercase;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #BUTTONS
+\*------------------------------------*/
+
+
+.btn {
+  font-family: "Fira Sans", sans-serif;
+  text-align: center;
+  border-radius: 2px;
+  font-weight: 700;
+  border: none;
+  transition: 0.3s;
+  color: white;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.btn--blue {
+  background-color: #4b8eef;
+  font-size: 14px;
+  font-weight: 700;
+  float: right;
+  box-shadow: 0 1px 4px 0 #4b8eef;
+
+  &:hover {
+    background-color: #307ceb;
+    box-shadow: 0 2px 6px 0 #4b8eef;
+  }
+}
+
+.btn--orange {
+  background-color: #f8534b;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 1px 4px 0 #f8534b;
+
+  &:hover {
+    background-color: #f73f36;
+    box-shadow: 0 2px 6px 0 #f8534b;
+  }
+}
+

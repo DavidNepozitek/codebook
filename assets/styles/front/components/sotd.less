@@ -1,0 +1,75 @@
+/*------------------------------------*\
+  #SITE OF THE DAY
+\*------------------------------------*/
+
+
+.title--sotd {
+  padding-top: 16px;
+  padding-bottom: 10px;
+  padding-left: 7px;
+}
+
+.sotd-list {
+  border-bottom: 2px solid #FE6B60;
+  background-color: white;
+  padding-top: 12px;
+  height: 230px;
+  box-shadow: 0 0 2px 0 #f0f4f7;
+
+  ul, li, a {
+    list-style-type: none;
+    font-family: "Fira Sans", sans-serif;
+    color: #fe6b60;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    padding-left: 1px;
+    padding-bottom: 5px;
+    text-decoration: underline;
+    opacity: 1;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  ul, li {
+    font-size: 14px;
+    color: #5d7683;
+    font-weight: 700;
+    font-style: normal;
+    padding-left: 19px;
+    text-decoration: none;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .sotd__date {
+    opacity: 0.5;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+  #RESPONSIVE
+\*------------------------------------*/
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .sotd-list {
+    height: 250px;
+    padding-top: 24px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 991px) {
+  .title--sotd {
+    text-align: center;
+    padding-left: 0;
+  }
+}

@@ -20,7 +20,7 @@ class HomepagePresenter extends BasePresenter
             $this->sotdModel->updateSotd();
         }
 
-        $q = $this->sotdModel->findBy(Sotd::class, array(), array("pubDate" => "DESC"), 5);
+        $q = $this->sotdModel->findBy(Sotd::class, array(), array("pubDate" => "DESC"), 4);
 
         $this->template->sotds = $q;
 
