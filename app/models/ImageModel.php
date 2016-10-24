@@ -46,10 +46,17 @@ class ImageModel extends BaseModel
         return $image;
     }
 
-    public function deleteImage()
+    public function deleteImage($id)
     {
-        
-    }
+        $image = $this->getOne(Image::class, array("id" => $id));
+        $target = "assets/images/uploads/" . $image->getName() . "." . $image->getExtension();
 
-    //TODO: delete unused images on logout
+        unlink($target);
+
+        if (!file_exists($target)) {
+            $this->remove($image);
+            $this->flush();
+        }
+    }
+    
 }

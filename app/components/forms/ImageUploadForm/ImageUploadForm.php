@@ -7,6 +7,7 @@ use App\Model\Entities\Tutorial;
 use App\Model\ImageModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
+use Tracy\Debugger;
 
 class ImageUploadForm extends Control{
 
@@ -66,29 +67,48 @@ class ImageUploadForm extends Control{
         $values = $form->getValues();
 
         foreach ($values["images"] as $imageData) {
-            $this->images[] = $this->imageModel->createImage($imageData, $this->presenter->getUser()->getId());
+            $image = $this->imageModel->createImage($imageData, $this->presenter->getUser()->getId());
+            $this->presenter->images[$image->getId()] = $image->getId();
         }
 
+        foreach ($this->presenter->images as $id) {
+            $this->images[] = $this->imageModel->getOne(Image::class, array("id" => $id));
+        }
+
+        Debugger::barDump($this->presenter->images);
+
         $this->template->images = $this->images;
-        $this->redrawControl();
+        
+        $this->redrawControl("images");
     }
     
     public function handleRemove($id)
     {
-        $image = $this->imageModel->getOne(Image::class, array("id" => $id));
-        $target = "assets/images/uploads/" . $image->getName() . "." . $image->getExtension();
+        unset($this->presenter->images[$id]);
+        $this->imageModel->deleteImage($id);
 
-        if (!file_exists($target)) {
-            $this->imageModel->remove($image);
+        $this->images = null;
+
+        foreach ($this->presenter->images as $id) {
+            $this->images[] = $this->imageModel->getOne(Image::class, array("id" => $id));
         }
-        
+
+        $this->template->images = $this->images;
+
+        Debugger::barDump($this->template->images);
+
+
+        $this->redrawControl("images");
+        Debugger::barDump($this->presenter->images);
     }
-    
-//TODO: Delete image
+
 }
 
 interface IImageUploadFormFactory
 {
-    /** @return ImageUploadForm */
+    /**
+     * @param $id
+     * @return ImageUploadForm
+     */
     function create($id);
 }

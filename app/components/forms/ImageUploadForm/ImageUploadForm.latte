@@ -1,6 +1,6 @@
 {block content}
 
-<form n:name="form" class="js-imageUpload" data-ajax-prepend>
+<form n:name="form" class="js-imageUpload-nope">
     <div class="form-group">
         {input "images" class => "form-control"}
     </div>
@@ -26,14 +26,14 @@
         </div>
     {/if}
 
-        <div n:snippet="images" data-ajax-append class="js-imageList">
+        <div n:snippet="images" class="js-imageList">
             {ifset $images}
                 {foreach $images as $image}
                     <div data-image-id="{$image->getId()}" class="js-image">
                         <img src="{$basePath}/assets/images/uploads/{$image->getName()}.{$image->getExtension()}">
                         <label for="{$image->getName()}">Kód markdown</label>
                         <input id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
-                        <a class="js-removeImage" n:href="remove!, $image->getId()">
+                        <a class="js-removeImage" n:href="remove!, 'id' => $image->getId()">
                             <i aria-hidden="true" class="fa fa-trash"></i>
                         </a>
                     </div>

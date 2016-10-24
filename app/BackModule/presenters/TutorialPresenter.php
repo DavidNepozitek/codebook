@@ -11,6 +11,7 @@ use Grido\Grid;
 use Nette\Utils\Html;
 use Tracy\Debugger;
 
+
 class TutorialPresenter extends BasePresenter
 {
 
@@ -25,7 +26,8 @@ class TutorialPresenter extends BasePresenter
 
     private $tutorialId;
 
-    public $images;
+    /** @persistent array */
+    public $images = Array();
 
     protected function createComponentTutorialForm()
     {

@@ -64,12 +64,9 @@ $(function () {
 
 
         $(document).on("click", ".js-removeImage", function (e) {
-            e.preventDefault();
 
-            console.log("Click");
-
-            $(e.target).netteAjax(e).complete(function () {
-                $(e.target).closest(".js-image").remove();
+            $(this).netteAjax(e).done(function () {
+                //$(e.target).closest(".js-image").remove();
             });
         });
 
