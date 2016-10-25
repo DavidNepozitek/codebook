@@ -1,5 +1,37 @@
 {block content}
 
 <div class="container">
-    {$content|noescape}
+
+    <article class="article article--casual">
+
+
+        <div class="article__wrapper">
+            <h2 class="article__title">{$tutorial->getTitle()}</h2>
+        </div>
+        <h3 class="article__tags">zařazeno do<span class="article__category">
+                {foreach $tutorial->getTags() as $tag} {$tag->getName()} {sep}&bull;{/sep}{/foreach}
+            </span>
+        </h3>
+        <p class="article__text">{$tutorial->getPerex()|truncate:330}</p>
+        <div class="article__wrapper--bottom">
+            <div class="article__wrapper--difficulty">
+                {for $i = 1; $i <= $tutorial->getDifficulty(); $i++}
+                    <i class="fa fa-cog article__icon article__icon--active" aria-hidden="true"></i>
+                {/for}
+                {for $i = 3; $i > $tutorial->getDifficulty(); $i--}
+                    <i class="fa fa-cog article__icon" aria-hidden="true"></i>
+                {/for}
+                <span class="article__likes">{$tutorial->getSeenCount()}</span>
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </div>
+            <a class="btn btn--blue article__btn" n:href="Tutorial:detail $tutorial->getId()">Číst více</a>
+        </div>
+
+
+        <div id="tutorial-source">
+            {$tutorial->getContent()|noescape}
+        </div>
+
+    </article>
+
 </div>

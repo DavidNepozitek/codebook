@@ -23,7 +23,7 @@ class TutorialPresenter extends BasePresenter
     {
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
 
-        $this->template->content = $tutorial->getContent();
+        $this->template->tutorial = $tutorial;
 
         $this->tutorialModel->seenIncrement($id);
     }

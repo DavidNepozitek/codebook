@@ -19,18 +19,6 @@ $.nette.init();
 
 
 
-/*------------------------------------*\
- #Loader
-\*------------------------------------*/
-
-$(window).on("load", function () {
-    $("body").removeClass("preload"); //Reveals the page
-});
-
-
-
-
-
 
 /*------------------------------------*\
  #Nette form validation function
