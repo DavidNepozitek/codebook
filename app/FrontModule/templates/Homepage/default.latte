@@ -5,6 +5,7 @@
 
         <div class="col-md-8">
             <h1 class="title--chosen">vybraný návod</h1>
+            {ifset $chosenTut[0]}
                 <article class="article article--chosen">
 
                     <div class="article__wrapper">
@@ -28,6 +29,13 @@
                         </div><a class="btn btn--blue article__btn" n:href="Tutorial:detail $chosenTut[0]->getId()">Číst více</a></div>
 
                 </article>
+                {else}
+                <article class="article article--chosen">
+
+                    V databázi zatím není žádný návod :(
+
+                </article>
+            {/ifset}
         </div>
 
         <div class="col-md-4">
@@ -52,9 +60,13 @@
 
         <h1 class="title--last">poslední návody</h1>
 
-        {foreach $tutorials as $tutorial}
-            {include ../Components/tutorial.latte, tutorial => $tutorial}
-        {/foreach}
+        {ifset $tutorials[0]}
+            {foreach $tutorials as $tutorial}
+                {include ../Components/tutorial.latte, tutorial => $tutorial}
+            {/foreach}
+            {else}
+            V databázi zatím není žádný návod :(
+        {ifset $tutorials}
 
     </div>
 </div>
