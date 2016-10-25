@@ -54,10 +54,10 @@ class TutorialModel extends BaseModel
             $tutorial->addTag($tag);
         }
 
-        foreach (json_decode($images) as $imageId) {
+        /*foreach (json_decode($images) as $imageId) {
             $image = $this->getOne(Image::class, array("id" => $imageId));
             $image->setTutorial($tutorial);
-        }
+        }*/
 
         $this->persist($tutorial);
         $this->flush();
@@ -96,12 +96,12 @@ class TutorialModel extends BaseModel
             $tutorial->addTag($tag);
         }
 
-        $tutorial->clearImages();
+        /*$tutorial->clearImages();
 
         foreach (json_decode($images) as $imageId) {
             $image = $this->getOne(Image::class, array("id" => $imageId));
             $tutorial->addImage($image);
-        }
+        }*/
 
         $this->flush();
 
@@ -109,6 +109,8 @@ class TutorialModel extends BaseModel
 
 
     //TODO: Delete tutorial
+
+    //TODO: Do it more intelligent
     public function seenIncrement($id)
     {
 
