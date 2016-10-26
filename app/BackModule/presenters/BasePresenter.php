@@ -77,4 +77,17 @@ abstract class BasePresenter extends Presenter
         
         $this->template->menu = $this->menu;
     }
+
+    public function beforeRender()
+    {
+        parent::beforeRender();
+
+        if ($this->isAjax()) {
+            $this->redrawControl('title');
+            $this->redrawControl('content');
+            $this->redrawControl('headerTitle');
+            $this->redrawControl('navigation');
+        }
+    }
+
 }

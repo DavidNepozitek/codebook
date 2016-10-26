@@ -9,11 +9,100 @@
 
 
 /*------------------------------------*\
- #Nette init
+ #Ajax init
 \*------------------------------------*/
 
 
 $.nette.init();
+
+
+
+
+
+/*------------------------------------*\
+ #Loader
+ \*------------------------------------*/
+
+var loader = new CDloader(".js-loader", 1, 200);
+
+$.nette.ext({
+    start: function () {
+        loader.start();
+    },
+    success: function () {
+        loader.end();
+    }
+});
+
+
+function CDloader(selector, speed, transitionDur) {
+    var loader = $(selector);
+    var timeout = 100 / speed;
+
+    this.status = 0;
+
+    this.start = function () {
+        loader.css({"height": "4px", "width": "0%"});
+        loader.css("transition", transitionDur + "ms");
+        loader.css("width", "5%");
+        this.status = 0.1;
+        var _this = this;
+
+        var work = function () {
+
+            setTimeout(function () {
+                if (_this.status == 1) {
+                    return;
+                }
+                _this.inc();
+
+                work();
+            }, timeout)
+        };
+
+        work();
+
+    };
+
+    this.end = function () {
+        loader.css("width", "100%");
+
+        setTimeout(function () {
+            loader.css({"height": 0});
+
+            setTimeout(function () {
+                loader.css({"transition": "0s"});
+                loader.css({"height": "4px", "width": "0%"});
+            }, transitionDur);
+
+        }, transitionDur);
+
+        this.status = 1;
+    };
+    
+    this.inc = function () {
+
+
+        var incAmount;
+
+        if (this.status < 0.5) {
+            incAmount = Math.random() * (10 - 5 + 1) + 5;
+        } else if (this.status >= 0.5 && this.status < 0.7) {
+            incAmount = Math.random() * (6 - 3 + 1) + 3;
+        } else if (this.status >= 0.7 && this.status < 0.8) {
+            incAmount = Math.random() * (2 - 1 + 1) + 1;
+        } else if (this.status >= 0.8 && this.status < 0.9) {
+            incAmount = Math.random() * (1 - 0.5 + 1) + 0.5;
+        } else if (this.status >= 0.9) {
+            incAmount = 0;
+        }
+
+        this.status = this.status + (incAmount / 100);
+        loader.css("width", (this.status * 100) + "%");
+        console.log(this.status);
+
+    }
+}
 
 
 

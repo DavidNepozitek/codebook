@@ -13,14 +13,14 @@
                     <ul class="main-navigation__submenu">
                         {foreach $item['sub'] as $subitem}
                             <li class="main-navigation__subitem {if $presenter->isLinkCurrent($subitem['active'])} main-navigation__subitem--active{/if}">
-                                <a n:href="$subitem['link']">
+                                <a n:href="$subitem['link']" class="js-ajax-menu">
                                     {$subitem["name"]}
                                 </a>
                             </li>
                         {/foreach}
                     </ul>
                 {else}
-                    <a n:href="$item['link']">
+                    <a n:href="$item['link']" class="js-ajax-menu">
                         <i class="fa fa-{$item['icon']} fa-navigation"></i>
                         {$item["name"]}
                     </a>

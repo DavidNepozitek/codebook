@@ -5,7 +5,7 @@
     </div>
     <div class="header__right">
             <i class="fa fa-{foreach $menu as $item}{if $presenter->isLinkCurrent($item['active'])}{$item['icon']}{/if}{/foreach} header__overview"></i>
-            <div class="header__overview-text">{ifset title}{include title}{/ifset}</div>
+            <div class="header__overview-text" n:inner-snippet="headerTitle">{ifset title}{include title}{/ifset}</div>
         <div class="header__right--position">
             <div class="header__logged-as-text">Přihlášen jako</div>
             <div class="header__logged-as-email">{$presenter->getUser()->getIdentity()->data["email"]}</div>
