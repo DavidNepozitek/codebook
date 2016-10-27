@@ -23,7 +23,7 @@ $.nette.init();
  #Loader
  \*------------------------------------*/
 
-var loader = new CDloader(".js-loader", 1, 200);
+var loader = new CDloader(".js-loader", 200);
 
 $.nette.ext({
     start: function () {
@@ -35,16 +35,15 @@ $.nette.ext({
 });
 
 
-function CDloader(selector, speed, transitionDur) {
+function CDloader(selector, transitionDur) {
     var loader = $(selector);
-    var timeout = 100 / speed;
 
     this.status = 0;
 
     this.start = function () {
-        loader.css({"height": "4px", "width": "0%"});
+        loader.css({"height": "4px", "transform": "translateX(-100%) translateZ(0)"});
         loader.css("transition", transitionDur + "ms");
-        loader.css("width", "5%");
+        loader.css("transform", "translateX(-95%) translateZ(0)");
         this.status = 0.1;
         var _this = this;
 
@@ -57,7 +56,7 @@ function CDloader(selector, speed, transitionDur) {
                 _this.inc();
 
                 work();
-            }, timeout)
+            }, transitionDur)
         };
 
         work();
@@ -65,14 +64,14 @@ function CDloader(selector, speed, transitionDur) {
     };
 
     this.end = function () {
-        loader.css("width", "100%");
+        loader.css("transform", "translateX(0) translateZ(0)");
 
         setTimeout(function () {
             loader.css({"height": 0});
 
             setTimeout(function () {
                 loader.css({"transition": "0s"});
-                loader.css({"height": "4px", "width": "0%"});
+                loader.css({"transform": "translateX(-100%) translateZ(0)", "height": "4px"});
             }, transitionDur);
 
         }, transitionDur);
@@ -92,14 +91,14 @@ function CDloader(selector, speed, transitionDur) {
         } else if (this.status >= 0.7 && this.status < 0.8) {
             incAmount = Math.random() * (2 - 1 + 1) + 1;
         } else if (this.status >= 0.8 && this.status < 0.9) {
-            incAmount = Math.random() * (1 - 0.5 + 1) + 0.5;
+            incAmount = Math.random() * (0.5 - 0.2 + 1) + 0.2;
         } else if (this.status >= 0.9) {
             incAmount = 0;
         }
 
         this.status = this.status + (incAmount / 100);
-        loader.css("width", (this.status * 100) + "%");
-        console.log(this.status);
+        var transX = -100 + (this.status * 100);
+        loader.css("transform", "translateX(" + transX + "%) translateZ(0)");
 
     }
 }

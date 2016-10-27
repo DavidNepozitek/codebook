@@ -58,14 +58,14 @@ class UserPresenter extends BasePresenter
                 $el = Html::el();
 
                 $demote = Html::el("a");
-                $demote->addAttributes(array("class" => "btn btn--orange"));
+                $demote->addAttributes(array("class" => "ajax btn btn--orange"));
                 $demote->addText("Degradovat");
                 $demoteIcon = Html::el("i");
                 $demoteIcon->addAttributes(array("class" => "fa fa-level-down"));
                 $demote->addHtml($demoteIcon);
 
                 $promote = Html::el("a");
-                $promote->addAttributes(array("class" => "btn btn--blue"));
+                $promote->addAttributes(array("class" => "ajax btn btn--blue"));
                 $promote->addText("Povýšit");
                 $promoteIcon = Html::el("i");
                 $promoteIcon->addAttributes(array("class" => "fa fa-level-up"));

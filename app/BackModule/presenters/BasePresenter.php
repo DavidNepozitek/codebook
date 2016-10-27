@@ -85,6 +85,7 @@ abstract class BasePresenter extends Presenter
         if ($this->isAjax()) {
             $this->redrawControl('title');
             $this->redrawControl('content');
+            $this->redrawControl('header');
             $this->redrawControl('headerTitle');
             $this->redrawControl('navigation');
         }

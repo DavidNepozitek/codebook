@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 	<title n:inner-snippet="title">{ifset title}{include title|stripHtml} | {/ifset}Codebook administrace</title>
 
@@ -32,8 +32,10 @@
 
     {if !$presenter->isLinkCurrent("Login:*")}
 
-	    {import Components/header.latte}
-		{include header}
+    {snippetArea header}
+        {import Components/header.latte}
+        {include header}
+    {/snippetArea}
 
 	{snippet navigation}
         {include Components/menu.latte}
