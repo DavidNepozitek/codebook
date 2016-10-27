@@ -87,7 +87,7 @@ abstract class BasePresenter extends Presenter
             $this->redrawControl('content');
             $this->redrawControl('header');
             $this->redrawControl('headerTitle');
-            $this->redrawControl('navigation');
+            //$this->redrawControl('navigation');
         }
     }
 
