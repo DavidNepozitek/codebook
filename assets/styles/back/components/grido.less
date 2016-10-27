@@ -13,7 +13,7 @@
     width: 100%; }
 
 .grido table, .grido .filter.outer {
-    box-shadow: 1px 1px 12px -1px rgba(0, 0, 0, 0.2); }
+   box-shadow: 1px 1px 12px -1px rgba(0, 0, 0, 0.2); }
 
 .grido thead th,
 .grido tfoot td,
@@ -39,10 +39,11 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#e9e9e9',GradientType=0 ); }
 
 .grido tr.head th:first-child {
-    border-radius: 4px 0 0 0; }
+    //border-radius: 4px 0 0 0;
+    }
 
 .grido tr.head th:last-child {
-    border-radius: 0 4px 0 0; }
+    //border-radius: 0 4px 0 0; }
 
 .grido th, .grido td {
     border: 1px solid #CACACA;
@@ -69,7 +70,18 @@
     display: inline-block;
     width: 100%;
     margin-bottom: 20px;
-    min-height: 5em; }
+    min-height: 5em;
+    border-bottom: 2px solid #4b8eef;
+    background-color: white;
+    font-size: 14px;
+    color: rgba(50, 60, 88, 0.75);
+    height: 98px;
+    padding-left: 3px;}
+.grido .filter, .grido table {
+    border-radius: 0;
+    border: none; }
+.grido .filter.outer, .grido table {
+    box-shadow: none; }
 .grido .filter.outer .items {
     width: 85%;
     float: left; }
@@ -78,9 +90,10 @@
     display: block;
     width: 12em;
     height: 5em;
-    padding: 7px; }
+    padding: 10px;
+    margin-top: 5px;}
 .grido .filter.outer label {
-    margin-bottom: 2px; }
+    margin-bottom: 11px; }
 .grido .filter.outer select, .grido .filter.outer input.text {
     width: 100%; }
 
@@ -95,9 +108,14 @@
 
 .grido .filter .daterange {
     min-width: 192px !important; }
-
+.grido th.column, h1, h3 {
+    color: #4b8eef;
+}
 .grido th.column {
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    background-color: #e1eaf7;
+    color: #4b8eef;
+    height: 49px;}
 .grido th.column .arrow {
     content: "";
     border-right: 4px solid transparent;
@@ -143,11 +161,12 @@
 .grido tfoot tr {
     height: 35px; }
 .grido tfoot td {
-    border-bottom: 0; }
+    border-bottom: 0;  }
 .grido tfoot td:first-child {
     border-radius: 0 0 0 4px; }
 .grido tfoot td:last-child {
-    border-radius: 0 0 4px 4px; }
+    border-radius: 0 0 4px 4px;
+    height: 60px; }
 .grido tfoot .operations {
     float: left;
     text-align: left; }
@@ -167,12 +186,14 @@
     text-align: right; }
 
 .grido .filter.outer label {
-    font-size: 12px; }
+    font-size: 14px; }
 
 .grido table {
-    border-collapse: inherit; }
+    border-collapse: inherit;
+    color: #323c58;}
 .grido table thead th, .grido table th, .grido table td {
-    vertical-align: middle; }
+    vertical-align: middle;
+    text-align: center; }
 
 .grido table tfoot td {
     text-align: inherit; }
@@ -189,13 +210,15 @@
 
 .grido tbody tr td, .grido tfoot tr td {
     vertical-align: middle;
-    height: 20px;
-    padding: 5px; }
+    height: 49px;
+    padding: 5px;
+    color: #323c58;
+    font-size: 13px; }
 
 .grido input.text, .grido select {
     margin-bottom: 0;
     padding: 0;
-    height: 23px;
+    height: 38px;
     width: auto; }
 
 .grido input.text {
@@ -208,7 +231,8 @@
 
 .grido .form-control {
     height: auto;
-    width: auto; }
+    width: auto;
+    border-radius: 1px;}
 
 .grido tbody .form-control {
     width: 100%;
@@ -220,6 +244,24 @@
 
 .grido tr.active td {
     background-color: #d9edf7 !important; }
+
+.grid-cell-changeRole {
+    .btn--blue {
+        .fa-level-up {
+            margin-left: 6px;
+        }
+
+        .fa-pencil {
+            margin-left: 6px;
+        }
+    }
+    .btn--orange {
+        .fa-level-down {
+            margin-left: 6px;
+        }
+    }
+}
+
 
 /******************** BOOTSTRAP TEMPLATE ********************/
 .grido.bootstrap.table-responsive {
