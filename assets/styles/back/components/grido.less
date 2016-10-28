@@ -52,13 +52,20 @@
 
 .grido tbody {
     font-size: 0.9em;
-    background-color: #FFFFFF; }
+    background-color: #FFFFFF;
+}
 
 .grido .no-results {
     text-align: center; }
 
 .table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #FFFFFF;
+}
+
+.table-striped>tbody>tr {
+    &:hover {
+        background-color: #f5f5f5;
+    }
 }
 
 .grido tr.filter {
@@ -117,7 +124,8 @@
     text-transform: uppercase;
     background-color: #e1eaf7;
     color: rgba(50, 60, 88, 0.75);
-    height: 49px;}
+    height: 49px;
+    border-bottom: none; }
 .grido th.column .arrow {
     content: "";
     border-right: 4px solid transparent;
@@ -155,7 +163,8 @@
     text-align: center; }
 
 .grido th:last-child, .grido td:last-child {
-    border-right: 0; }
+    border-right: 0;
+    padding: 0 10px 0 10px; }
 
 .grido tfoot {
     text-align: center;
@@ -208,8 +217,8 @@
     border-top: 0 !important; }
 
 .grido thead th {
-    border-bottom: 1px solid #CACACA !important;
-    padding: 3px 6px !important; }
+    padding: 3px 6px !important;
+    }
 
 .grido tbody tr td, .grido tfoot tr td {
     vertical-align: middle;
@@ -287,6 +296,74 @@
     }
 }
 
+.grid-cell-actions {
+    width: 378px;
+
+    .btn--blue {
+        float: left;
+        margin-right: 10px;
+        width: 110px;
+
+        .fa-level-up {
+            margin-left: 6px;
+        }
+
+        .fa-pencil {
+            margin-left: 6px;
+        }
+
+        .fa-level-down {
+            margin-left: 6px;
+        }
+
+        .fa-cloud-upload {
+            margin-left: 6px;
+        }
+    }
+    .btn--orange {
+        float: left;
+        margin-right: 10px;
+        width: 110px;
+
+        .fa-level-down {
+            margin-left: 6px;
+        }
+
+        .fa-pencil {
+            margin-left: 6px;
+        }
+
+        .fa-level-up {
+            margin-left: 6px;
+        }
+
+        .fa-cloud-upload {
+            margin-left: 6px;
+        }
+    }
+    .btn--green {
+        float: left;
+        margin-right: 10px;
+        width: 110px;
+
+        .fa-level-down {
+            margin-left: 6px;
+        }
+
+        .fa-pencil {
+            margin-left: 6px;
+        }
+
+        .fa-level-up {
+            margin-left: 6px;
+        }
+
+        .fa-cloud-upload {
+            margin-left: 6px;
+        }
+    }
+}
+
 .grid-cell-id {
     width: 60px;
     text-align: center
@@ -294,7 +371,6 @@
 
 .grid-cell-email {
     width: 219px;
-    margin-left: 15px;
 }
 
 .grid-cell-role {
@@ -304,13 +380,12 @@
 
 .btn-default {
     background-color: #4b8eef;
-    margin-right: 11px;
     height: 30px;
     width: 30px;
     line-height: 30px;
     padding-left: 7px;
-    font-size: 15px;
-    box-shadow: 0 2px 6px 0 #4b8eef;
+    font-size: 18px;
+    box-shadow: 0 1px 4px 0 #4b8eef;
 
     .fa-refresh {
         font-size: 18px;
@@ -326,6 +401,7 @@
     font-size: 16px;
     font-style: italic;
     color: rgba(50, 60, 88, 0.75);
+    margin-left: 11px;
 }
 
 tr.head {
@@ -338,6 +414,45 @@ tr.head {
 
 .btn, .btn--blue, .btn--orange, h1 {
     font-weight: normal;
+}
+
+.table {
+
+    &:hover {
+    background-color: white;
+    }
+}
+
+.paginator {
+    float: right;
+
+    .fa-chevron-right {
+        height: 30px;
+        width: 28px;
+        line-height: 30px;
+    }
+
+    .fa-chevron-left {
+        height: 30px;
+        width: 28px;
+        line-height: 30px;
+    }
+
+    .fa-backward {
+        height: 30px;
+        width: 28px;
+        line-height: 30px;
+    }
+
+    .fa-foward {
+        height: 30px;
+        width: 28px;
+        line-height: 30px;
+    }
+}
+
+a {
+    color: #4b8eef;
 }
 
 /******************** BOOTSTRAP TEMPLATE ********************/
@@ -372,12 +487,12 @@ tr.head {
 .grido.bootstrap .paginator ul li {
     display: inline; }
 .grido.bootstrap .paginator ul li a {
-    width: 22px;
+    width: 28px;
     padding: 0;
     border-radius: 0; }
 .grido.bootstrap .paginator ul li a, .grido.bootstrap .paginator ul li span {
     float: left;
-    line-height: 26px;
+    line-height: 30px;
     text-decoration: none; }
 .grido.bootstrap .paginator ul li:first-child a {
     border-top-left-radius: 4px;
@@ -388,15 +503,18 @@ tr.head {
     border-bottom-right-radius: 4px;
     border-left: 0; }
 .grido.bootstrap .paginator input {
-    width: 125px;
-    height: 28px;
+    width: 94px;
+    height: 30px;
     padding: 0;
     font-size: 14px;
     vertical-align: middle;
     text-align: center;
     float: left;
     border-radius: 0;
+    border: 1px solid #e1eaf7;
+    box-shadow: none;
     margin: 0 -1px;
+    color: rgba(50, 60, 88, 0.75);
     -moz-appearance: textfield; }
 .grido.bootstrap .paginator input::-webkit-input-placeholder {
     color: inherit; }
