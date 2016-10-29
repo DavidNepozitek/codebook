@@ -2,6 +2,8 @@
 
 <div class="container">
 
+    {ifset $tutorial}
+
     <article class="article article--casual">
 
 
@@ -33,5 +35,13 @@
         </div>
 
     </article>
+
+        {else}
+
+
+        {*TODO: Nastylovat*}
+        Požadováný návod se nám nepodařilo najít :(
+
+    {/ifset}
 
 </div>

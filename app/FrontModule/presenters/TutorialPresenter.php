@@ -26,6 +26,10 @@ class TutorialPresenter extends BasePresenter
 
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
 
+        if ($tutorial->getPublished() == FALSE) {
+            return;
+        }
+
         $this->template->tutorial = $tutorial;
 
         if (!isset($seenSection->$id)) {
@@ -34,11 +38,6 @@ class TutorialPresenter extends BasePresenter
             $seenSection->$id = TRUE;
 
             $seenSection->setExpiration("1 day", $id);
-
         }
-
-
-
-
     }
 }
