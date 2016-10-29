@@ -53,14 +53,11 @@
                 </div>
             {/if}
         {/snippet}
-
-        <div class="button__create-article">
-            <button n:name="submit" class="btn btn--blue" type="submit">
+            <button n:name="submit" class="btn btn--blue button__create-article" type="submit">
                 {if $presenter->isLinkCurrent("Tutorial:edit")}
                     Upravit návod
                 {else}
                     Přidat návod
                 {/if}
             </button>
-        </div>
     </form>
