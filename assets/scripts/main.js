@@ -23,7 +23,7 @@ $.nette.init();
  #Loader
  \*------------------------------------*/
 
-var loader = new CDloader(".js-loader", 200);
+var loader = new CDloader(".js-loader", 200, "2px");
 
 $.nette.ext({
     start: function () {
@@ -35,13 +35,13 @@ $.nette.ext({
 });
 
 
-function CDloader(selector, transitionDur) {
+function CDloader(selector, transitionDur, height) {
     var loader = $(selector);
 
     this.status = 0;
 
     this.start = function () {
-        loader.css({"height": "4px", "transform": "translateX(-100%) translateZ(0)"});
+        loader.css({"height": height, "transform": "translateX(-100%) translateZ(0)"});
         loader.css("transition", transitionDur + "ms");
         loader.css("transform", "translateX(-95%) translateZ(0)");
         this.status = 0.1;
@@ -71,7 +71,7 @@ function CDloader(selector, transitionDur) {
 
             setTimeout(function () {
                 loader.css({"transition": "0s"});
-                loader.css({"transform": "translateX(-100%) translateZ(0)", "height": "4px"});
+                loader.css({"transform": "translateX(-100%) translateZ(0)", "height": height});
             }, transitionDur);
 
         }, transitionDur);
@@ -131,8 +131,7 @@ $.fn.netteFormValidate = function () {
                 validateInput($(this));
             }
         });
-
-
+        
     });
 
     //Validates an input on focusout

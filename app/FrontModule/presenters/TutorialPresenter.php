@@ -5,6 +5,7 @@ namespace App\FrontModule\Presenters;
 use App\Model\Entities\Tutorial;
 use App\Model\TutorialModel;
 use Nette;
+use Tracy\Debugger;
 
 
 class TutorialPresenter extends BasePresenter
@@ -21,10 +22,23 @@ class TutorialPresenter extends BasePresenter
 
     public function renderDetail($id)
     {
+        $seenSection = $this->getSession("seen");
+
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
 
         $this->template->tutorial = $tutorial;
 
-        $this->tutorialModel->seenIncrement($id);
+        if (!isset($seenSection->$id)) {
+
+            $this->tutorialModel->seenIncrement($id);
+            $seenSection->$id = TRUE;
+
+            $seenSection->setExpiration("1 day", $id);
+
+        }
+
+
+
+
     }
 }

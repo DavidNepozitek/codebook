@@ -84,7 +84,6 @@ gulp.task("js-front", function() {
 });
 
 
-//TODO: Create a libs folder
 gulp.task("js-back", function() {
     return gulp.src([
             "assets/scripts/main.js",

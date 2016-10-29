@@ -12,10 +12,10 @@
         <p class="article__text">{$tutorial->getPerex()|truncate:330}</p>
         <div class="article__wrapper--bottom">
             <div class="article__wrapper--difficulty">
-                {for $i = 1; $i <= $tutorial->getDifficulty(); $i++}
+                {for $i = 0; $i <= $tutorial->getDifficulty(); $i++}
                     <i class="fa fa-cog article__icon article__icon--active" aria-hidden="true"></i>
                 {/for}
-                {for $i = 3; $i > $tutorial->getDifficulty(); $i--}
+                {for $i = 2; $i > $tutorial->getDifficulty(); $i--}
                     <i class="fa fa-cog article__icon" aria-hidden="true"></i>
                 {/for}
                 <span class="article__likes">{$tutorial->getSeenCount()}</span>

@@ -18,31 +18,30 @@ class ImageUploadForm extends Control{
 
     private $id;
 
-    public function __construct($id, ImageModel $imageModel)
+    public function __construct(ImageModel $imageModel)
     {
         parent::__construct();
 
         $this->imageModel = $imageModel;
+    }
+
+    public function render($id = NULL)
+    {
         $this->id = $id;
 
         if ($this->id) {
-            $tutorial = $this->imageModel->getOne(Tutorial::class, array("id" => $id));
-            $this->images = $tutorial->getImages()->toArray();
-        }
-    }
-
-    public function render()
-    {
-        if ($this->id) {
             $tutorial = $this->imageModel->getOne(Tutorial::class, array("id" => $this->id));
-            $this->images = $tutorial->getImages()->toArray();
-            $this->template->images = $this->images;
+
+            foreach ($tutorial->getImages()->toArray() as $image) {
+                $this->presenter->images[$image->getId()] = $image->getId();
+            }
+
+            $this->template->images = $tutorial->getImages()->toArray();
         }
         
         $template = $this->template;
         $template->setFile(__DIR__ . "/ImageUploadForm.latte");
         $template->render();
-
         
     }
 
@@ -71,35 +70,33 @@ class ImageUploadForm extends Control{
             $this->presenter->images[$image->getId()] = $image->getId();
         }
 
-        foreach ($this->presenter->images as $id) {
-            $this->images[] = $this->imageModel->getOne(Image::class, array("id" => $id));
-        }
-
         Debugger::barDump($this->presenter->images);
-
-        $this->template->images = $this->images;
-        
-        $this->redrawControl("images");
+        $this->updateTemplateImages();
     }
     
     public function handleRemove($id)
     {
         unset($this->presenter->images[$id]);
+
         $this->imageModel->deleteImage($id);
 
-        $this->images = null;
-
         foreach ($this->presenter->images as $id) {
-            $this->images[] = $this->imageModel->getOne(Image::class, array("id" => $id));
+            $images[] = $this->imageModel->getOne(Image::class, array("id" => $id));
         }
 
-        $this->template->images = $this->images;
+        $this->updateTemplateImages();
+    }
 
-        Debugger::barDump($this->template->images);
+    public function updateTemplateImages()
+    {
+        $images = Array();
+        
+        foreach ($this->presenter->images as $id) {
+            $image = $this->imageModel->getOne(Image::class, array("id" => $id));
+            $images[] = $image;
+        }
 
-
-        $this->redrawControl("images");
-        Debugger::barDump($this->presenter->images);
+        $this->template->images = $images;
     }
 
 }
@@ -107,8 +104,7 @@ class ImageUploadForm extends Control{
 interface IImageUploadFormFactory
 {
     /**
-     * @param $id
      * @return ImageUploadForm
      */
-    function create($id);
+    function create();
 }

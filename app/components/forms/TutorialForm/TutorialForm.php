@@ -3,16 +3,21 @@
 namespace App\Components;
 
 use App\Model\Entities\Tutorial;
+use App\Model\RedirectHelper;
 use App\Model\TutorialModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Neon\Exception;
 use Tracy\Debugger;
 
-class TutorialForm extends Control{
+class TutorialForm extends Control
+{
 
     /** @var TutorialModel */
-    public $tutorialModel;
+    private $tutorialModel;
+
+    /** @var  RedirectHelper */
+    private $redirectHelper;
 
     private $id;
 
@@ -20,22 +25,23 @@ class TutorialForm extends Control{
 
     /**
      * TutorialForm constructor.
-     * @param $id
      * @param TutorialModel $tutorialModel
      */
-    public function __construct($id, TutorialModel $tutorialModel)
+    public function __construct(TutorialModel $tutorialModel, RedirectHelper $redirectHelper)
     {
         parent::__construct();
         $this->tutorialModel= $tutorialModel;
+        $this->redirectHelper = $redirectHelper;
+    }
+
+    public function render($id = NULL)
+    {
         $this->id = $id;
 
         if ($this->id) {
             $this->tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $this->id));
         }
-    }
 
-    public function render()
-    {
         $template = $this->template;
         $template->setFile(__DIR__ . "/TutorialForm.latte");
         $template->render();
@@ -70,12 +76,7 @@ class TutorialForm extends Control{
             foreach ($this->tutorial->getTags()->toArray() as $tag) {
                 $tags[] = $tag->getName();
             }
-
-            foreach ($this->tutorial->getImages()->toArray() as $image) {
-                $images[] = $image->getId();
-            }
-
-
+            
             $form->setDefaults(array(
                 "title" => $this->tutorial->getTitle(),
                 "perex" => $this->tutorial->getPerex(),
@@ -83,7 +84,6 @@ class TutorialForm extends Control{
                 "difficulty" => $this->tutorial->getDifficulty(),
                 "published" => $this->tutorial->getPublished(),
                 "id" => $this->tutorial->getId(),
-
             ));
 
             if (isset($tags)) {
@@ -91,17 +91,11 @@ class TutorialForm extends Control{
                 $form->setDefaults(array("tags" => $tags));
             }
 
-            if (isset($images)) {
-                $images = json_encode($images);
-                $form->setDefaults(array("images" => $images));
-            }
-
         }
 
         $form->addSubmit("submit", "Přidat článek");
 
         $form->onSuccess[] = array($this, "processForm");
-
 
         return $form;
     }
@@ -114,10 +108,10 @@ class TutorialForm extends Control{
             try {
                 $this->tutorialModel->editTutorial(
                     $values["id"], $values["title"], $values["perex"], $values["source"],
-                    $values["difficulty"], $values["published"], $values["tags"], $values["images"]
+                    $values["difficulty"], $values["published"], $values["tags"], $this->presenter->images
                 );
                 $this->flashMessage("Článek byl úspěšně upraven", "success");
-                $this->redrawControl("flashMessages");
+
             } catch (Exception $e) {
                 $this->flashMessage($e->getMessage(), "error");
             }
@@ -125,15 +119,22 @@ class TutorialForm extends Control{
 
         } else {
             try {
-                $this->tutorialModel->createTutorial(
+                $tutorial = $this->tutorialModel->createTutorial(
                     $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"],
-                    $values["tags"], $values["images"]
+                    $values["tags"], $this->presenter->images
                 );
                 $this->flashMessage("Nový článek byl úspěšně přidán", "success");
+
+                if ($this->presenter->isAjax()) {
+                    $this->redirectHelper->addRedirect($this->presenter->link("Tutorial:edit", $tutorial->getId()));
+                    $this->presenter->forward("Tutorial:edit", $tutorial->getId());
+                } else {
+                    $this->presenter->redirect("this");
+                }
             } catch (Exception $e) {
                 $this->flashMessage($e->getMessage(), "error");
             }
-            $this->redrawControl("flashMessages");
+
         }
     }
 
@@ -142,10 +143,7 @@ class TutorialForm extends Control{
 interface ITutorialFormFactory
 {
     /**
-     * @param $id
      * @return TutorialForm
      */
-    function create($id);
+    function create();
 }
-
-//TODO: redirect

@@ -2,7 +2,7 @@
 
 namespace App\BackModule\Presenters;
 
-class SettingPresenter extends BasePresenter
+class SettingsPresenter extends BasePresenter
 {
 
 

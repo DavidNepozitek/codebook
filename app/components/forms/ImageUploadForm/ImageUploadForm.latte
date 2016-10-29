@@ -1,6 +1,6 @@
 {block content}
 
-<form n:name="form" class="js-imageUpload-nope">
+<form n:name="form" class="ajax js-imageUpload-nope">
     <div class="form-group">
         {input "images" class => "form-control"}
     </div>
@@ -33,7 +33,7 @@
                         <img src="{$basePath}/assets/images/uploads/{$image->getName()}.{$image->getExtension()}">
                         <label for="{$image->getName()}">Kód markdown</label>
                         <input id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
-                        <a class="js-removeImage" n:href="remove!, 'id' => $image->getId()">
+                        <a class="ajax js-removeImage" n:href="remove!, 'id' => $image->getId()">
                             <i aria-hidden="true" class="fa fa-trash"></i>
                         </a>
                     </div>

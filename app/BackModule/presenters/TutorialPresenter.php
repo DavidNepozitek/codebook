@@ -4,7 +4,9 @@ namespace App\BackModule\Presenters;
 
 use App\Components\IImageUploadFormFactory;
 use App\Components\ITutorialFormFactory;
+use App\Model\Entities\Image;
 use App\Model\Entities\Tutorial;
+use App\Model\ImageModel;
 use App\Model\TutorialModel;
 use Grido\DataSources\Doctrine;
 use Grido\Grid;
@@ -24,6 +26,9 @@ class TutorialPresenter extends BasePresenter
     /** @var TutorialModel @inject */
     public $tutorialModel;
 
+    /** @var  ImageModel */
+    public $imageModel;
+
     private $tutorialId;
 
     /** @persistent array */
@@ -31,17 +36,38 @@ class TutorialPresenter extends BasePresenter
 
     protected function createComponentTutorialForm()
     {
-        return $this->tutorialFormFactory->create($this->tutorialId);
+        return $this->tutorialFormFactory->create();
     }
 
     protected function createComponentImageUploadForm()
     {
-        return $this->imageUploadFormFactory->create($this->tutorialId);
+        return $this->imageUploadFormFactory->create();
     }
 
     public function renderEdit($id)
     {
         $this->tutorialId = $id;
+        $this->template->id = $id;
+
+        $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
+
+        foreach ($tutorial->getImages() as $image) {
+            $imageId = $image->getId();
+            $this->images[$imageId] = $imageId;
+        }
+    }
+
+    public function shutdown($response)
+    {
+        parent::shutdown($response);
+
+        /*if (isset($this->images)) {
+
+            foreach ($this->images as $imageId) {
+                $this->imageModel->deleteImage($imageId);
+            }
+        }*/
+
     }
 
     protected function createComponentGrid($name)
@@ -87,19 +113,19 @@ class TutorialPresenter extends BasePresenter
 
                 $edit = Html::el("a");
                 $edit->addText("Upravit");
-                $edit->setAttribute("class", "btn btn--blue");
+                $edit->setAttribute("class", "ajax btn btn--blue");
                 $edit->href($this->link("Tutorial:edit", ["id" => $tutorial->getId()]));
                 $editIcon = Html::el("i");
                 $editIcon->addAttributes(array("class" => "fa fa-pencil"));
                 $edit->addHtml($editIcon);
 
-                $edit = Html::el("a");
-                $edit->addText("Upravit");
-                $edit->setAttribute("class", "btn btn--blue");
-                $edit->href($this->link("Tutorial:edit", ["id" => $tutorial->getId()]));
-                $editIcon = Html::el("i");
-                $editIcon->addAttributes(array("class" => "fa fa-pencil"));
-                $edit->addHtml($editIcon);
+                $delete = Html::el("a");
+                $delete->addText("Smazat");
+                $delete->setAttribute("class", "ajax btn btn--orange");
+                $delete->href($this->link("Delete!", ["id" => $tutorial->getId()]));
+                $deleteIcon = Html::el("i");
+                $deleteIcon->addAttributes(array("class" => "fa fa-trash"));
+                $delete->addHtml($deleteIcon);
 
                 $publish = Html::el("a");
                 $publish->setAttribute("class", "btn");
@@ -107,13 +133,13 @@ class TutorialPresenter extends BasePresenter
 
                 if ($tutorial->getPublished() == 0) {
                     $publish->addText("Publikovat");
-                    $publish->appendAttribute("class", "btn--green");
+                    $publish->appendAttribute("class", "ajax btn--green");
                     $publish->href($this->link("Publish!", ["id" => $tutorial->getId(), "publish" => 1]));
 
                     $publishIcon->addAttributes(array("class" => "fa fa-cloud-upload"));
                 } else {
                     $publish->addText("Stáhnout");
-                    $publish->appendAttribute("class", "btn--orange");
+                    $publish->appendAttribute("class", "ajax btn--orange");
                     $publish->href($this->link("Publish!", ["id" => $tutorial->getId(), "publish" => 0]));
                     $publishIcon->addAttributes(array("class" => "fa fa-cloud-download"));
                 }
@@ -123,6 +149,7 @@ class TutorialPresenter extends BasePresenter
                 
                 $el->addHtml($edit);
                 $el->addHtml($publish);
+                $el->addHtml($delete);
 
                 return $el;
             });
@@ -135,6 +162,16 @@ class TutorialPresenter extends BasePresenter
 
         $tutorial->setPublished($publish);
         $this->tutorialModel->flush();
+    }
+
+    public function handleDelete($id)
+    {
+        $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
+
+        if ($tutorial) {
+            $this->tutorialModel->remove($tutorial);
+            $this->tutorialModel->flush();
+        }
     }
 
 }

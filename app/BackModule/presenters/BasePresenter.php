@@ -2,10 +2,14 @@
 
 namespace App\BackModule\Presenters;
 
+use App\Model\RedirectHelper;
 use Nette\Application\UI\Presenter;
 
 abstract class BasePresenter extends Presenter
 {
+
+    /** @var  RedirectHelper @inject */
+    public $redirectHelper;
 
     protected $menu = array(
         array(
@@ -69,8 +73,8 @@ abstract class BasePresenter extends Presenter
             $this->menu[] = array(
                 "name" => "Nastavení",
                 "icon" => "cogs",
-                "link" => "Setting:default",
-                "active" => "Setting:*"
+                "link" => "Settings:default",
+                "active" => "Settings:*"
             );
             
         }
@@ -83,11 +87,16 @@ abstract class BasePresenter extends Presenter
         parent::beforeRender();
 
         if ($this->isAjax()) {
+            $redirect = $this->redirectHelper->getRedirect();
+
+            if ($redirect != NULL) {
+                $this->presenter->payload->redirect = $redirect;
+            }
+
             $this->redrawControl('title');
             $this->redrawControl('content');
             $this->redrawControl('header');
             $this->redrawControl('headerTitle');
-            //$this->redrawControl('navigation');
         }
     }
 

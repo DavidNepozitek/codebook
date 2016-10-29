@@ -6,7 +6,6 @@ use App\Model\Entities\Image;
 use App\Model\Entities\Tag;
 use App\Model\Entities\Tutorial;
 use Nette\Neon\Exception;
-use Tracy\Debugger;
 
 class TutorialModel extends BaseModel
 {
@@ -43,24 +42,28 @@ class TutorialModel extends BaseModel
         $tutorial->setDifficulty($difficulty);
         $tutorial->setPublished($published);
 
-        foreach (json_decode($tags) as $name) {
-            $tag = $this->getOne(Tag::class, array("name" => $name));
+        if ($tags) {
+            foreach (json_decode($tags) as $name) {
+                $tag = $this->getOne(Tag::class, array("name" => $name));
 
-            if (!$tag) {
-                $tag = new Tag();
-                $tag->setName($name);
-                $this->persist($tag);
+                if (!$tag) {
+                    $tag = new Tag();
+                    $tag->setName($name);
+                    $this->persist($tag);
+                }
+                $tutorial->addTag($tag);
             }
-            $tutorial->addTag($tag);
         }
 
-        /*foreach (json_decode($images) as $imageId) {
+        foreach ($images as $imageId) {
             $image = $this->getOne(Image::class, array("id" => $imageId));
             $image->setTutorial($tutorial);
-        }*/
+        }
 
         $this->persist($tutorial);
         $this->flush();
+        
+        return $tutorial;
 
     }
 
@@ -68,9 +71,14 @@ class TutorialModel extends BaseModel
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
+        $tutorialByName = $this->getOne(Tutorial::class, array("title" => $title));
 
         if (!$tutorial) {
             throw new Exception("Návod, který se snažíte upravit, neexistuje.");
+        }
+
+        if ($tutorialByName and $tutorialByName != $tutorial) {
+            throw new Exception("Návod s tímto jménem již existuje.");
         }
 
         $parser = new Parser();
@@ -85,32 +93,31 @@ class TutorialModel extends BaseModel
 
         $tutorial->clearTags();
 
-        foreach (json_decode($tags) as $name) {
-            $tag = $this->getOne(Tag::class, array("name" => $name));
+        if ($tags) {
+            foreach (json_decode($tags) as $name) {
+                $tag = $this->getOne(Tag::class, array("name" => $name));
 
-            if (!$tag) {
-                $tag = new Tag();
-                $tag->setName($name);
-                $this->persist($tag);
+                if (!$tag) {
+                    $tag = new Tag();
+                    $tag->setName($name);
+                    $this->persist($tag);
+                }
+                $tutorial->addTag($tag);
             }
-            $tutorial->addTag($tag);
         }
 
-        /*$tutorial->clearImages();
+        $tutorial->clearImages();
 
-        foreach (json_decode($images) as $imageId) {
+        foreach ($images as $imageId) {
             $image = $this->getOne(Image::class, array("id" => $imageId));
-            $tutorial->addImage($image);
-        }*/
+            $image->setTutorial($tutorial);
+        }
 
         $this->flush();
 
     }
-
-
-    //TODO: Delete tutorial
-
-    //TODO: Do it more intelligent
+    
+    
     public function seenIncrement($id)
     {
 
