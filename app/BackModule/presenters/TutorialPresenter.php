@@ -134,13 +134,13 @@ class TutorialPresenter extends BasePresenter
                 if ($tutorial->getPublished() == 0) {
                     $publish->addText("Publikovat");
                     $publish->appendAttribute("class", "ajax btn--green");
-                    $publish->href($this->link("Publish!", ["id" => $tutorial->getId(), "publish" => 1]));
+                    $publish->href($this->link("Publish!", ["id" => $tutorial->getId(), "publish" => TRUE]));
 
                     $publishIcon->addAttributes(array("class" => "fa fa-cloud-upload"));
                 } else {
                     $publish->addText("Stáhnout");
                     $publish->appendAttribute("class", "ajax btn--orange");
-                    $publish->href($this->link("Publish!", ["id" => $tutorial->getId(), "publish" => 0]));
+                    $publish->href($this->link("Publish!", ["id" => $tutorial->getId(), "publish" => FALSE]));
                     $publishIcon->addAttributes(array("class" => "fa fa-cloud-download"));
                 }
 
@@ -162,15 +162,31 @@ class TutorialPresenter extends BasePresenter
 
         $tutorial->setPublished($publish);
         $this->tutorialModel->flush();
+
+        if ($tutorial->getPublished() == $publish) {
+
+            if ($publish == TRUE) {
+                $this->flashMessage("Návod byl úspěšně publikován!", "success");
+            }
+
+            if ($publish == FALSE) {
+                $this->flashMessage("Návod byl úspěšně stáhnut!", "success");
+            }
+        }
+
+
     }
 
+
+    //TODO: Add confirmation
     public function handleDelete($id)
     {
+        $this->tutorialModel->deleteTutorial($id);
+
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
 
-        if ($tutorial) {
-            $this->tutorialModel->remove($tutorial);
-            $this->tutorialModel->flush();
+        if (!$tutorial) {
+            $this->flashMessage("Návod byl úspěšně odstraněn!", "success");
         }
     }
 

@@ -30,7 +30,7 @@
 <body>
 <div class="js-loader"></div>
 
-	<div class="container flashmsg" n:inner-snippet="flashMessages">
+	<div class="container flashmsg" n:inner-snippet="flashMessages" data-ajax-append>
 	{if $flashes}
 		{foreach $flashes as $flash}
 			{if $flash->type == "error"}

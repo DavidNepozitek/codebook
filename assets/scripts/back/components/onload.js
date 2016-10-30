@@ -3,19 +3,21 @@
 \*------------------------------------*/
 
 var onLoad = function () {
-    //TODO: Check if loaded
 
     $(function(){
 
-        if ($('.grido')) {
+        if ($('.grido').length > 0 && $(".grido").data("loaded") == "true") {
+
             $('.grido').grido();
+
+            $(".grido").data("loaded", "true");
         }
 
     });
 
     $(function(){
 
-        if ($(".js-editor-add").length > 0) {
+        if ($(".js-editor-add").length > 0 && $(".js-editor").data("loaded") != "true") {
 
             var simplemde = new SimpleMDE({
                 element: $(".js-editor-add")[0] ,
@@ -30,7 +32,11 @@ var onLoad = function () {
                 forceSync: true
             });
 
-        } else if ($(".js-editor").length > 0) {
+            $(".js-editor").data("loaded", "true");
+
+
+        } else if ($(".js-editor").length > 0 && $(".js-editor").data("loaded") != "true") {
+
             var simplemde = new SimpleMDE({
                 element: $(".js-editor")[0] ,
                 spellChecker: false,
@@ -43,16 +49,18 @@ var onLoad = function () {
                 ],
                 forceSync: true
             });
+
+            $(".js-editor").data("loaded", "true");
         }
 
     });
 
     $(function(){
+        var tags = $(".tags");
 
-        if ($(".tags").length > 0) {
-
-
-            $(".tags").makeTags();
+        if (tags.length > 0 && tags.data("loaded") != "true") {
+            tags.makeTags();
+            tags.data("loaded", "true");
         }
 
     });

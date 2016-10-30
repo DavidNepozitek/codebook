@@ -5,12 +5,23 @@ namespace App\Model;
 use App\Model\Entities\Image;
 use App\Model\Entities\Tag;
 use App\Model\Entities\Tutorial;
+use Kdyby\Doctrine\EntityManager;
 use Nette\Neon\Exception;
 
 class TutorialModel extends BaseModel
 {
 
+    /** @var  ImageModel */
+    private $imageModel;
+
     public $difficulties = Array("Začátečník", "Pokročilý", "Zkušený");
+
+    public function __construct(EntityManager $em, ImageModel $imageModel)
+    {
+        parent::__construct($em);
+
+        $this->imageModel = $imageModel;
+    }
 
     /**
      * Creates a tutorial with given parameters
@@ -62,7 +73,7 @@ class TutorialModel extends BaseModel
 
         $this->persist($tutorial);
         $this->flush();
-        
+
         return $tutorial;
 
     }
@@ -116,17 +127,32 @@ class TutorialModel extends BaseModel
         $this->flush();
 
     }
-    
-    
+
+
     public function seenIncrement($id)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
-        $newSeenCount =  $tutorial->getSeenCount() + 1;
+        $newSeenCount = $tutorial->getSeenCount() + 1;
 
         $tutorial->setSeenCount($newSeenCount);
 
         $this->flush();
 
+    }
+
+    public function deleteTutorial($id)
+    {
+        $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
+
+        if ($tutorial) {
+
+            foreach($tutorial->getImages() as $image) {
+                $this->imageModel->deleteImage($image->getId());
+            }
+
+            $this->remove($tutorial);
+            $this->flush();
+        }
     }
 }
