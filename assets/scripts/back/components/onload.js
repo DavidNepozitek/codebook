@@ -3,6 +3,8 @@
 \*------------------------------------*/
 
 var onLoad = function () {
+    //TODO: Check if loaded
+
     $(function(){
 
         if ($('.grido')) {
@@ -12,8 +14,6 @@ var onLoad = function () {
     });
 
     $(function(){
-
-        //TODO: 
 
         if ($(".js-editor-add").length > 0) {
 
@@ -27,10 +27,6 @@ var onLoad = function () {
                     "code",
                     "table"
                 ],
-                /*autosave: {
-                    enabled: true,
-                    uniqueId: "addTut"
-                },*/
                 forceSync: true
             });
 
@@ -60,41 +56,6 @@ var onLoad = function () {
         }
 
     });
-
-    /*$(function () {
-        var imgForm = $(".js-imageUpload");
-        var tutForm = $(".js-tutorialForm");
-
-
-        if (imgForm.length > 0 && tutForm.length > 0) {
-
-            var result = [];
-            var resultInput = tutForm.find(".js-imageInput");
-
-
-            imgForm.submit(function (e) {
-                var form = $(e.target);
-
-
-                $(e.target).netteAjax(e).complete(function (e) {
-                    form.find(".js-image").each(function (i, image) {
-                        var id = $(image).data("image-id");
-
-                        if ($.inArray(id, result) == -1) {
-                            result.push(id);
-                        }
-
-                    });
-
-                    resultInput.val(JSON.stringify(result));
-                });
-
-
-            });
-
-
-        }
-    });*/
 
     //TODO: delete if not used
 };

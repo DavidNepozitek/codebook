@@ -1,0 +1,53 @@
+/*------------------------------------*\
+  #FLASH MESSAGES
+\*------------------------------------*/
+
+@flash-opacity: 0.8;
+
+@keyframes flashmsg{
+  from{transform: translateY(100px) translateZ(0); opacity: 0;}
+  to{transform: translateY(0) translateZ(0); opacity: @flash-opacity;}
+}
+
+@keyframes flashmsg-out {
+  from{transform: translateY(0) translateZ(0); opacity: @flash-opacity;}
+  to{transform: translateY(-100px) translateZ(0); opacity: 0;}
+}
+
+.flashmsg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
+  padding-top: 20px;
+}
+
+.flashmsg__msg{
+  transform: translateY(100px) translateZ(0);
+  animation-name: flashmsg, flashmsg-out;
+  animation-duration: 0.6s, 0.3s;
+  animation-delay: 0s, 10s;
+  animation-fill-mode: forwards, forwards;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  transition: 0.2s;
+  pointer-events: none;
+  width: 80%;
+  margin: auto;
+
+  &--error {
+    background-color: #feeded;
+    border: 1px solid #f9756f;
+    color: #f33b33;
+  }
+
+  &--success {
+    background-color: lighten(#4cd964, 40%);
+    border: 1px solid #4cd964;
+    color: darken(#4cd964, 10%);
+  }
+}
+

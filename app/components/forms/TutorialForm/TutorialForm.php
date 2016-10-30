@@ -110,12 +110,11 @@ class TutorialForm extends Control
                     $values["id"], $values["title"], $values["perex"], $values["source"],
                     $values["difficulty"], $values["published"], $values["tags"], $this->presenter->images
                 );
-                $this->flashMessage("Článek byl úspěšně upraven", "success");
-
+                $this->presenter->flashMessage("Článek byl úspěšně upraven!", "success");
             } catch (Exception $e) {
-                $this->flashMessage($e->getMessage(), "error");
+                $this->presenter->flashMessage($e->getMessage(), "error");
             }
-            $this->redrawControl("flashMessages");
+            $this->presenter->redrawControl("flashMessages");
 
         } else {
             try {
@@ -123,17 +122,18 @@ class TutorialForm extends Control
                     $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"],
                     $values["tags"], $this->presenter->images
                 );
-                $this->flashMessage("Nový článek byl úspěšně přidán", "success");
 
+                $this->presenter->flashMessage("Nový článek byl úspěšně přidán! Zde ho můžete dále upravovat.", "success");
                 if ($this->presenter->isAjax()) {
-                    $this->redirectHelper->addRedirect($this->presenter->link("Tutorial:edit", $tutorial->getId()));
+                    $this->redirectHelper->setRedirect($this->presenter->link("Tutorial:edit", $tutorial->getId()));
                     $this->presenter->forward("Tutorial:edit", $tutorial->getId());
                 } else {
                     $this->presenter->redirect("this");
                 }
             } catch (Exception $e) {
-                $this->flashMessage($e->getMessage(), "error");
+                $this->presenter->flashMessage($e->getMessage(), "error");
             }
+            $this->presenter->redrawControl("flashMessages");
 
         }
     }

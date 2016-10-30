@@ -36,8 +36,6 @@ $(function(){
                 
                 $(e.target).closest(".main-navigation__subitem").addClass("main-navigation__subitem--active");
                 $(e.target).closest(".main-navigation__item").addClass("main-navigation__item--active");
-
-                console.log($(e.target).closest(".main-navigation__item"));
                 
                 handleCollapsed();
             });

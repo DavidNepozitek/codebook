@@ -5,24 +5,29 @@ namespace App\Components;
 use App\Model\Entities\Image;
 use App\Model\Entities\Tutorial;
 use App\Model\ImageModel;
+use App\Model\RedirectHelper;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Tracy\Debugger;
 
 class ImageUploadForm extends Control{
 
-    /** @var  ImageModel @inject */
-    public $imageModel;
+    /** @var ImageModel */
+    private $imageModel;
+
+    /** @var  RedirectHelper */
+    private $redirectHelper;
 
     private $images;
 
     private $id;
 
-    public function __construct(ImageModel $imageModel)
+    public function __construct(ImageModel $imageModel, RedirectHelper $redirectHelper)
     {
         parent::__construct();
 
         $this->imageModel = $imageModel;
+        $this->redirectHelper = $redirectHelper;
     }
 
     public function render($id = NULL)
@@ -72,6 +77,8 @@ class ImageUploadForm extends Control{
 
         Debugger::barDump($this->presenter->images);
         $this->updateTemplateImages();
+
+        $this->redirectHelper->setRedirect(NULL, FALSE);
     }
     
     public function handleRemove($id)
@@ -97,6 +104,7 @@ class ImageUploadForm extends Control{
         }
 
         $this->template->images = $images;
+        $this->presenter->redrawControl("imageUploadForm");
     }
 
 }

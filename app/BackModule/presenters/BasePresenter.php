@@ -87,16 +87,31 @@ abstract class BasePresenter extends Presenter
         parent::beforeRender();
 
         if ($this->isAjax()) {
+
             $redirect = $this->redirectHelper->getRedirect();
 
-            if ($redirect != NULL) {
+            if (isset($redirect["redirect"])) {
                 $this->presenter->payload->redirect = $redirect;
             }
 
-            $this->redrawControl('title');
-            $this->redrawControl('content');
-            $this->redrawControl('header');
-            $this->redrawControl('headerTitle');
+            if ($redirect["redraw"] == TRUE) {
+
+                $this->redrawControl('title');
+                $this->redrawControl('header');
+                $this->redrawControl('headerTitle');
+                $this->redrawControl('flashMessages');
+                $this->redrawControl('content');
+
+            } else {
+
+                $this->redrawControl('title');
+                $this->redrawControl('header');
+                $this->redrawControl('headerTitle');
+                $this->redrawControl('flashMessages');
+
+            }
+
+
         }
     }
 
