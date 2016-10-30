@@ -42,8 +42,6 @@
     background-color: #FFFFFF; }
 
 .grido th, .grido td {
-    border: 1px solid #e1eaf7;
-    border-width: 0 1px 1px 0;
     height: 30px; }
 
 .grido thead, .grido tfoot {
@@ -91,9 +89,9 @@
     border: none; }
 
 .grido .filter.outer, .grido table {
-    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.05);
-    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.05);
-    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.05); }
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+    -moz-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05); }
 
 .grido .filter.outer .items {
     width: 85%;
@@ -228,7 +226,7 @@
     border-collapse: inherit;
     color: #323c58; }
 
-.grido table thead th,{
+.grido table thead th {
     vertical-align: middle;
     text-align: center; }
 
@@ -282,45 +280,55 @@
     background-color: #d9edf7 !important; }
 
 .grid-cell-changeRole {
-    width: 378px;
+    width: 378px; }
+
+.grido .btn {
+    float: left;
+    margin-right: 10px;
 
     .fa {
         margin-left: 6px;
     }
+}
 
-    .btn--blue {
-        float: left;
-        margin-right: 10px; }
+.grido .btn-default {
+    background-color: #4b8eef;
+    color: #FFFFFF;;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    padding-left: 7px;
+    font-size: 18px;
+    box-shadow: 0 1px 4px 0 #4b8eef;
+    margin-right: 0;
 
-    .btn--orange {
-        float: left;
-        margin-right: 10px; }
+    &:hover {
+        background-color: #307ceb;
+        box-shadow: 0 2px 6px 0 #4b8eef;
+    }
+
+    .fa {
+        margin-left: 0;
+    }
+}
+
+.grido .btn.disabled {
+    box-shadow: none;
+}
+
+.grido .reset {
+    .fa {
+        font-size: 18px;
+        margin-left: 0;
+    }
 }
 
 .grid-cell-actions {
-    width: 378px;
-
-    .fa {
-        margin-left: 6px;
-    }
-
-    .btn--blue {
-        float: left;
-        margin-right: 10px; }
-
-    .btn--orange {
-        float: left;
-        margin-right: 10px; }
-
-    .btn--green {
-        float: left;
-        margin-right: 10px; }
-}
+    width: 378px; }
 
 .grid-cell-id {
     width: 60px;
-    text-align: center
-}
+    text-align: center; }
 
 .grid-cell-email {
     width: 219px;
@@ -329,25 +337,6 @@
 .grid-cell-role {
     width: 100px;
     text-transform: capitalize;
-}
-
-.btn-default {
-    background-color: #4b8eef;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
-    padding-left: 7px;
-    font-size: 18px;
-    box-shadow: 0 1px 4px 0 #4b8eef;
-
-    .fa-refresh {
-        font-size: 18px;
-    }
-
-    &:hover {
-        background-color: #307ceb;
-        box-shadow: 0 2px 6px 0 #4b8eef;
-    }
 }
 
 .count {
