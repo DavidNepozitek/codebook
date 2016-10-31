@@ -111,6 +111,10 @@ class UserPresenter extends BasePresenter
 
         $user->setRole($role);
         $this->userModel->flush();
+
+        if ($user->getRole() == $role) {
+            $this->flashMessage("Role uživatele " . $user->getEmail() . " byla změněna na " . $user->getRole(), "success");
+        }
     }
 
 

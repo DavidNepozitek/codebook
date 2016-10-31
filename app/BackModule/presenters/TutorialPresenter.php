@@ -11,6 +11,7 @@ use App\Model\TutorialModel;
 use Grido\DataSources\Doctrine;
 use Grido\Grid;
 use Nette\Utils\Html;
+use Nette\Utils\Strings;
 use Tracy\Debugger;
 
 
@@ -121,7 +122,8 @@ class TutorialPresenter extends BasePresenter
 
                 $delete = Html::el("a");
                 $delete->addText("Smazat");
-                $delete->setAttribute("class", "ajax btn btn--orange");
+                $delete->setAttribute("class", "js-tutorial-delete btn btn--orange");
+                $delete->setAttribute("data-title", $tutorial->getTitle());
                 $delete->href($this->link("Delete!", ["id" => $tutorial->getId()]));
                 $deleteIcon = Html::el("i");
                 $deleteIcon->addAttributes(array("class" => "fa fa-trash"));
@@ -166,11 +168,11 @@ class TutorialPresenter extends BasePresenter
         if ($tutorial->getPublished() == $publish) {
 
             if ($publish == TRUE) {
-                $this->flashMessage("Návod byl úspěšně publikován!", "success");
+                $this->flashMessage("Návod \"" . Strings::truncate($tutorial->getTitle(), 30) . "\" byl úspěšně publikován!", "success");
             }
 
             if ($publish == FALSE) {
-                $this->flashMessage("Návod byl úspěšně stáhnut!", "success");
+                $this->flashMessage("Návod \"" . Strings::truncate($tutorial->getTitle(), 30) . "\" byl úspěšně stáhnut!", "success");
             }
         }
 
@@ -181,13 +183,21 @@ class TutorialPresenter extends BasePresenter
     //TODO: Add confirmation
     public function handleDelete($id)
     {
-        $this->tutorialModel->deleteTutorial($id);
-
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
 
-        if (!$tutorial) {
-            $this->flashMessage("Návod byl úspěšně odstraněn!", "success");
+        if ($tutorial) {
+            $name = Strings::truncate($tutorial->getTitle(), 30);
+
+            $this->tutorialModel->deleteTutorial($id);
+
+            $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
+
+            if (!$tutorial) {
+                $this->flashMessage("Návod \"" . $name  . "\" byl úspěšně odstraněn!", "success");
+            }
         }
+
+
     }
 
 }
