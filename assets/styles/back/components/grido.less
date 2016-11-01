@@ -42,7 +42,9 @@
     background-color: #FFFFFF; }
 
 .grido th, .grido td {
-    height: 30px; }
+    height: 30px;
+    border: 1px solid #e1eaf7;
+    border-width: 0 1px 1px 0;}
 
 .grido thead, .grido tfoot {
     font-size: 1em; }
@@ -156,7 +158,6 @@
 
 .grido th.column span {
     opacity: 0.75; }
-
 
 .grido th.actions {
     text-align: center; }
@@ -310,11 +311,16 @@
     .fa {
         margin-left: 0;
     }
+
+    &:focus {
+        background-color: #307ceb;
+        box-shadow: 0 2px 6px 0 #4b8eef;
+        color: white;
+    }
 }
 
 .grido .btn.disabled {
-    box-shadow: none;
-}
+    box-shadow: none; }
 
 .grido .reset {
     .fa {
@@ -323,30 +329,29 @@
     }
 }
 
-.grid-cell-actions {
+.grido .grid-cell-actions {
     width: 378px; }
 
-.grid-cell-id {
+.grido .grid-cell-id {
     width: 60px;
     text-align: center; }
 
-.grid-cell-email {
-    width: 219px;
-}
+.grido .grid-cell-email {
+    width: 219px; }
 
-.grid-cell-role {
+.grido .grid-cell-role {
     width: 100px;
     text-transform: capitalize;
 }
 
-.count {
+.grido .count {
     font-size: 16px;
     font-style: italic;
     color: rgba(50, 60, 88, 0.75);
     margin-left: 11px;
 }
 
-tr.head {
+.grido tr.head {
     .ajax {
         a{
             color: #4b8eef;
@@ -354,51 +359,25 @@ tr.head {
     }
 }
 
-.btn, .btn--blue, .btn--orange, h1 {
+.grido .btn, .btn--blue, .btn--orange, h1 {
     font-weight: normal;
 }
 
-.table {
-
+.grido .table {
     &:hover {
     background-color: white;
     }
 }
 
-.paginator {
+.grido .paginator {
     float: right;
 
     .fa {
         font-size: 15px;
-    }
-
-    .fa-chevron-right {
         height: 30px;
         width: 28px;
         line-height: 30px;
     }
-
-    .fa-chevron-left {
-        height: 30px;
-        width: 28px;
-        line-height: 30px;
-    }
-
-    .fa-backward {
-        height: 30px;
-        width: 28px;
-        line-height: 30px;
-    }
-
-    .fa-foward {
-        height: 30px;
-        width: 28px;
-        line-height: 30px;
-    }
-}
-
-a {
-    color: #4b8eef;
 }
 
 
