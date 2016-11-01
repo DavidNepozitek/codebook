@@ -122,7 +122,7 @@ class TutorialPresenter extends BasePresenter
 
                 $delete = Html::el("a");
                 $delete->addText("Smazat");
-                $delete->setAttribute("class", "js-tutorial-delete btn btn--orange");
+                $delete->setAttribute("class", "js-tutorial-delete pull-right btn btn--orange");
                 $delete->setAttribute("data-title", $tutorial->getTitle());
                 $delete->href($this->link("Delete!", ["id" => $tutorial->getId()]));
                 $deleteIcon = Html::el("i");

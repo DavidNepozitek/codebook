@@ -42,9 +42,9 @@
     background-color: #FFFFFF; }
 
 .grido th, .grido td {
+    height: 30px;
     border: 1px solid #e1eaf7;
-    border-width: 0 1px 1px 0;
-    height: 30px; }
+    border-width: 0 1px 1px 0;}
 
 .grido thead, .grido tfoot {
     font-size: 1em; }
@@ -91,9 +91,9 @@
     border: none; }
 
 .grido .filter.outer, .grido table {
-    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.05);
-    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.05);
-    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.05); }
+    -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+    -moz-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+    box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05); }
 
 .grido .filter.outer .items {
     width: 85%;
@@ -228,7 +228,7 @@
     border-collapse: inherit;
     color: #323c58; }
 
-.grido table thead th{
+.grido table thead th {
     vertical-align: middle;
     text-align: center; }
 
@@ -282,134 +282,126 @@
     background-color: #d9edf7 !important; }
 
 .grid-cell-changeRole {
-    width: 378px;
+    width: 378px; }
+
+.grido .btn {
+    float: none;
+    margin-right: 10px;
 
     .fa {
         margin-left: 6px;
     }
-
-    .btn--blue {
-        float: left;
-        margin-right: 10px; }
-
-    .btn--orange {
-        float: left;
-        margin-right: 10px; }
 }
 
-.grid-cell-actions {
-    width: 378px;
-
-    .fa {
-        margin-left: 6px;
-    }
-
-    .btn--blue {
-        float: left;
-        margin-right: 10px; }
-
-    .btn--orange {
-        float: left;
-        margin-right: 10px; }
-
-    .btn--green {
-        float: left;
-        margin-right: 10px; }
-}
-
-.grid-cell-id {
-    width: 60px;
-    text-align: center
-}
-
-.grid-cell-email {
-    width: 219px;
-}
-
-.grid-cell-role {
-    width: 100px;
-    text-transform: capitalize;
-}
-
-.btn-default {
+.grido .btn-default {
     background-color: #4b8eef;
+    color: #FFFFFF;;
     height: 30px;
     width: 30px;
     line-height: 30px;
     padding-left: 7px;
     font-size: 18px;
     box-shadow: 0 1px 4px 0 #4b8eef;
-
-    .fa-refresh {
-        font-size: 18px;
-    }
+    margin-right: 0;
 
     &:hover {
         background-color: #307ceb;
         box-shadow: 0 2px 6px 0 #4b8eef;
     }
+
+    .fa {
+        margin-left: 0;
+        display: block;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    &:focus {
+        background-color: #307ceb;
+        box-shadow: 0 2px 6px 0 #4b8eef;
+        color: white;
+    }
 }
 
-.count {
+.grido .btn.disabled {
+    box-shadow: none; }
+
+.grido .reset {
+    padding: 0;
+
+    .fa {
+        font-size: 16px;
+    }
+
+    .btn-default {
+        padding: 0;
+    }
+
+    .btn {
+        padding: 0;
+    }
+}
+
+.grido .grid-cell-actions {
+    width: 378px; }
+
+.grido .grid-cell-id {
+    width: 60px;
+    text-align: center; }
+
+.grido .grid-cell-email {
+    width: 219px; }
+
+.grido .grid-cell-role {
+    width: 100px;
+    text-transform: capitalize;
+}
+
+.grido .count {
     font-size: 16px;
     font-style: italic;
     color: rgba(50, 60, 88, 0.75);
     margin-left: 11px;
 }
 
-tr.head {
+.grido tr.head {
     .ajax {
         a{
             color: #4b8eef;
         }
     }
+    a {
+        color: #4b8eef;
+    }
 }
 
-.btn, .btn--blue, .btn--orange, h1 {
-    font-weight: normal;
+.grido {
+    .btn {
+        font-weight: normal;
+    }
+
+    .h1 {
+        font-weight: normal;
+    }
+
 }
 
-.table {
-
+.grido .table {
     &:hover {
     background-color: white;
     }
 }
 
-.paginator {
+.grido .paginator {
     float: right;
 
     .fa {
         font-size: 15px;
-    }
-
-    .fa-chevron-right {
         height: 30px;
         width: 28px;
         line-height: 30px;
+        display: block;
     }
-
-    .fa-chevron-left {
-        height: 30px;
-        width: 28px;
-        line-height: 30px;
-    }
-
-    .fa-backward {
-        height: 30px;
-        width: 28px;
-        line-height: 30px;
-    }
-
-    .fa-foward {
-        height: 30px;
-        width: 28px;
-        line-height: 30px;
-    }
-}
-
-a {
-    color: #4b8eef;
 }
 
 
