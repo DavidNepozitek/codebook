@@ -284,7 +284,7 @@
     width: 378px; }
 
 .grido .btn {
-    float: left;
+    float: none;
     margin-right: 10px;
 
     .fa {
@@ -323,9 +323,18 @@
     box-shadow: none; }
 
 .grido .reset {
+    padding: 0;
+
     .fa {
-        font-size: 18px;
-        margin-left: 0;
+        font-size: 16px;
+    }
+
+    .btn-default {
+        padding: 0;
+    }
+
+    .btn {
+        padding: 0;
     }
 }
 
@@ -357,6 +366,9 @@
             color: #4b8eef;
         }
     }
+    a {
+        color: #4b8eef;
+    }
 }
 
 .grido .btn, .btn--blue, .btn--orange, h1 {
@@ -377,6 +389,7 @@
         height: 30px;
         width: 28px;
         line-height: 30px;
+        display: inline-block;
     }
 }
 
@@ -418,7 +431,7 @@
     padding: 0;
     border-radius: 0; }
 .grido.bootstrap .paginator ul li a, .grido.bootstrap .paginator ul li span {
-    float: left;
+   float: left;
     line-height: 30px;
     text-decoration: none; }
 .grido.bootstrap .paginator ul li:first-child a {
