@@ -78,12 +78,12 @@
     }
 
     &:first-of-type {
-      padding-right: 5px;
+      padding-right: 2px;
       padding-left: 16px;
     }
 
     &:nth-of-type(2) {
-      padding-right: 5px;
+      padding-right: 2px;
     }
 
     &--active:before {
@@ -169,12 +169,12 @@
     }
 
     &:first-of-type {
-      padding-right: 5px;
+      padding-right: 2px;
       padding-left: 20px;
     }
 
     &:nth-of-type(2) {
-      padding-right: 5px;
+      padding-right: 2px;
     }
 
     &--active:before {
@@ -255,13 +255,7 @@
   .all-tutorials__link {
     color: #727d98;
     font-size: 15px;
-    border-bottom: 1px solid #727d98;
-    text-decoration: none;
-
-    &:hover {
-      color: #727d98;
-      text-decoration: none;
-    }
+    text-decoration: underline;
   }
 }
 
@@ -271,6 +265,7 @@
   padding-top: 10px;
   padding-left: 50px;
   padding-right: 50px;
+  padding-bottom: 37px;
   margin-bottom: 147px;
 
   &:hover {
@@ -317,18 +312,74 @@
   .article__icon {
     font-size: 23px;
     color: #2d476e;
-    padding-right: 5px;
+    padding-right: 2px;
   }
 
   .article__icon--active {
     font-size: 23px;
     color: #2d476e;
-    padding-right: 5px;
+    padding-right: 2px;
   }
 
   .article__wrapper--bottom {
     float: right;
     margin-top: 8px;
+  }
+
+  #tutorial-source {
+    p {
+      font-size: 16px;
+      color: #383b40;
+      font-family: "Fira Sans", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    strong {
+      font-size: 26px;
+      color: #2d476e;
+      border-bottom: 2px solid #dbe8fc;
+    }
+
+    a {
+      text-decoration: underline;
+      font-size: 16px;
+    }
+
+    pre {
+      background-color: #e4e9f1;
+      border: none;
+      border-radius: 0;
+      padding-top: 15px;
+      padding-left: 25px;
+
+      code {
+        font-family: "Courier New";
+        font-size: 18px;
+        color: #383b40;
+      }
+    }
+
+    ul {
+      color: #f8534b;
+      font-size: 16px;
+      list-style-type: square;
+
+      li {
+        color: #383b40;
+        padding-left: 10px;
+      }
+    }
+
+    ol {
+      font-size: 16px;
+      color: #f8534b;
+
+      li {
+        color: #383b40;
+        padding-left: 10px;
+      }
+    }
   }
 }
 
