@@ -90,6 +90,8 @@ abstract class BasePresenter extends Presenter
 
             $redirect = $this->redirectHelper->getRedirect();
 
+            //TODO: Navigation on back/forward
+
             if (isset($redirect["redirect"])) {
                 $this->presenter->payload->redirect = $redirect;
             }

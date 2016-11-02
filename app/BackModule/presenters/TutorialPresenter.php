@@ -76,6 +76,7 @@ class TutorialPresenter extends BasePresenter
         $grid = new Grid($this, $name);
 
         $grid->setTemplateFile(__DIR__ . "/../templates/Grido/bootstrap.latte");
+        $grid->getTranslator()->setLang('cs');
 
         $model = new Doctrine(
             $this->tutorialModel->getEm()->createQueryBuilder()

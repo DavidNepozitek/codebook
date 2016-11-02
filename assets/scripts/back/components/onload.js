@@ -6,7 +6,7 @@ var onLoad = function () {
 
     $(function(){
 
-        if ($('.grido').length > 0 && $(".grido").data("loaded") == "true") {
+        if ($('.grido').length > 0 && $(".grido").data("loaded") != "true") {
 
             $('.grido').grido();
 

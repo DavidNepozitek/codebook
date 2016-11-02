@@ -57,9 +57,9 @@
 		<div class="container container--admin">
 	{/if}
 
-	{snippet content}
+	<div n:inner-snippet="content">
 		{include content}
-	{/snippet}
+	</div>
 
 	{if !$presenter->isLinkCurrent("Login:*")}
 		</div>
@@ -67,7 +67,8 @@
 
 
 	{block scripts}
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		{*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>*}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 		<script src="{$basePath}/assets/scripts/libs.min.js"></script>
 		<script src="{$basePath}/assets/scripts/back.min.js"></script>

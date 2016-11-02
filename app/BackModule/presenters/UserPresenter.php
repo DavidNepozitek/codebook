@@ -29,6 +29,7 @@ class UserPresenter extends BasePresenter
         $grid = new Grid($this, $name);
 
         $grid->setTemplateFile(__DIR__ . "/../templates/Grido/bootstrap.latte");
+        $grid->getTranslator()->setLang('cs');
 
         $model = new Doctrine(
             $this->userModel->getEm()->createQueryBuilder()
