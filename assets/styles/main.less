@@ -162,7 +162,7 @@ body{
 \*------------------------------------*/
 
 
-h1 {
+.title {
   text-transform: uppercase;
   font-family: 'Fira Sans', sans-serif;
   font-weight: 700;
@@ -172,13 +172,13 @@ h1 {
   font-style: normal;
 }
 
-h2 {
+.article__title--bigger, .article__title {
   font-family: 'Jaapokki', sans-serif;
   color: #2d476e;
   font-size: 24px;
 }
 
-h3 {
+.article__tags {
   font-size: 14px;
   color: #b9c1d4;
   text-transform: uppercase;
@@ -206,6 +206,10 @@ h3 {
   padding: 0 12px;
 
   &:hover {
+    color: white;
+  }
+
+  &:focus {
     color: white;
   }
 }
