@@ -22,6 +22,12 @@
 
 
 .main-navigation{
+  &>.nav>.main-navigation__item>a:focus{
+    background-color: transparent;
+  }
+  &>.nav>.main-navigation__item:active{
+    box-shadow: none;
+  }
   ul{
     text-transform: uppercase;
   }
@@ -32,21 +38,20 @@
 
   }
 
-  ul li:hover{
-    border-bottom: 2px solid white;
 
-  }
   &__item a {
     color: white;
     font-family: "Fira Sans", sans-serif;
     text-decoration: none;
+   padding-bottom: 5px;
 
 
   }
+
   &__item a:hover{
     background-color: transparent;
   }
-    &:hover{
+  &:hover{
       text-decoration: none;
       color: white;
 
@@ -55,9 +60,11 @@
     border-bottom: 2px solid transparent;
     padding-left: 0;
     padding-right: 0;
+
   }
 
-    &__item--active{
+
+  &__item--active{
       border-bottom: 2px solid white;
       box-shadow: none;
 
@@ -76,7 +83,8 @@
   border-radius: 2px;
   text-shadow: none;
   transition: .3s;
-  margin-top: 5px;
+  margin-top: 15px;
+
   &:hover{
     background-color: white;
     border-color: white;
@@ -87,8 +95,12 @@
 .shaped{
   border-radius: 0;
 }
+.navbar-nav{
+  text-align: center;
+}
 .navbar-brand, .navbar-nav>li>a{
   text-shadow: none;
+  padding-bottom: 5px;
 }
 #navigation .nav>.main-navigation__item>a:hover{
 
@@ -97,8 +109,25 @@
 
 @media (max-width: 767px){
   .btn-main{
-    margin-top: 0;
+    margin-top: 5px;
   }
+  .navbar-nav{
+    background-color: @orange;
+    padding-bottom: 10px;
+
+  }
+  .navbar{
+    border: 0;
+  }
+  .main-navigation__logo{
+    margin-top: 15px;
+    margin-left: 10px;
+  }
+  .main-navigation__item--active,.main-navigation__item:hover{
+    border-bottom: 2px solid transparent;
+    background-color: #e83f35;
+  }
+
 }
 @media(min-width: 768px){
 .main-header{
@@ -107,8 +136,15 @@
 .main-navigation ul{
   margin-top: 0;
   text-align: center;
-
-
 }
+.main-navigation__item{
+  margin-right: 10px;
 
+  &:hover{
+    border-bottom: 2px solid white;
+  }
+}
+.navbar-header{
+  margin-top: 12px;
+}
 }
