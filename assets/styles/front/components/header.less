@@ -1,7 +1,17 @@
 /*------------------------------------*\
   #HEADER
 \*------------------------------------*/
-
+.hamburger{
+  &:before{
+    content:"\f00d";
+    color: white;
+  }
+}
+.navbar-toggle.collapsed{
+  .hamburger:before {
+    content: "\f0c9";
+  }
+}
 .main-header{
   background-image: url("../images/header.jpg");
 }
@@ -12,18 +22,93 @@
 
 
 .main-navigation{
+  ul{
+    text-transform: uppercase;
+  }
+  ul li{
+    color: white;
+    transition: 0.3s;
 
-  &__item a{
+
+  }
+
+  ul li:hover{
+    border-bottom: 2px solid white;
+
+  }
+  &__item a {
     color: white;
     font-family: "Fira Sans", sans-serif;
+    text-decoration: none;
 
+
+  }
+  &__item a:hover{
+    background-color: transparent;
+  }
     &:hover{
-      color: blue;
+      text-decoration: none;
+      color: white;
+
     }
+  &__item{
+    border-bottom: 2px solid transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+    &__item--active{
+      border-bottom: 2px solid white;
+      box-shadow: none;
+
+    }
+
+}
+
+.main-navigation__logo {
+  height: 40px;
+  display: inline-block;
+}
+.btn-main{
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 2px;
+  text-shadow: none;
+  transition: .3s;
+  margin-top: 5px;
+  &:hover{
+    background-color: white;
+    border-color: white;
+    color: @orange;
   }
 }
 
-.main-navigation__logo{
-  height: 40px;
-  display: inline-block;
+.shaped{
+  border-radius: 0;
+}
+.navbar-brand, .navbar-nav>li>a{
+  text-shadow: none;
+}
+#navigation .nav>.main-navigation__item>a:hover{
+
+    background-color: transparent;
+}
+
+@media (max-width: 767px){
+  .btn-main{
+    margin-top: 0;
+  }
+}
+@media(min-width: 768px){
+.main-header{
+  padding-top:10px;
+}
+.main-navigation ul{
+  margin-top: 0;
+  text-align: center;
+
+
+}
+
 }
