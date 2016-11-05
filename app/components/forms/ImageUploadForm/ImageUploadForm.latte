@@ -4,7 +4,7 @@
     <div class="form-group">
         {input "images" class => "form-control"}
     </div>
-    <button n:name="submit" type="submit" class="btn btn--blue">Nahrát soubory</button>
+    <button n:name="submit" type="submit" class="btn btn--blue">Nahrát obrázky</button>
     {if $flashes}
         <div class="form-error">
             <ul n:ifcontent>
@@ -32,10 +32,13 @@
                     <div data-image-id="{$image->getId()}" class="js-image">
                         <img src="{$basePath}/assets/images/uploads/{$image->getName()}.{$image->getExtension()}">
                         <label for="{$image->getName()}">Kód markdown</label>
-                        <input id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
+                        <input class="js-image-input" id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
                         <a class="ajax js-removeImage" n:href="remove!, 'id' => $image->getId()">
                             <i aria-hidden="true" class="fa fa-trash"></i>
                         </a>
+                        <div class="js-code-copy">
+                            <i aria-hidden="true" class="fa fa-clone"></i><span>Kopírovat</span>
+                        </div>
                     </div>
                 {/foreach}
             {/ifset}
