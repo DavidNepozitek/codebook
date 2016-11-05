@@ -87,6 +87,14 @@
 
 .button__create-article {
   margin-bottom: 25px;
+
+  &:hover {
+    color: white;
+  }
+
+  &:focus {
+    color: white;
+  }
 }
 
 .form-group {
@@ -98,4 +106,121 @@
 
 .form__add-page {
   margin-top: -15px;
+}
+
+.js-image {
+  background-color: white;
+  height: 100px;
+  //width: 600px;
+  border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+  -moz-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+  margin-bottom: 10px;
+
+
+  .thumbnail {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    background-color: #4b8eef;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
+
+
+    .img {
+      //margin: auto;
+      position: absolute;
+      //margin-top: auto;
+      margin-bottom: auto;
+      //align: center;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      vertical-align: middle;
+      height: 100%;
+      line-height: 80px;
+      max-height: 80px;
+      max-width: 80px;
+    }
+  }
+
+  .image__upload--markdown-text {
+    font-size: 14px;
+    color: #5b6b99;
+    margin-right: 6px;
+    margin-left: 19px;
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .js-removeImage {
+    height: 34px;
+    width: 34px;
+    padding: 0;
+    float: right;
+    margin-right: 20px;
+    margin-top:  33px;
+    display: inline-block;
+
+    .fa {
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &:focus {
+      color: white;
+    }
+  }
+
+  .js-code-copy {
+    color: #4b8eef;
+    margin-left: 100px;
+    margin-top: 5px;
+
+    .image__upload--copy-link {
+      margin-left: 5px;
+    }
+  }
+
+  .js-image-input {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 34px;
+    width: 230px;
+  }
+}
+
+.image__upload--controls {
+  display: inline-block;
+  vertical-align: -150%;
+}
+
+.button__upload-image {
+  margin-top: 7px;
+
+  &:hover {
+    color: white;
+  }
+
+  &:focus {
+    color: white;
+  }
+}
+
+.js-imageList {
+  margin-bottom: 50px;
+  margin-top: 80px;
 }
