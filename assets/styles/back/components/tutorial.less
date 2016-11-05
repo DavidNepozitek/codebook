@@ -1,0 +1,142 @@
+/*------------------------------------*\
+#IMAGE-UPLOAD
+\*------------------------------------*/
+
+
+.images-upload {
+  background-color: white;
+  height: 100px;
+  border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+  -moz-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
+  margin-bottom: 10px;
+
+
+  .thumbnail {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
+    box-shadow: none;
+
+
+    img {
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+  }
+
+  .image__upload__markdown-text {
+    font-size: 14px;
+    color: #5b6b99;
+    margin-right: 6px;
+    margin-left: 19px;
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .image-upload--remove {
+    height: 34px;
+    width: 34px;
+    padding: 0;
+    float: right;
+    margin-right: 20px;
+    margin-top:  33px;
+    display: inline-block;
+
+    .fa {
+      font-size: 16px;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    &:focus {
+      color: white;
+    }
+  }
+
+  .image-upload__copy {
+    color: #4b8eef;
+    margin-left: 100px;
+    margin-top: 5px;
+
+    .image-upload__copy--link {
+      margin-left: 5px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .image-upload__link {
+    width: 230px;
+    display: inline-block;
+  }
+}
+
+.image-uploader--right {
+  display: inline-block;
+  vertical-align: -150%;
+}
+
+.button__upload-image {
+  margin-top: 7px;
+
+  &:hover {
+    color: white;
+  }
+
+  &:focus {
+    color: white;
+  }
+}
+
+.images-upload__list {
+  margin-bottom: 50px;
+  margin-top: 80px;
+}
+
+
+
+/*------------------------------------*\
+#RESPONSIVE
+\*------------------------------------*/
+
+@media (max-width: 1000px) {
+
+  .images-upload {
+
+    .image-upload__link {
+      width: 200px;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+
+  .images-upload {
+
+    .image-upload__link {
+      width: 150px;
+    }
+  }
+}
