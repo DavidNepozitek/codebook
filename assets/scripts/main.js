@@ -117,13 +117,22 @@ function CDloader(selector, transitionDur, height) {
 $.fn.netteFormValidate = function () {
 
     var form = $(this);
-    var inputs = form.find("input");
+    var inputs = form.find("input, textarea, select");
+    var button = form.find("button[type=submit]");
 
     form.submit(function(e){
+        checkIfValid(e);
+    });
 
+    button.click(function (e) {
+        checkIfValid(e);
+    });
+
+    function checkIfValid(e) {
         //If there is an error -> do not submit the form
         if ( form.find(".has-error").length > 0 ) {
             e.preventDefault();
+            e.stopImmediatePropagation();
         }
 
         //Validates each input with rules
@@ -132,8 +141,8 @@ $.fn.netteFormValidate = function () {
                 validateInput($(this));
             }
         });
-        
-    });
+    }
+    
 
     //Validates an input on focusout
     inputs.focusout(function (e) {

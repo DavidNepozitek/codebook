@@ -65,7 +65,7 @@ var onLoad = function () {
 
     });
 
-    //TODO: delete if not used
+    $(".js-tutorialForm").netteFormValidate()
 };
 
 
