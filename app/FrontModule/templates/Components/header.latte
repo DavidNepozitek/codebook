@@ -1,18 +1,26 @@
-<header class="main-header {if $presenter->isLinkCurrent('Homepage:*')} main-header--big{/if}">
-    <div class="container">
-        <div class="row">
-            <nav class="main-navigation">
+<header id="navigation"  class="main-header {if $presenter->isLinkCurrent('Homepage:*')} main-header--big{/if}">
+    <div class="navbar" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="fa hamburger"></span>
+                </button>
+
                 <img src="{$basePath}/assets/images/logo-w.svg" class="main-navigation__logo">
-                <ul>
+            </div>
+            <div class="collapse navbar-collapse main-navigation">
+                <ul class="nav navbar-nav navbar-right">
                     {foreach $menu as $item}
-                        <li class="main-navigation__item{if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}">
+                        <li class="shaped menu btn main-navigation__item{if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}">
                             <a n:href="$item['link']">
                                 {$item["name"]}
                             </a>
                         </li>
                     {/foreach}
+                    <button class="btn menu btn-default btn-main" href="#">Přihlásit se</button>
                 </ul>
-            </nav>
+            </div>
         </div>
     </div>
 </header>
