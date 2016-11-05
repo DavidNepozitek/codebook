@@ -66,6 +66,7 @@ gulp.task("css-front", function() {
 
 gulp.task("css-libs", function() {
     return gulp.src(["assets/styles/libs/*"])
+        .pipe(plumber(plumberOpts))
         .pipe(concat("libs.min.css"))
         .pipe(cleanCSS({compatibility: "ie8"}))
         .pipe(gulp.dest("assets/styles"));
