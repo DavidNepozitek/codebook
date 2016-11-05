@@ -108,10 +108,9 @@
   margin-top: -15px;
 }
 
-.js-image {
+.images__uploaded {
   background-color: white;
   height: 100px;
-  //width: 600px;
   border-radius: 3px;
   -webkit-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
   -moz-box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.05);
@@ -124,7 +123,6 @@
     height: 80px;
     position: relative;
     overflow: hidden;
-    background-color: #4b8eef;
     padding: 0;
     border-radius: 0;
     border: none;
@@ -134,23 +132,17 @@
     margin-top: 10px;
     vertical-align: middle;
     text-align: center;
+    box-shadow: none;
 
 
     .img {
-      //margin: auto;
       position: absolute;
-      //margin-top: auto;
-      margin-bottom: auto;
-      //align: center;
-      display: block;
       margin-left: auto;
       margin-right: auto;
-      vertical-align: middle;
-      height: 100%;
-      line-height: 80px;
-      max-height: 80px;
-      max-width: 80px;
+      top: 50%;
+      transform: translateY(-50%);
     }
+
   }
 
   .image__upload--markdown-text {
@@ -163,7 +155,7 @@
     vertical-align: middle;
   }
 
-  .js-removeImage {
+  .image-uploader--remove {
     height: 34px;
     width: 34px;
     padding: 0;
@@ -185,25 +177,28 @@
     }
   }
 
-  .js-code-copy {
+  .image-uploader__link--copy {
     color: #4b8eef;
     margin-left: 100px;
     margin-top: 5px;
 
-    .image__upload--copy-link {
+    .image-uploader__link--copied {
       margin-left: 5px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
-  .js-image-input {
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    height: 34px;
+  .image__link {
     width: 230px;
+    display: inline-block;
   }
 }
 
-.image__upload--controls {
+.image-uploader--right {
   display: inline-block;
   vertical-align: -150%;
 }
@@ -220,7 +215,23 @@
   }
 }
 
-.js-imageList {
+.images__list {
   margin-bottom: 50px;
   margin-top: 80px;
+}
+
+
+
+/*------------------------------------*\
+#RESPONSIVE
+\*------------------------------------*/
+
+@media (max-width: 1000px) {
+
+  .images__uploaded {
+
+  .image__link {
+    width: 200px;
+  }
+}
 }

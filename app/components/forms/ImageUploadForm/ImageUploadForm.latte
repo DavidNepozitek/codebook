@@ -27,21 +27,21 @@
         </div>
     {/if}
 
-    <div n:snippet="images" class="js-imageList">
+    <div n:snippet="images" class="js-imageList images__list">
         {ifset $images}
             {foreach $images as $image}
-                <div data-image-id="{$image->getId()}" class="js-image">
+                <div data-image-id="{$image->getId()}" class="js-image images__uploaded">
                     <div class="thumbnail">
                         <img src="{$basePath}/assets/images/uploads/{$image->getName()}.{$image->getExtension()}">
                     </div>
-                    <div class="image__upload--controls">
+                    <div class="image-uploader--right">
                         <label class="image__upload--markdown-text" for="{$image->getName()}">Markdown:</label>
-                        <input class="js-image-input" id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
-                        <div class="js-code-copy">
-                            <i aria-hidden="true" class="fa fa-clone"></i><span class="image__upload--copy-link">Kopírovat</span>
+                        <input class="js-image-input form-control image__link" id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
+                        <div class="js-code-copy image-uploader__link--copy">
+                            <i aria-hidden="true" class="fa fa-clone"></i><span class="image-uploader__link--copied">Kopírovat</span>
                         </div>
                     </div>
-                    <a class="ajax js-removeImage btn btn--orange " n:href="remove!, 'id' => $image->getId()">
+                    <a class="ajax js-removeImage image-uploader--remove btn btn--orange " n:href="remove!, 'id' => $image->getId()">
                         <i aria-hidden="true" class="fa fa-trash"></i>
                     </a>
                 </div>
