@@ -276,7 +276,7 @@
   .article__title {
     font-size: 36px;
     margin-bottom: 8px;
-    font-family: "Jaapokki";
+    font-family: "Jaapokki", sans-serif;
   }
 
   .article__perex {
@@ -334,6 +334,10 @@
 
   #tutorial-source {
 
+    [id^=JSF] {
+      max-height: 500px;
+    }
+
     table {
       .table;
       .table-bordered;
@@ -345,7 +349,7 @@
       font-family: "Fira Sans", sans-serif;
       font-style: normal;
       font-weight: 400;
-      margin-top: 22px;
+      margin: 20px 0;
     }
 
     h1 {
@@ -386,19 +390,7 @@
     }
 
     pre {
-      background-color: #e4e9f1;
-      border: none;
-      border-radius: 0;
-      padding-top: 15px;
-      padding-left: 25px;
-      margin-top: 18px;
-      margin-bottom: 45px;
-
-      code {
-        font-family: "Courier New";
-        font-size: 18px;
-        color: #383b40;
-      }
+      background-color: white;
     }
 
     ul {
@@ -447,6 +439,21 @@
 
       hr {
         border-top: 1px solid #dbe8fc;
+      }
+    }
+
+    blockquote {
+      margin: 15px 0;
+      background-color: rgba(0,0,0,0.02);
+
+      p {
+        margin: 10px 0;
+        font-style: italic;
+        color: rgba(0,0,0,0.7);
+      }
+
+      code {
+        font-style: normal;
       }
     }
   }

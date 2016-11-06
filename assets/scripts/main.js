@@ -2,6 +2,7 @@
  * CONTENTS
  *
  * Ajax init............Nette ajax initialization
+ * Highlight init.......Highligh.js initialization
  * Loader...............Reveals the page, when loaded.
  * Form validation......Validates form with data-rules
  *
@@ -21,7 +22,18 @@ $.nette.init();
 
 /*------------------------------------*\
  #Loader
- \*------------------------------------*/
+\*------------------------------------*/
+
+
+hljs.initHighlightingOnLoad();
+
+
+
+
+
+/*------------------------------------*\
+ #Loader
+\*------------------------------------*/
 
 var loader = new CDloader(".js-loader", 200, "2px");
 
