@@ -35,7 +35,7 @@
                         <img src="{$basePath}/assets/images/uploads/{$image->getName()}.{$image->getExtension()}">
                     </div>
                     <div class="image-uploader--right">
-                        <label class="image__upload__markdown-text" for="{$image->getName()}">Markdown:</label>
+                        <label class="image-upload__markdown-text" for="{$image->getName()}">Markdown:</label>
                         <input class="js-image-input form-control image-upload__link" id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
                         <div class="js-code-copy image-upload__copy">
                             <i aria-hidden="true" class="fa fa-clone"></i><span class="image-upload__copy--link">Kopírovat</span>
