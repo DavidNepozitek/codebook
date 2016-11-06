@@ -1,10 +1,11 @@
 {block content}
 
-<form n:name="form" class="ajax js-imageUpload-nope">
+<form n:name="form" class="ajax">
     <div class="form-group">
-        {input "images" class => "form-control"}
+        <label class="form__create-article">Upload obrázků</label>
+        {input "images" class => "form-control image-upload__upload"}
     </div>
-    <button n:name="submit" type="submit" class="btn btn--blue">Nahrát obrázky</button>
+    <button n:name="submit" type="submit" class="btn btn--blue image-upload__button">Nahrát obrázky</button>
     {if $flashes}
         <div class="form-error">
             <ul n:ifcontent>
@@ -26,21 +27,25 @@
         </div>
     {/if}
 
-        <div n:snippet="images" class="js-imageList">
-            {ifset $images}
-                {foreach $images as $image}
-                    <div data-image-id="{$image->getId()}" class="js-image">
+    <div n:snippet="images" class="js-imageList image-upload__list">
+        {ifset $images}
+            {foreach $images as $image}
+                <div data-image-id="{$image->getId()}" class="js-image image-upload">
+                    <div class="thumbnail">
                         <img src="{$basePath}/assets/images/uploads/{$image->getName()}.{$image->getExtension()}">
-                        <label for="{$image->getName()}">Kód markdown</label>
-                        <input class="js-image-input" id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
-                        <a class="ajax js-removeImage" n:href="remove!, 'id' => $image->getId()">
-                            <i aria-hidden="true" class="fa fa-trash"></i>
-                        </a>
-                        <div class="js-code-copy">
-                            <i aria-hidden="true" class="fa fa-clone"></i><span>Kopírovat</span>
+                    </div>
+                    <div class="image-upload--right">
+                        <label class="image-upload__markdown-text" for="{$image->getName()}">Markdown:</label>
+                        <input class="js-image-input form-control image-upload__link" id="{$image->getName()}" type="text" value="![alt text]({$baseUrl}/assets/images/uploads/{$image->getName()}.{$image->getExtension()} 'Název obrázku')">
+                        <div class="js-code-copy image-upload__copy">
+                            <i aria-hidden="true" class="fa fa-clone"></i><span class="image-upload__copy-link">Kopírovat</span>
                         </div>
                     </div>
-                {/foreach}
-            {/ifset}
-        </div>
+                    <a class="ajax js-removeImage image-upload__remove btn btn--orange " n:href="remove!, 'id' => $image->getId()">
+                        <i aria-hidden="true" class="fa fa-trash"></i>
+                    </a>
+                </div>
+            {/foreach}
+        {/ifset}
+    </div>
 </form>
