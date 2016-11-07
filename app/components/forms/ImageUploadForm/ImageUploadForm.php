@@ -71,7 +71,7 @@ class ImageUploadForm extends Control{
         $values = $form->getValues();
 
         foreach ($values["images"] as $imageData) {
-            $image = $this->imageModel->createImage($imageData, $this->presenter->getUser()->getId());
+            $image = $this->imageModel->createImage($imageData);
             $this->presenter->images[$image->getId()] = $image->getId();
         }
 

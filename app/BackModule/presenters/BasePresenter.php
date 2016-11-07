@@ -2,6 +2,7 @@
 
 namespace App\BackModule\Presenters;
 
+use App\Model\CronModel;
 use App\Model\RedirectHelper;
 use Nette\Application\UI\Presenter;
 
@@ -10,6 +11,9 @@ abstract class BasePresenter extends Presenter
 
     /** @var  RedirectHelper @inject */
     public $redirectHelper;
+
+    /** @var  CronModel @inject */
+    public $cronModel;
 
     protected $menu = array(
         array(
@@ -80,6 +84,8 @@ abstract class BasePresenter extends Presenter
         }
         
         $this->template->menu = $this->menu;
+
+        $this->cronModel->doJobs();
     }
 
     public function beforeRender()

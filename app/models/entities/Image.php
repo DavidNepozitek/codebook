@@ -27,15 +27,19 @@ class Image
      * @ORM\Column(type="string",nullable=false)
      */
     protected $extension;
+
+    /**
+     * @ORM\Column(type="datetime",nullable=false)
+     */
+    protected $upDate;
     
     /**
      * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="images")
      */
     protected $tutorial;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="images")
-     */
-    protected $user;
-
+    public function __construct()
+    {
+        $this->upDate = new \DateTime();
+    }
 }

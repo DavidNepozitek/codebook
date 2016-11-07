@@ -33,15 +33,5 @@ class User
      * @ORM\Column(type="string",nullable=false)
      */
     protected $role;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="user")
-     */
-    protected $images;
-
-    public function __construct()
-    {
-        $this->images = new ArrayCollection();
-    }
     
 }
