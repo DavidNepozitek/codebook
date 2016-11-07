@@ -1,6 +1,6 @@
 /*!
 *
-* PROJECT: Codebook - Frontend handbook for students and teachers | Admin section.
+* PROJECT: Codebook - Frontend handbook for students and teachers.
 * AUTHORS: Martin Kucera, David Nepozitek, Jan Piechaczek, Jakub Szarowski
 *
 */
@@ -100,6 +100,8 @@ body{
 \*------------------------------------*/
 
 
+@import url('https://fonts.googleapis.com/css?family=Lora:700,700i&subset=latin-ext');
+
 @font-face {
   font-family: 'Fira Sans';
   src: url('../fonts/firasans-lightitalic-webfont.woff2') format('woff2'),
@@ -124,19 +126,6 @@ body{
   url('../fonts/firasans-bold-webfont.woff') format('woff'),
   url('../fonts/firasans-bold-webfont.ttf') format('truetype');
   font-weight: 700;
-  font-style: normal;
-}
-
-/**
- * Jaapokki - types: regular
- * Use following CSS rule: font-family: 'Jaapokki', sans-serif;
- */
-@font-face {
-  font-family: 'Jaapokki';
-  src: url('../fonts/jaapokki-regular-webfont.woff2') format('woff2'),
-  url('../fonts/jaapokki-regular-webfont.woff') format('woff'),
-  url('../fonts/jaapokki-regular-webfont.ttf') format('truetype');
-  font-weight: normal;
   font-style: normal;
 }
 
@@ -173,7 +162,7 @@ body{
 }
 
 .article__title--bigger, .article__title {
-  font-family: 'Jaapokki', sans-serif;
+  font-family: 'Lora', sans-serif;
   color: #2d476e;
   font-size: 24px;
 }
@@ -198,7 +187,7 @@ body{
   font-family: "Fira Sans", sans-serif;
   text-align: center;
   border-radius: 2px;
-  font-weight: 700;
+  font-weight: 300;
   border: none;
   transition: 0.3s;
   color: white;
@@ -217,9 +206,8 @@ body{
 .btn--blue {
   background-color: #4b8eef;
   font-size: 14px;
-  font-weight: 700;
   float: right;
-  box-shadow: 0 1px 4px 0 #4b8eef;
+  //box-shadow: 0 1px 4px 0 #4b8eef;
 
   &:hover {
     background-color: #307ceb;
@@ -229,9 +217,8 @@ body{
 
 .btn--orange {
   background-color: #f8534b;
-  font-weight: 700;
   font-size: 14px;
-  box-shadow: 0 1px 4px 0 #f8534b;
+  //box-shadow: 0 1px 4px 0 #f8534b;
 
   &:hover {
     background-color: #f73f36;
@@ -241,9 +228,8 @@ body{
 
 .btn--green {
   background-color: #4cd964;
-  font-weight: 700;
   font-size: 14px;
-  box-shadow: 0 1px 4px 0 #4cd964;
+  //box-shadow: 0 1px 4px 0 #4cd964;
 
   &:hover {
     background-color: #2cd249;
