@@ -4,7 +4,6 @@ namespace App\Model;
 
 
 use App\Model\Entities\Image;
-use App\Model\Entities\User;
 use Nette\Http\FileUpload;
 use Tracy\Debugger;
 

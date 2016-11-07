@@ -67,7 +67,6 @@ class TutorialForm extends Control
         $form->addTextArea("source")
             ->setAttribute("placeholder", "Obsah článku");
         $form->addCheckbox('published', 'Publikovat ihned');
-        $form->addHidden("images");
 
         $form->addInteger("id", "id");
 

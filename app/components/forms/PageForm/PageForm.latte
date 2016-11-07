@@ -1,0 +1,37 @@
+{block content}
+
+<form n:name="form" class="ajax js-tutorialForm">
+    <div class="form-group">
+        <label class="form__create-article" n:name="title">Název</label>
+        {input "title" class => "form-control"}
+    </div>
+    <div class="form-group">
+        <label class="form__create-article" n:name="source">Obsah stránky</label>
+        <textarea n:name="source" class="form-control js-editor"></textarea>
+    </div>
+    {snippet flashMessages}
+        {if $flashes}
+            <div class="form-error">
+                <ul n:ifcontent>
+                    {foreach $flashes as $flash}
+                        {if $flash->type == "error"}
+                            <li>{$flash->message}</li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="form-success">
+                <ul n:ifcontent>
+                    {foreach $flashes as $flash}
+                        {if $flash->type == "success"}
+                            <li>{$flash->message}</li>
+                        {/if}
+                    {/foreach}
+                </ul>
+            </div>
+        {/if}
+    {/snippet}
+    <button n:name="submit" class="btn btn--blue button__create-article" type="submit">
+            Upravit stránku
+    </button>
+</form>

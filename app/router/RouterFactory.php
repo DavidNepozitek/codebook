@@ -24,13 +24,14 @@ class RouterFactory
 		$backRouter[] = new Route("login", "Login:login");
 
 
-		$backRouter[] = new Route("admin/<presenter>/<action>[/<id>]", array(
+		$backRouter[] = new Route("admin/page/<name>", "Page:edit");
+		$backRouter[] = new Route("admin/<presenter>/<action>[/<id>][/<name>]", array(
 			"presenter" => "Dashboard",
 			"action" => "default",
 		));
 
 		$frontRouter = new RouteList("Front");
-		$frontRouter[] = new Route("navod/<id>", "Tutorial:detail");
+
 		$frontRouter[] = new Route("<presenter>/<action>[/<id>]", array(
 			"presenter" => [
 				Route::VALUE => "Homepage",

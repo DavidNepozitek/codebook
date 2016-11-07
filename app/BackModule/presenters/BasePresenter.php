@@ -15,47 +15,6 @@ abstract class BasePresenter extends Presenter
     /** @var  CronModel @inject */
     public $cronModel;
 
-    protected $menu = array(
-        array(
-            "name" => "Přehled",
-            "icon" => "home",
-            "link" => "Dashboard:default",
-            "active" => "Dashboard:default"
-        ),
-        array(
-            "name" => "Návody",
-            "icon" => "file-text-o",
-            "link" => "",
-            "active" => "Tutorial:*",
-            "sub" => array(
-                array(
-                    "name" => "Seznam",
-                    "link" => "Tutorial:list",
-                    "active" => "Tutorial:list",
-                ),
-                array(
-                    "name" => "Přidat",
-                    "link" => "Tutorial:add",
-                    "active" => "Tutorial:add",
-                )
-            )
-        ),
-        array(
-            "name" => "Stránky",
-            "icon" => "file",
-            "link" => "",
-            "active" => "Page:*",
-            "sub" => array(
-                array(
-                    "name" => "Seznam",
-                    "link" => "Page:list",
-                    "active" => "Page:list",
-                )
-            )
-        ),
-
-    );
-
     public function startup()
     {
         parent::startup();
@@ -64,26 +23,71 @@ abstract class BasePresenter extends Presenter
             $this->redirect("Login:login");
         }
 
+        $menu = array(
+            array(
+                "name" => "Přehled",
+                "icon" => "home",
+                "link" => $this->link("Dashboard:default"),
+                "active" => "Dashboard:default"
+            ),
+            array(
+                "name" => "Návody",
+                "icon" => "file-text-o",
+                "link" => "",
+                "active" => "Tutorial:*",
+                "sub" => array(
+                    array(
+                        "name" => "Seznam",
+                        "link" => $this->link("Tutorial:list"),
+                        "active" => $this->isLinkCurrent("Tutorial:list"),
+                    ),
+                    array(
+                        "name" => "Přidat",
+                        "link" => $this->link("Tutorial:add"),
+                        "active" => $this->isLinkCurrent("Tutorial:add"),
+                    )
+                )
+            ),
+            array(
+                "name" => "Stránky",
+                "icon" => "file",
+                "link" => "",
+                "active" => "Page:*",
+                "sub" => array(
+                    array(
+                        "name" => "O projektu",
+                        "link" => $this->link("Page:edit", array("name" => "about")),
+                        "active" => $this->isLinkCurrent("Page:edit", array("name" => "about")),
+                    ),
+                    array(
+                        "name" => "Odkazy",
+                        "link" => $this->link("Page:edit", array("name" => "links")),
+                        "active" => $this->isLinkCurrent("Page:edit", array("name" => "links")),
+                    )
+                )
+            ),
+        );
+
         
         if ($this->user->isInRole("admin")) {
 
-            $this->menu[] = array(
+            $menu[] = array(
                 "name" => "Uživatelé",
                 "icon" => "user",
-                "link" => "User:list",
+                "link" => $this->link("User:list"),
                 "active" => "User:*"
             );
 
-            $this->menu[] = array(
+            $menu[] = array(
                 "name" => "Nastavení",
                 "icon" => "cogs",
-                "link" => "Settings:default",
+                "link" => $this->link("Settings:default"),
                 "active" => "Settings:*"
             );
             
         }
         
-        $this->template->menu = $this->menu;
+        $this->template->menu = $menu;
 
         $this->cronModel->doJobs();
     }

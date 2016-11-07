@@ -28,6 +28,7 @@ services:
 	- App\Components\ITutorialFormFactory
 	- App\Components\IPasswordChangeFormFactory
 	- App\Components\IImageUploadFormFactory
+	- App\Components\IPageFormFactory
 
 
 extensions:

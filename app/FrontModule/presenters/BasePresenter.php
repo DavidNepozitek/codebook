@@ -24,13 +24,13 @@ abstract class BasePresenter extends Presenter
             ),
             array(
                 "name" => "Odkazy",
-                "link" => "Link:default",
-                "active" => "Link:*"
+                "link" => "Page:default",
+                "active" => "Page:*"
             ),
             array(
                 "name" => "O Projektu",
-                "link" => "About:default",
-                "active" => "About:*"
+                "link" => "Page:default",
+                "active" => "Page:*"
             )
         );
     }
