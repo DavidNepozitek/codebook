@@ -3,10 +3,8 @@
 <div class="container">
 
     <div class="all-tutorials"><a n:href="Homepage:default" class="all-tutorials__link"><i class="fa fa-caret-left all-tutorials__arrow" aria-hidden="true"></i> Všechny návody</a></div>
+    {ifset $tutorial}
     <article class="article article--detail">
-
-        {ifset $tutorial}
-
         <div class="article__wrapper">
             <div class="article__wrapper--bottom">
                 <div class="article__wrapper--difficulty">
@@ -29,17 +27,18 @@
         </h3>
         <p class="article__perex">{$tutorial->getPerex()}</p>
         <div class="article__line"></div>
-
-
         <div id="tutorial-source">
             {$tutorial->getContent()|noescape}
         </div>
+    </article>
 
             {else}
 
-            <div class="text-center">Požadovaný návod se nepodařilo najít :(<div>
+            <article class="article article--detail" style="padding-top: 40px">
+                <div class="text-center">Požadovaný návod se nepodařilo najít :(</div>
+             </article>
 
         {/ifset}
-    </article>
+
 
 </div>

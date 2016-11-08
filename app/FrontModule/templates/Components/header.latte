@@ -12,8 +12,8 @@
             <div class="collapse navbar-collapse main-navigation">
                 <ul class="nav navbar-nav navbar-right">
                     {foreach $menu as $item}
-                        <li class="shaped menu btn main-navigation__item{if $presenter->isLinkCurrent($item['active'])} main-navigation__item--active{/if}">
-                            <a n:href="$item['link']">
+                        <li class="shaped menu btn main-navigation__item{if $item['active']} main-navigation__item--active{/if}">
+                            <a href="{$item['link']}">
                                 {$item["name"]}
                             </a>
                         </li>

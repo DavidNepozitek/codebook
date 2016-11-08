@@ -18,6 +18,7 @@ services:
 	- App\Model\TutorialModel
 	- App\Model\Parser
 	- App\Model\ImageModel
+	- App\Model\PageModel
 	- App\Model\RedirectHelper
 	- App\Model\CronModel
 

@@ -29,12 +29,12 @@ class Page
     protected $title;
 
     /**
-     * @ORM\Column(type="string",nullable=false)
+     * @ORM\Column(type="text",nullable=false)
      */
     protected $source;
 
     /**
-     * @ORM\Column(type="string",nullable=false)
+     * @ORM\Column(type="text",nullable=false)
      */
     protected $content;
 

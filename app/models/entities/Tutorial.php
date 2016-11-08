@@ -70,6 +70,11 @@ class Tutorial
      */
     protected $published;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="tutorials")
+     */
+    protected $user;
+
     public function __construct()
     {
         $this->pubDate = new \DateTime();

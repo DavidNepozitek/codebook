@@ -32,13 +32,23 @@ class RouterFactory
 
 		$frontRouter = new RouteList("Front");
 
+
+		$frontRouter[] = new Route("<name>", array(
+			"presenter" => "Page",
+			"action" => "default",
+			"name" => [
+				Route::FILTER_TABLE => [
+					"o-projektu" => "about",
+					"odkazy" => "links"
+				]
+			]
+		));
+		$frontRouter[] = new Route("navod/<id>", "Tutorial:detail");
 		$frontRouter[] = new Route("<presenter>/<action>[/<id>]", array(
 			"presenter" => [
 				Route::VALUE => "Homepage",
 				Route::FILTER_TABLE => [
 					"navody" => "Tutorial",
-					"odkazy" => "Link",
-					"o-projektu" => "About",
 				],
 			],
 			"action" => "default",

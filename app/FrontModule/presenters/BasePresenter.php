@@ -14,23 +14,23 @@ abstract class BasePresenter extends Presenter
         $this->template->menu = array(
             array(
                 "name" => "Úvod",
-                "link" => "Homepage:default",
-                "active" => "Homepage:default"
+                "link" => $this->link("Homepage:default"),
+                "active" => $this->isLinkCurrent("Homepage:default")
             ),
             array(
                 "name" => "Návody",
-                "link" => "Tutorial:default",
-                "active" => "Tutorial:*"
+                "link" => $this->link("Tutorial:default"),
+                "active" => $this->isLinkCurrent("Tutorial:default")
             ),
             array(
                 "name" => "Odkazy",
-                "link" => "Page:default",
-                "active" => "Page:*"
+                "link" => $this->link("Page:default", array("name" => "links")),
+                "active" => $this->isLinkCurrent("Page:default", array("name" => "links"))
             ),
             array(
                 "name" => "O Projektu",
-                "link" => "Page:default",
-                "active" => "Page:*"
+                "link" => $this->link("Page:default", array("name" => "about")),
+                "active" => $this->isLinkCurrent("Page:default", array("name" => "about"))
             )
         );
     }

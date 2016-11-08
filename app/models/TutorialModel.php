@@ -5,6 +5,7 @@ namespace App\Model;
 use App\Model\Entities\Image;
 use App\Model\Entities\Tag;
 use App\Model\Entities\Tutorial;
+use App\Model\Entities\User;
 use Kdyby\Doctrine\EntityManager;
 use Nette\Neon\Exception;
 
@@ -32,7 +33,7 @@ class TutorialModel extends BaseModel
      * @param $difficulty
      * @throws Exception
      */
-    public function createTutorial($title, $perex, $source, $difficulty, $published, $tags, $images)
+    public function createTutorial($title, $perex, $source, $difficulty, $published, $tags, $images, $userId)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("title" => $title));
@@ -41,11 +42,14 @@ class TutorialModel extends BaseModel
             throw new Exception("Návod s tímto jménem již existuje");
         }
 
+        $user = $this->getOne(User::class, array("id" => $userId));
+
         $parser = new Parser();
         $content = $parser->text($source);
 
         $tutorial = new Tutorial();
 
+        $tutorial->setUser($user);
         $tutorial->setTitle($title);
         $tutorial->setPerex($perex);
         $tutorial->setSource($source);

@@ -45,7 +45,6 @@ class TutorialForm extends Control
         $template = $this->template;
         $template->setFile(__DIR__ . "/TutorialForm.latte");
         $template->render();
-
     }
 
 
@@ -55,7 +54,8 @@ class TutorialForm extends Control
 
         $form->addText("title")
             ->setAttribute("placeholder", "Název návodu")
-            ->setRequired("Vyplňte prosím svůj email");
+            ->setRequired("Zadejte prosím název návodu")
+            ->addRule(Form::MAX_LENGTH, 'Maximální délka názvu je %d znaků.', 60);
         $form->addSelect('difficulty', 'Obtížnost:', $this->tutorialModel->difficulties)
             ->setRequired("Zvolte prosím kateogrii")
             ->setPrompt('Zvolte obtížnost');
@@ -119,7 +119,7 @@ class TutorialForm extends Control
             try {
                 $tutorial = $this->tutorialModel->createTutorial(
                     $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"],
-                    $values["tags"], $this->presenter->images
+                    $values["tags"], $this->presenter->images, $this->presenter->getUser()->getId()
                 );
 
                 $this->presenter->flashMessage("Nový článek byl úspěšně přidán! Zde ho můžete dále upravovat.", "success");

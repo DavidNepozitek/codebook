@@ -1,0 +1,15 @@
+{block content}
+<div class="container">
+    {ifset $page}
+        {$page->getTitle()}
+        <article class="article article--detail">
+            <div id="tutorial-source">
+                {$page->getContent()|noescape}
+            </div>
+        </article>
+    {else}
+        <article class="article article--detail" style="padding-top: 40px">
+            <div class="text-center">Požadovanou stránku se nepodařilo najít :(</div>
+        </article>
+    {/ifset}
+</div>
