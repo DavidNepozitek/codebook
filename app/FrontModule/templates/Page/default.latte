@@ -1,7 +1,12 @@
+{block title}
+    {ifset $page}
+        {$page->getTitle()}
+    {/ifset}
+{/block}
 {block content}
 <div class="container">
     {ifset $page}
-        {$page->getTitle()}
+        <h1 class="title--page">{include title}</h1>
         <article class="article article--detail">
             <div id="tutorial-source">
                 {$page->getContent()|noescape}
