@@ -57,20 +57,8 @@ class TutorialPresenter extends BasePresenter
             $this->images[$imageId] = $imageId;
         }
     }
-
-    public function shutdown($response)
-    {
-        parent::shutdown($response);
-
-        /*if (isset($this->images)) {
-
-            foreach ($this->images as $imageId) {
-                $this->imageModel->deleteImage($imageId);
-            }
-        }*/
-
-    }
-
+    
+    
     protected function createComponentGrid($name)
     {
         $grid = new Grid($this, $name);

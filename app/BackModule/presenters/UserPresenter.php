@@ -2,6 +2,7 @@
 
 namespace App\BackModule\Presenters;
 
+use App\Components\IPasswordChangeFormFactory;
 use App\Model\Entities\User;
 use App\Model\UserModel;
 use Grido\DataSources\Doctrine;
@@ -14,6 +15,8 @@ class UserPresenter extends BasePresenter
     /** @var UserModel @inject */
     public $userModel;
 
+    /** @var  IPasswordChangeFormFactory @inject */
+    public $passwordChangeFormFactory;
 
     public function startup()
     {
@@ -22,6 +25,11 @@ class UserPresenter extends BasePresenter
         if (!$this->user->isInRole("admin")) {
             $this->redirect("Dashboard:default");
         }
+    }
+
+    protected function createComponentPasswordChangeForm()
+    {
+        return $this->passwordChangeFormFactory->create();
     }
 
     protected function createComponentGrid($name)
@@ -53,7 +61,7 @@ class UserPresenter extends BasePresenter
             ->setFilterText()
             ->setSuggestion();
 
-        $grid->addColumnText('changeRole', 'Změna role')
+        $grid->addColumnText('changeRole', 'Akce')
             ->setCustomRender(function ($user) {
 
                 $el = Html::el();
@@ -71,6 +79,14 @@ class UserPresenter extends BasePresenter
                 $promoteIcon = Html::el("i");
                 $promoteIcon->addAttributes(array("class" => "fa fa-level-up"));
                 $promote->addHtml($promoteIcon);
+
+                $passChange = Html::el("a");
+                $passChange->addAttributes(array("class" => "ajax pull-right btn btn--blue"));
+                $passChange->addText("Změnit heslo");
+                $passChange->href($this->link("User:passChange", ["id" => $user->getId()]));
+                $passChangeIcon = Html::el("i");
+                $passChangeIcon->addAttributes(array("class" => "fa fa-lock"));
+                $passChange->addHtml($passChangeIcon);
 
                 if ($user->getRole() == "guest") {
                     $demote->appendAttribute("class", "disabled");
@@ -90,14 +106,20 @@ class UserPresenter extends BasePresenter
                 if ($this->presenter->getUser()->getIdentity()->getId() == $user->getId()) {
                     $demote = "";
                     $promote = "";
+                    $passChange = "";
                 }
 
                 $el->addHtml($demote);
                 $el->addHtml($promote);
-
+                $el->addHtml($passChange);
+                
                 return $el;
             });
+    }
 
+    public function renderPassChange($id)
+    {
+        $this->template->id = $id;
     }
 
     /**

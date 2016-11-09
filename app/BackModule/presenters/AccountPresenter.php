@@ -14,4 +14,9 @@ class AccountPresenter extends BasePresenter
     {
         return $this->passwordChangeFormFactory->create();
     }
+
+    public function renderSettings()
+    {
+        $this->template->id = $this->getUser()->getId();
+    }
 }
