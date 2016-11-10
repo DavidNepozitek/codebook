@@ -1,0 +1,21 @@
+<footer>
+    <div class="container-fluid bg-orange footer-menu">
+        <div class="row text-center">
+            {foreach $menu as $item}
+                <li class="btn main-navigation__item">
+                    <a href="{$item['link']}">
+                        {$item["name"]}
+                    </a>
+                </li>
+            {/foreach}
+        </div>
+    </div>
+    <div class="container-fluid vertical-padding bg-darker_orange">
+        <div class="row text-center ">
+            <span class="footer">
+                vytvořeno v rámci maturitního projektu <a class="footer__link" target="_blank" href="http://www.gym-karvina.cz/">gk</a> | David Nepožitek, Martin Kučera, Jan Piechaczek, Jakub Szarowski
+            </span>
+        </div>
+    </div>
+
+</footer>
