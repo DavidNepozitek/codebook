@@ -83,8 +83,7 @@
     background-color: white;
     font-size: 14px;
     color: rgba(50, 60, 88, 0.75);
-    height: 98px;
-    padding-left: 3px;}
+    padding: 0 0 22px 3px;}
 
 .grido .filter, .grido table {
     border-radius: 0;
@@ -293,6 +292,10 @@
     }
 }
 
+.grido .btn:last-child  {
+    margin-right: 0;
+}
+
 .grido .btn-default {
     background-color: #4b8eef;
     color: #FFFFFF;;
@@ -488,3 +491,63 @@
 
 .grido.bootstrap .filter textarea {
     height: 23px !important; }
+
+
+
+/*------------------------------------*\
+#RESPONSIVE
+\*------------------------------------*/
+
+@media (max-width: 992px) {
+    .grido .filter.outer {
+        height: auto;
+    }
+
+    .grido.bootstrap.table-responsive {
+        border: none;
+    }
+
+    .grido .table-responsive {
+        width: 100%;
+    }
+
+    .grid-cell-changeRole {
+        width: auto;}
+
+    .grido td:last-child, .grido th:last-child {
+        padding: 6px 10px 0 10px;
+
+        .btn {
+            margin-bottom: 6px;
+
+        }
+    }
+
+    .grido .table {
+        width: auto;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .grido td:last-child, .grido th:last-child {
+        .pull-right {
+            float: none !important;
+        }
+    }
+
+    .grido td:last-child, .grido th:last-child {
+        padding: 6px 10px 0 10px;
+
+        .btn {
+            margin-bottom: 6px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .table-responsive>.table>tbody>tr>td, .table-responsive>.table>tbody>tr>th, .table-responsive>.table>tfoot>tr>td, .table-responsive>.table>tfoot>tr>th, .table-responsive>.table>thead>tr>td, .table-responsive>.table>thead>tr>th {
+        white-space: normal;
+    }
+}
