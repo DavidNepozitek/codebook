@@ -7,6 +7,13 @@ use App\Model\Entities\Page;
 class PageModel extends BaseModel
 {
 
+    /**
+     * Updates or creates a page
+     *
+     * @param $name
+     * @param $title
+     * @param $source
+     */
     public function editPage($name, $title, $source)
     {
         $page = $this->getOne(Page::class, array("name" => $name));

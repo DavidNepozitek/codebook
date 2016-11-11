@@ -29,6 +29,11 @@ class TutorialPresenter extends BasePresenter
         
     }
 
+    /**
+     * Renders a detail and handles the see count
+     *
+     * @param $id
+     */
     public function renderDetail($id)
     {
         $seenSection = $this->getSession("seen");

@@ -37,6 +37,8 @@ class UserModel extends BaseModel
     }
 
     /**
+     * Gets a user by e-mail
+     *
      * @param $email
      * @return User
      */

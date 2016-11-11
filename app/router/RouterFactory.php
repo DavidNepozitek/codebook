@@ -49,9 +49,6 @@ class RouterFactory
 		$frontRouter[] = new Route("<presenter>/<action>[/<id>]", array(
 			"presenter" => [
 				Route::VALUE => "Homepage",
-				Route::FILTER_TABLE => [
-					"navody" => "Tutorial",
-				],
 			],
 			"action" => "default",
 		));

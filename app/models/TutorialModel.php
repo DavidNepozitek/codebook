@@ -24,6 +24,7 @@ class TutorialModel extends BaseModel
         $this->imageModel = $imageModel;
     }
 
+
     /**
      * Creates a tutorial with given parameters
      *
@@ -31,6 +32,11 @@ class TutorialModel extends BaseModel
      * @param $perex
      * @param $source
      * @param $difficulty
+     * @param $published
+     * @param $tags
+     * @param $images
+     * @param $userId
+     * @return Tutorial|mixed|null|object
      * @throws Exception
      */
     public function createTutorial($title, $perex, $source, $difficulty, $published, $tags, $images, $userId)
@@ -82,6 +88,19 @@ class TutorialModel extends BaseModel
 
     }
 
+    /**
+     * Edits a tutorial
+     *
+     * @param $id
+     * @param $title
+     * @param $perex
+     * @param $source
+     * @param $difficulty
+     * @param $published
+     * @param $tags
+     * @param $images
+     * @throws Exception
+     */
     public function editTutorial($id, $title, $perex, $source, $difficulty, $published, $tags, $images)
     {
 
@@ -133,6 +152,11 @@ class TutorialModel extends BaseModel
     }
 
 
+    /**
+     * Increments the seen count of the tutorial with given ID
+     *
+     * @param $id
+     */
     public function seenIncrement($id)
     {
 
@@ -145,15 +169,23 @@ class TutorialModel extends BaseModel
 
     }
 
+    /**
+     * Removes a tutorial and all images assigned to it
+     *
+     * @param $id
+     */
     public function deleteTutorial($id)
     {
         $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
+        $imageIds = array();
 
         if ($tutorial) {
 
             foreach($tutorial->getImages() as $image) {
-                $this->imageModel->deleteImage($image->getId());
+                $imageIds[] = $image->getId();
             }
+
+            $this->imageModel->deleteImage($imageIds);
 
             $this->remove($tutorial);
             $this->flush();

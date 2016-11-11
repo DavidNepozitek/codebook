@@ -28,6 +28,9 @@ class CronModel extends BaseModel
 
     }
 
+    /**
+     * Updates the cron file and does planned jobs
+     */
     public function doJobs()
     {
 
@@ -60,6 +63,9 @@ class CronModel extends BaseModel
         }
     }
 
+    /**
+     * Creates the cron file if doesn't exist, updates the cron file according to the $jobs array
+     */
     public function updateCronFile()
     {
         if (file_exists($this::FILE)) {

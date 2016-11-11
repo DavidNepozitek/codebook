@@ -10,6 +10,12 @@ use Tracy\Debugger;
 class ImageModel extends BaseModel
 {
 
+    /**
+     * Creates an image entity, assigns a name to the image and uploads it
+     *
+     * @param FileUpload $imageData
+     * @return Image
+     */
     public function createImage(FileUpload $imageData)
     {
 
@@ -44,6 +50,11 @@ class ImageModel extends BaseModel
         return $image;
     }
 
+    /**
+     * Deletes an image with given ID OR deletes all images from the array of IDs as a parameter
+     *
+     * @param $id
+     */
     public function deleteImage($id)
     {
 
@@ -82,6 +93,9 @@ class ImageModel extends BaseModel
         $this->flush();
     }
 
+    /**
+     * Deletes all images, which aren't assigned to a tutorial and are at least 1 day old
+     */
     public function purgeImages()
     {
         $imageIds = array();
