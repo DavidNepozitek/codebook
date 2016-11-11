@@ -4,6 +4,7 @@ namespace App\BackModule\Presenters;
 
 use App\Model\CronModel;
 use App\Model\RedirectHelper;
+use Google\Auth\Credentials\ServiceAccountCredentials;
 use Nette\Application\UI\Presenter;
 
 abstract class BasePresenter extends Presenter
@@ -27,6 +28,8 @@ abstract class BasePresenter extends Presenter
                 $this->redirect("Login:login");
             }
         }
+
+        $this->setupGoogleClient();
 
         $menu = array(
             array(
@@ -129,7 +132,21 @@ abstract class BasePresenter extends Presenter
 
             }
 
+        }
+    }
 
+    private function setupGoogleClient()
+    {
+        $this->template->gaView = "ga:133533367";
+        if (isset($_COOKIE["access_token"]) AND $_COOKIE["access_token"]) {
+            $this->template->gaAccessToken = $_COOKIE["access_token"];
+        } else {
+            $service = new ServiceAccountCredentials(\Google_Service_Analytics::ANALYTICS_READONLY, APP_DIR . "config/codebook-google.json");
+            $access = $service->fetchAuthToken();
+            if (isset($access["expires_in"])) {
+                setcookie("access_token", $access["access_token"], time() + $access["expires_in"] - 300);
+            }
+            $this->template->gaAccessToken = $access["access_token"];
         }
     }
 
