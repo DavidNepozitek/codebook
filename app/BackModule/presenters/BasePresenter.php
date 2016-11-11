@@ -20,7 +20,12 @@ abstract class BasePresenter extends Presenter
         parent::startup();
 
         if (!$this->getUser()->isLoggedIn() AND $this->presenter->name != "Back:Login") {
-            $this->redirect("Login:login");
+
+            if ($this->isAjax()) {
+                $this->payload->forceRedirect = $this->link("Login:login");
+            } else {
+                $this->redirect("Login:login");
+            }
         }
 
         $menu = array(
@@ -100,7 +105,6 @@ abstract class BasePresenter extends Presenter
 
             $redirect = $this->redirectHelper->getRedirect();
 
-            //TODO: Navigation on back/forward
 
             if (isset($redirect["redirect"])) {
                 $this->presenter->payload->redirect = $redirect["redirect"];
@@ -113,6 +117,7 @@ abstract class BasePresenter extends Presenter
                 $this->redrawControl('headerTitle');
                 $this->redrawControl('flashMessages');
                 $this->redrawControl('content');
+                $this->redrawControl('navigation');
 
             } else {
 
@@ -120,6 +125,7 @@ abstract class BasePresenter extends Presenter
                 $this->redrawControl('header');
                 $this->redrawControl('headerTitle');
                 $this->redrawControl('flashMessages');
+                $this->redrawControl('navigation');
 
             }
 

@@ -1,83 +1,81 @@
 {block content}
 
-<div class="container">
-    <div class="row">
+<div class="row">
 
-        <div class="col-md-8">
-            <h1 class=" title title--chosen">vybraný návod</h1>
-            {ifset $chosenTut[0]}
-                <article class="article article--chosen">
+    <div class="col-md-8">
+        <h1 class=" title title--chosen">vybraný návod</h1>
+        {ifset $chosenTut[0]}
+            <article class="article article--chosen">
 
-                    <div class="article__wrapper">
-                        <h2 class="article__title--bigger">{$chosenTut[0]->getTitle()}</h2>
-                    </div>
-                    <h3 class="article__tags">zařazeno do
-                        <span class="article__category">
-                            {foreach $chosenTut[0]->getTags() as $tag} {$tag->getName()} {sep}&bull;{/sep}{/foreach}
-                        </span>
-                    </h3>
-                    <p class="article__text">{$chosenTut[0]->getPerex()|truncate:280}</p>
-                    <div class="article__wrapper--bottom"><div class="article__wrapper--difficulty">
-                            {for $i = 0; $i <= $chosenTut[0]->getDifficulty(); $i++}
-                                <i class="fa fa-cog article__icon article__icon--active" aria-hidden="true"></i>
-                            {/for}
-                            {for $i = 2; $i > $chosenTut[0]->getDifficulty(); $i--}
-                                <i class="fa fa-cog article__icon" aria-hidden="true"></i>
-                            {/for}
-                            <span class="article__likes">{$chosenTut[0]->getSeenCount()}</span>
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                        </div><a class="btn btn--blue article__btn" n:href="Tutorial:detail $chosenTut[0]->getId()">Číst více</a></div>
-
-                </article>
-                {else}
-                <article class="article article--chosen">
-
-                    V databázi zatím není žádný návod :(
-
-                </article>
-            {/ifset}
-        </div>
-
-        <div class="col-md-4">
-            <h1 class="title title--sotd">nejlepší stránky dne</h1>
-                <div class="sotd-list">
-
-                    <ul>
-                        {foreach $sotds as $sotd}
-                            <li>
-                                <span class="sotd__date">{$sotd->getPubDate()|date:'j. n. Y'}</span><br>
-                                <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
-                            </li>
-                        {/foreach}
-                    </ul>
-
+                <div class="article__wrapper">
+                    <h2 class="article__title--bigger">{$chosenTut[0]->getTitle()}</h2>
                 </div>
-        </div>
+                <h3 class="article__tags">zařazeno do
+                    <span class="article__category">
+                        {foreach $chosenTut[0]->getTags() as $tag} {$tag->getName()} {sep}&bull;{/sep}{/foreach}
+                    </span>
+                </h3>
+                <p class="article__text">{$chosenTut[0]->getPerex()|truncate:280}</p>
+                <div class="article__wrapper--bottom"><div class="article__wrapper--difficulty">
+                        {for $i = 0; $i <= $chosenTut[0]->getDifficulty(); $i++}
+                            <i class="fa fa-cog article__icon article__icon--active" aria-hidden="true"></i>
+                        {/for}
+                        {for $i = 2; $i > $chosenTut[0]->getDifficulty(); $i--}
+                            <i class="fa fa-cog article__icon" aria-hidden="true"></i>
+                        {/for}
+                        <span class="article__likes">{$chosenTut[0]->getSeenCount()}</span>
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </div><a class="btn btn--blue article__btn" n:href="Tutorial:detail $chosenTut[0]->getId()">Číst více</a></div>
 
-    </div>
-
-    <div class="row">
-
-        <h1 class="title title--last">poslední návody</h1>
-
-        {ifset $tutorials[0]}
-            {foreach $tutorials as $tutorial}
-                {include ../Components/tutorial.latte, tutorial => $tutorial}
-            {/foreach}
+            </article>
             {else}
-            V databázi zatím není žádný návod :(
+            <article class="article article--chosen">
+
+                V databázi zatím není žádný návod :(
+
+            </article>
         {/ifset}
-
-    </div>
-</div>
-
-<div class="container">
-
-    <div class="row btn--down">
-    <button class="col-md-12 btn btn--orange btn--all">Všechny návody</button>
     </div>
 
+    <div class="col-md-4">
+        <h1 class="title title--sotd">nejlepší stránky dne</h1>
+            <div class="sotd-list">
+
+                <ul>
+                    {foreach $sotds as $sotd}
+                        <li>
+                            <span class="sotd__date">{$sotd->getPubDate()|date:'j. n. Y'}</span><br>
+                            <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+
+            </div>
+    </div>
+
 </div>
+
+<div class="row">
+
+    <h1 class="title title--last">poslední návody</h1>
+
+    {ifset $tutorials[0]}
+        {foreach $tutorials as $tutorial}
+            {include ../Components/tutorial.latte, tutorial => $tutorial}
+        {/foreach}
+        {else}
+        V databázi zatím není žádný návod :(
+    {/ifset}
+
+</div>
+
+
+
+<div class="row btn--down">
+<button class="col-md-12 btn btn--orange btn--all">Všechny návody</button>
+</div>
+
+
 
 
 

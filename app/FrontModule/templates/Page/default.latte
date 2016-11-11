@@ -4,17 +4,16 @@
     {/ifset}
 {/block}
 {block content}
-<div class="container">
-    {ifset $page}
-        <h1 class="title--page">{include title}</h1>
-        <article class="article article--detail">
-            <div id="tutorial-source">
-                {$page->getContent()|noescape}
-            </div>
-        </article>
-    {else}
-        <article class="article article--detail" style="padding-top: 40px">
-            <div class="text-center">Požadovanou stránku se nepodařilo najít :(</div>
-        </article>
-    {/ifset}
-</div>
+
+{ifset $page}
+    <h1 class="title--page">{include title}</h1>
+    <article class="article article--detail">
+        <div id="tutorial-source">
+            {$page->getContent()|noescape}
+        </div>
+    </article>
+{else}
+    <article class="article article--detail" style="padding-top: 40px">
+        <div class="text-center">Požadovanou stránku se nepodařilo najít :(</div>
+    </article>
+{/ifset}

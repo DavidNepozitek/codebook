@@ -2,6 +2,7 @@
 
 namespace App\FrontModule\Presenters;
 
+use App\Components\IFilterFormFactory;
 use App\Model\Entities\Tutorial;
 use App\Model\TutorialModel;
 use Nette;
@@ -14,10 +15,18 @@ class TutorialPresenter extends BasePresenter
     /** @var TutorialModel @inject */
     public $tutorialModel;
 
+    /** @var  IFilterFormFactory @inject */
+    public $filterFormFactory;
+
+    protected function createComponentFilterForm()
+    {
+        return $this->filterFormFactory->create();
+    }
+
+
     public function renderDefault()
     {
         
-
     }
 
     public function renderDetail($id)
