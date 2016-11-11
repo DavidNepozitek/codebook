@@ -96,6 +96,9 @@ gulp.task("js-back", function() {
             "assets/scripts/back/components/tags.js",
             "assets/scripts/back/components/navigation.js",
             "assets/scripts/back/components/tutorial.js",
+            "assets/scripts/back/components/activeusers.js",
+            "assets/scripts/back/components/daterange.js",
+            "assets/scripts/back/components/viewselector.js",
             "assets/scripts/back/components/onload.js"
         ])
         .pipe(plumber(plumberOpts))
