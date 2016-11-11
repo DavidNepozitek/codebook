@@ -20,7 +20,7 @@ gulp.task("watch", ["css-front", "css-back", "css-libs", "js-front", "js-back", 
 
     browserSync.init({
         proxy: {
-            target: "http://localhost:8080/codebook"
+            target: "http://localhost/codebook"
         }
     });
 
