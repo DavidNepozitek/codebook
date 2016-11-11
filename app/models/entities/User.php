@@ -38,10 +38,5 @@ class User
      * @ORM\OneToMany(targetEntity="Tutorial", mappedBy="user")
      */
     protected $tutorials;
-    
-    public function __construct()
-    {
-        $this->images = new ArrayCollection();
-    }
 
 }

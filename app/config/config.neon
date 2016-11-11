@@ -9,6 +9,7 @@ application:
 
 session:
 	expiration: 14 days
+	savePath: "%tempDir%/sessions"
 
 
 services:
@@ -30,6 +31,7 @@ services:
 	- App\Components\IPasswordChangeFormFactory
 	- App\Components\IImageUploadFormFactory
 	- App\Components\IPageFormFactory
+	- App\Components\IFilterFormFactory
 
 
 extensions:

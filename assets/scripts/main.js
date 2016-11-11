@@ -215,3 +215,20 @@ $.fn.netteFormValidate = function () {
 
     return this;
 };
+
+
+
+
+
+/*------------------------------------*\
+ #Force redirect
+\*------------------------------------*/
+
+
+$.nette.ext({
+    success: function (payload) {
+        if (payload.forceRedirect) {
+            window.location.href = payload.forceRedirect;
+        }
+    }
+});
