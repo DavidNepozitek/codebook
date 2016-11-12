@@ -1,4 +1,5 @@
 app/config/config.local.neon
+app/config/codebook-google.json
 vendor/
 temp/*
 log/*

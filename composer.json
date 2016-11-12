@@ -25,7 +25,8 @@
 		"erusev/parsedown": "^1.6",
 		"erusev/parsedown-extra": "^0.7.1",
 		"o5/grido": "dev-master",
-		"vojtech-dobes/nette-ajax-history": "^2.0"
+		"vojtech-dobes/nette-ajax-history": "^2.0",
+		"google/apiclient": "2.0"
 	},
 	"require-dev": {
 		"nette/tester": "^1.6"

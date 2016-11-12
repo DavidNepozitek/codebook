@@ -2,3 +2,42 @@
     Přehled
 {/block}
 {block content}
+
+<div class="dash-panel dash-panel--chart">
+    <header class="dash-panel__header">
+        <h3 class="dash-panel__title">Návštěvy tento vs minulý týden</h3>
+    </header>
+    <div class="Chartjs dash-panel__content">
+        {if !$ga}
+            Na localhostu (bez klíče ke Google Analytics) je graf vypnutý.
+        {/if}
+        <figure class="Chartjs-figure" id="chart-1-container"></figure>
+    </div>
+</div>
+
+<div class="dash-panel">
+    <header class="dash-panel__header">
+        <h3 class="dash-panel__title">Nejnavštěvovanější návody</h3>
+    </header>
+    <div class="dash-panel__content">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Návod
+                    </th>
+                    <th>
+                        Počet přečtení
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {ifset $topTuts}
+                {foreach $topTuts as $topTut}
+                    <tr><td>{$topTut->getTitle()}</td><td>{$topTut->getSeenCount()}</td></tr>
+                {/foreach}
+            {/ifset}
+            </tbody>
+        </table>
+    </div>
+</div>
