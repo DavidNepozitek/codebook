@@ -151,8 +151,10 @@ class TutorialPresenter extends BasePresenter
     {
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
 
-        $tutorial->setPublished($publish);
-        $this->tutorialModel->flush();
+        if ($tutorial) {
+            $tutorial->setPublished($publish);
+            $this->tutorialModel->flush();
+        }
 
         if ($tutorial->getPublished() == $publish) {
 
@@ -168,8 +170,7 @@ class TutorialPresenter extends BasePresenter
 
     }
 
-
-    //TODO: Add confirmation
+    
     public function handleDelete($id)
     {
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));

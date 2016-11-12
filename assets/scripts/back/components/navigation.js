@@ -24,8 +24,11 @@ $(function(){
 
         $(document).on("click", ".js-ajax-menu", function (e) {
 
-            $(this).netteAjax(e).done(function () {
-                
+            $(this).netteAjax(e);
+        });
+
+        $.nette.ext({
+            success: function () {
                 nav.find(".main-navigation__item").each(function (i, element) {
                     $(element).removeClass("main-navigation__item--active");
                 });
@@ -33,14 +36,29 @@ $(function(){
                 nav.find(".main-navigation__subitem").each(function (i, element) {
                     $(element).removeClass("main-navigation__subitem--active");
                 });
-                
-                $(e.target).closest(".main-navigation__subitem").addClass("main-navigation__subitem--active");
-                $(e.target).closest(".main-navigation__item").addClass("main-navigation__item--active");
-                
-                handleCollapsed();
-            });
 
+                nav.find("a").each(function (i, element) {
+                    var path = window.location.pathname;
+                    var href = $(element).attr("href");
+
+                    if (path.indexOf(href) == 0) {
+
+                        if(href.match(/admin\/$/)) {
+                            if (path != href) {
+                                return true;
+                            }
+                        }
+
+                        $(element).closest(".main-navigation__item").addClass("main-navigation__item--active");
+                        $(element).closest(".main-navigation__subitem").addClass("main-navigation__subitem--active");
+                    }
+                });
+
+                handleCollapsed();
+            }
         });
+
+
 
         handleCollapsed();
 

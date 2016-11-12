@@ -47,7 +47,7 @@ abstract class BasePresenter extends Presenter
                     array(
                         "name" => "Seznam",
                         "link" => $this->link("Tutorial:list"),
-                        "active" => $this->isLinkCurrent("Tutorial:list"),
+                        "active" => $this->isLinkCurrent("Tutorial:list")
                     ),
                     array(
                         "name" => "Přidat",
@@ -120,16 +120,12 @@ abstract class BasePresenter extends Presenter
                 $this->redrawControl('headerTitle');
                 $this->redrawControl('flashMessages');
                 $this->redrawControl('content');
-                $this->redrawControl('navigation');
-
             } else {
 
                 $this->redrawControl('title');
                 $this->redrawControl('header');
                 $this->redrawControl('headerTitle');
                 $this->redrawControl('flashMessages');
-                $this->redrawControl('navigation');
-
             }
 
         }
