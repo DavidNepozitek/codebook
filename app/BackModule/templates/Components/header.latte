@@ -13,7 +13,7 @@
         <div class="header__right--position">
             <div class="header__logged-as-text">Přihlášen jako</div>
             <div class="header__logged-as-email">{$presenter->getUser()->getIdentity()->data["email"]}</div>
-            <a n:href="Account:settings" class="fa fa-cog header__settings"></a>
+            <a n:href="Account:settings" class="ajax fa fa-cog header__settings"></a>
             <a class="btn btn--blue header__button-logout" n:href="Login:logout">Odhlásit se <i class="fa fa-sign-out"></i></a>
         </div>
     </div>

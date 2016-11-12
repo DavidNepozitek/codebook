@@ -120,6 +120,7 @@ abstract class BasePresenter extends Presenter
                 $this->redrawControl('headerTitle');
                 $this->redrawControl('flashMessages');
                 $this->redrawControl('content');
+                $this->redrawControl('ga-token');
             } else {
 
                 $this->redrawControl('title');
