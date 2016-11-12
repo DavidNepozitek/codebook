@@ -1,11 +1,15 @@
 $(function () {
 
+    if ($(".js-admin-content").data("ga") == "0") {
+        return;
+    }
+
     // == NOTE ==
 // This code uses ES6 promises. If you want to use this code in a browser
 // that doesn't supporting promises natively, you'll have to include a polyfill.
 
     gapi.analytics.ready(function() {
-
+        
         /**
          * Authorize the user immediately if the user has already granted access.
          * If no access has been created, render an authorize button inside the

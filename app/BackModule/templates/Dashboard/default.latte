@@ -8,6 +8,9 @@
         <h3 class="dash-panel__title">Návštěvy tento vs minulý týden</h3>
     </header>
     <div class="Chartjs dash-panel__content">
+        {if !$ga}
+            Na localhostu (bez klíče ke Google Analytics) je graf vypnutý.
+        {/if}
         <figure class="Chartjs-figure" id="chart-1-container"></figure>
     </div>
 </div>
