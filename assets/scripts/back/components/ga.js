@@ -17,6 +17,25 @@ $(function () {
             }
         });
 
+        var defaultChartNow = {
+            backgroundColor : 'rgba(229,69,55,0.5)',
+            borderColor : 'rgba(229,69,55,0.9)',
+            pointBackgroundColor : 'white',
+            pointBorderColor : 'rgba(229,69,55,0.9)',
+            pointBorderWidth : 3,
+            lineTension: 0,
+            pointRadius: 4
+        };
+
+        var defaultChartPast = {
+            backgroundColor : 'rgba(220,220,220,0.5)',
+            borderColor : 'rgba(220,220,220,1)',
+            pointBackgroundColor : 'rgba(220,220,220,1)',
+            lineTension: 0,
+            pointBorderColor : '#fff',
+            pointRadius: 4
+        };
+
 
         /**
          * Draw the a chart.js line chart with data from the specified view that
@@ -52,6 +71,7 @@ $(function () {
                 var data2 = results[1].rows.map(function(row) { return +row[2]; });
                 var labels = results[1].rows.map(function(row) { return +row[0]; });
 
+
                 labels = labels.map(function(label) {
                     return moment(label, 'YYYYMMDD').format('ddd');
                 });
@@ -59,28 +79,37 @@ $(function () {
                 var data = {
                     labels : labels,
                     datasets : [
-                        {
-                            label: 'Last Week',
-                            fillColor : 'rgba(220,220,220,0.5)',
-                            strokeColor : 'rgba(220,220,220,1)',
-                            pointColor : 'rgba(220,220,220,1)',
-                            pointStrokeColor : '#fff',
-                            data : data2
-                        },
-                        {
-                            label: 'This Week',
-                            fillColor : 'rgba(151,187,205,0.5)',
-                            strokeColor : 'rgba(151,187,205,1)',
-                            pointColor : 'rgba(151,187,205,1)',
-                            pointStrokeColor : '#fff',
+                        getChartSettings("now", {
+                            label: 'Tento týden',
                             data : data1
-                        }
+                        }),
+                        getChartSettings("past", {
+                            label: 'Minulý týden',
+                            data : data2
+                        })
                     ]
                 };
 
-                new Chart(makeCanvas('chart-1-container')).Line(data);
-                generateLegend('legend-1-container', data.datasets);
+                new Chart(makeCanvas('chart-1-container'), {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        lineTension: 0,
+                        steppedLine: true
+                    }
+                });
             });
+        }
+
+
+        function getChartSettings(type, settings) {
+
+            if (type == "now") {
+                return $.extend({}, settings, defaultChartNow);
+            } else {
+                return $.extend({}, settings, defaultChartPast);
+            }
+
         }
 
         /**
@@ -119,22 +148,6 @@ $(function () {
         }
 
 
-        /**
-         * Create a visual legend inside the specified element based off of a
-         * Chart.js dataset.
-         * @param {string} id The id attribute of the element to host the legend.
-         * @param {Array.<Object>} items A list of labels and colors for the legend.
-         */
-        function generateLegend(id, items) {
-            var legend = document.getElementById(id);
-            legend.innerHTML = items.map(function(item) {
-                var color = item.color || item.fillColor;
-                var label = item.label;
-                return '<li><i style="background:' + color + '"></i>' + label + '</li>';
-            }).join('');
-        }
-
-
         // Set some global Chart.js defaults.
         Chart.defaults.global.animationSteps = 60;
         Chart.defaults.global.animationEasing = 'easeInOutQuart';
@@ -142,10 +155,17 @@ $(function () {
         Chart.defaults.global.maintainAspectRatio = false;
 
 
-        renderWeekOverWeekChart(gaView);
 
+        $.nette.ext({
+            load: function () {
+                if ($("#chart-1-container").length > 0) {
+                    renderWeekOverWeekChart(gaView);
+                }
+            }
+        });
+
+        if ($("#chart-1-container").length > 0) {
+            renderWeekOverWeekChart(gaView);
+        }
     });
-
-
-
 });
