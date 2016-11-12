@@ -30,13 +30,18 @@
 </head>
 
 <body>
+
+{if !$presenter->isLinkCurrent(":Front:Error4xx:*")}
 	{include Components/header.latte}
+{/if}
 
 	<div class="container">
 		{include content}
 	</div>
 
+{if !$presenter->isLinkCurrent(":Front:Error4xx:*")}
 	{include Components/footer.latte}
+{/if}
 
 	{block scripts}
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

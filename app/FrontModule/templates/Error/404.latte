@@ -1,8 +1,12 @@
 {block content}
-<h1 n:block=title>Page Not Found</h1>
+<div class="error-site">
+    <h1 n:block=title class="error-site__title">Stránka nenalezena</h1>
 
-<p>The page you requested could not be found. It is possible that the address is
-incorrect, or that the page no longer exists. Please use a search engine to find
-what you are looking for.</p>
+    <p class="error-site__text">Stránku, kterou hledáte se nám nepodařilo najít.
+    Je možné, že zadaná adresa není správná, nebo že stránka už neexistuje.
+    </p>
 
-<p><small>error 404</small></p>
+    <p class="error-site__number"><small>error 404</small></p>
+    <a class="btn btn--blue" n:href=":Front:Homepage:default">Na hlavní stránku</a>
+
+</div>

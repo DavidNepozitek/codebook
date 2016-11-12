@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Presenters;
+namespace App\FrontModule\Presenters;
 
 use Nette;
 use Nette\Application\Responses;
 use Tracy\ILogger;
 
 
-class ErrorPresenter implements Nette\Application\IPresenter
+class ErrorPresenter extends BasePresenter implements Nette\Application\IPresenter
 {
     use Nette\SmartObject;
 
@@ -32,7 +32,7 @@ class ErrorPresenter implements Nette\Application\IPresenter
 
         $this->logger->log($exception, ILogger::EXCEPTION);
         return new Responses\CallbackResponse(function () {
-            require __DIR__ . '/templates/Error/500.phtml';
+            require __DIR__ . '/../templates/Error/500.phtml';
         });
     }
 

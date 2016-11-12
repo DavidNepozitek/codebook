@@ -42,7 +42,7 @@ class TutorialPresenter extends BasePresenter
 
         if (isset($tutorial)) {
             if ($tutorial->getPublished() == FALSE) {
-                return;
+                throw new Nette\Application\BadRequestException;
             }
 
             $this->template->tutorial = $tutorial;

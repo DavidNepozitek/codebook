@@ -19,5 +19,11 @@ class PagePresenter extends BasePresenter
         $page = $this->pageModel->getOne(Page::class, array("name" => $name));
         
         $this->template->page = $page;
+        
+        if ($page) {
+            $this->template->page = $page;
+        } else {
+            throw new Nette\Application\BadRequestException;
+        }
     }
 }

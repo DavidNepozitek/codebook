@@ -2,7 +2,6 @@
  #Tags input
 \*------------------------------------*/
 
-//TODO: comment
 
 $.fn.makeTags = function () {
 
