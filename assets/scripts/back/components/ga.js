@@ -165,6 +165,12 @@ $(function () {
             load: function () {
                 if ($("#chart-1-container").length > 0) {
                     renderWeekOverWeekChart(gaView);
+
+                    gapi.analytics.auth.authorize({
+                        'serverAuth': {
+                            'access_token': gaAccessToken
+                        }
+                    });
                 }
             }
         });

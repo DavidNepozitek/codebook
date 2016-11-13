@@ -124,8 +124,9 @@ class TutorialForm extends Control
 
                 $this->presenter->flashMessage("Nový článek byl úspěšně přidán! Zde ho můžete dále upravovat.", "success");
                 if ($this->presenter->isAjax()) {
-                    $this->redirectHelper->setRedirect($this->presenter->link("Tutorial:edit", $tutorial->getId()));
-                    $this->presenter->forward("Tutorial:edit", $tutorial->getId());
+                    /*$this->redirectHelper->setRedirect($this->presenter->link("Tutorial:edit", $tutorial->getId()));
+                    $this->presenter->forward("Tutorial:edit", $tutorial->getId());*/
+                    $this->presenter->redirect("Tutorial:edit", $tutorial->getId());
                 } else {
                     $this->presenter->redirect("this");
                 }
