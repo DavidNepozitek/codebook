@@ -35,6 +35,7 @@ $(function () {
             backgroundColor : 'rgba(220,220,220,0.5)',
             borderColor : 'rgba(220,220,220,1)',
             pointBackgroundColor : 'rgba(220,220,220,1)',
+            pointBorderWidth : 3,
             lineTension: 0,
             pointBorderColor : '#fff',
             pointRadius: 4
@@ -55,7 +56,7 @@ $(function () {
                 'ids': ids,
                 'dimensions': 'ga:date,ga:nthDay',
                 'metrics': 'ga:sessions',
-                'start-date': moment(now).subtract(1, 'day').day(0).format('YYYY-MM-DD'),
+                'start-date': moment(now).day(-6).format('YYYY-MM-DD'),
                 'end-date': moment(now).format('YYYY-MM-DD')
             });
 
@@ -63,9 +64,9 @@ $(function () {
                 'ids': ids,
                 'dimensions': 'ga:date,ga:nthDay',
                 'metrics': 'ga:sessions',
-                'start-date': moment(now).subtract(1, 'day').day(0).subtract(1, 'week')
+                'start-date': moment(now).day(-13)
                     .format('YYYY-MM-DD'),
-                'end-date': moment(now).subtract(1, 'day').day(6).subtract(1, 'week')
+                'end-date': moment(now).day(-7)
                     .format('YYYY-MM-DD')
             });
 
