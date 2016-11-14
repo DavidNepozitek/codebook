@@ -56,17 +56,17 @@ $(function () {
                 'ids': ids,
                 'dimensions': 'ga:date,ga:nthDay',
                 'metrics': 'ga:sessions',
-                'start-date': moment(now).day(-6).format('YYYY-MM-DD'),
-                'end-date': moment(now).format('YYYY-MM-DD')
+                'start-date': moment().subtract(1, 'week').add(1, 'day').format('YYYY-MM-DD'),
+                'end-date': moment().format('YYYY-MM-DD')
             });
 
             var lastWeek = query({
                 'ids': ids,
                 'dimensions': 'ga:date,ga:nthDay',
                 'metrics': 'ga:sessions',
-                'start-date': moment(now).day(-13)
+                'start-date': moment(now).subtract(2, 'week').add(1, 'day')
                     .format('YYYY-MM-DD'),
-                'end-date': moment(now).day(-7)
+                'end-date': moment(now).subtract(1, 'week')
                     .format('YYYY-MM-DD')
             });
 
