@@ -124,9 +124,6 @@
 .grido .filter .daterange {
     min-width: 192px !important; }
 
-.grido th.column, h1, h3 {
-    color: #4b8eef; }
-
 .grido th.column {
     text-transform: uppercase;
     background-color: #e1eaf7;
@@ -248,7 +245,8 @@
     height: 49px;
     color: #323c58;
     font-size: 13px;
-    padding: 0 15px 0 15px; }
+    padding: 0 15px 0 15px;
+}
 
 .grido input.text, .grido select {
     margin-bottom: 0;
@@ -386,10 +384,6 @@
         font-weight: normal;
     }
 
-    .h1 {
-        font-weight: normal;
-    }
-
 }
 
 .grido .table {
@@ -514,6 +508,9 @@
     .grid-cell-changeRole {
         width: auto;}
 
+    .grid-cell-actions {
+        width: auto;}
+
     .grido td:last-child, .grido th:last-child {
         padding: 6px 10px 0 10px;
 
@@ -526,6 +523,10 @@
     .grido .table {
         width: auto;
         max-width: 100%;
+    }
+
+    .grido tbody tr td, .grido tfoot tr td {
+        padding: 0 6px 0 6px;
     }
 }
 
