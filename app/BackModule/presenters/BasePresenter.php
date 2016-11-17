@@ -152,7 +152,6 @@ abstract class BasePresenter extends Presenter
             $this->template->ga = 0;
         }
 
-
     }
 
 }
