@@ -58,10 +58,26 @@ $(function(){
             }
         });
 
-
-
         handleCollapsed();
 
     }
 
+
+
+    $(window).on("load resize", function () {
+
+            if(
+                ($(".main-navigation").height() +
+                $(".nav-bottom").height())
+                >
+                $(".navigation__background").height()) {
+
+
+                $(".nav-bottom").css("position", "relative");
+            }
+
+            else{
+                $(".nav-bottom").css("position", "absolute");
+            }
+    });
 });

@@ -9,12 +9,8 @@ $(function () {
 // that doesn't supporting promises natively, you'll have to include a polyfill.
 
     gapi.analytics.ready(function() {
-        
-        /**
-         * Authorize the user immediately if the user has already granted access.
-         * If no access has been created, render an authorize button inside the
-         * element with the ID "embed-api-auth-container".
-         */
+
+
         gapi.analytics.auth.authorize({
             'serverAuth': {
                 'access_token': gaAccessToken
@@ -164,13 +160,17 @@ $(function () {
         $.nette.ext({
             load: function () {
                 if ($("#chart-1-container").length > 0) {
-                    renderWeekOverWeekChart(gaView);
 
                     gapi.analytics.auth.authorize({
                         'serverAuth': {
                             'access_token': gaAccessToken
                         }
                     });
+
+                    renderWeekOverWeekChart(gaView);
+
+                    console.log("Auth");
+
                 }
             }
         });

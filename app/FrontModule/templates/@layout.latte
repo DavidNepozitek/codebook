@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="cs"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="cs"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="cs"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="cs"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="cs" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="cs" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="cs" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="cs" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 	<title>{ifset title}{include title|stripHtml} | {/ifset}Codebook</title>
+
+
+	<meta name="description" content="Front-end příručka studentů Gymnázia Karviná">
+	<meta name="keywords" content="příručka, návody, HTML, CSS, JavaScript, jQuery, Gymnázium Karviná">
+
+
+	<meta property="og:title" content="{ifset title}{include title|stripHtml} | {/ifset}Codebook" />
+	<meta property="og:description" content="Front-end příručka studentů Gymnázia Karviná" />
+	<meta property="og:image" content="{$basePath}/assets/images/og-image.jpg" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="" />
+
 
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="{$basePath}/assets/favicon/apple-touch-icon-57x57.png" />
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{$basePath}/assets/favicon/apple-touch-icon-114x114.png" />
