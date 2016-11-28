@@ -45,7 +45,7 @@
                     {foreach $sotds as $sotd}
                         <li>
                             <span class="sotd__date">{$sotd->getPubDate()|date:'j. n. Y'}</span><br>
-                            <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()}</a>
+                            <a href="{$sotd->getLink()}" target="_blank">{$sotd->getName()|truncate:38}</a>
                         </li>
                     {/foreach}
                 </ul>
