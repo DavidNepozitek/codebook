@@ -85,8 +85,7 @@
     background-color: white;
     font-size: 14px;
     color: rgba(50, 60, 88, 0.75);
-    height: 98px;
-    padding-left: 3px;}
+    padding: 0 0 22px 3px;}
 
 .grido .filter, .grido table {
     border-radius: 0;
@@ -126,9 +125,6 @@
 
 .grido .filter .daterange {
     min-width: 192px !important; }
-
-.grido th.column, h1, h3 {
-    color: #4b8eef; }
 
 .grido th.column {
     text-transform: uppercase;
@@ -251,7 +247,8 @@
     height: 49px;
     color: #323c58;
     font-size: 13px;
-    padding: 0 15px 0 15px; }
+    padding: 0 15px 0 15px;
+}
 
 .grido input.text, .grido select {
     margin-bottom: 0;
@@ -293,6 +290,10 @@
     .fa {
         margin-left: 6px;
     }
+}
+
+.grido .btn:last-child  {
+    margin-right: 0;
 }
 
 .grido .btn-default {
@@ -382,10 +383,6 @@
 
 .grido {
     .btn {
-        font-weight: normal;
-    }
-
-    .h1 {
         font-weight: normal;
     }
 
@@ -490,3 +487,81 @@
 
 .grido.bootstrap .filter textarea {
     height: 23px !important; }
+
+
+
+/*------------------------------------*\
+#RESPONSIVE
+\*------------------------------------*/
+
+@media (max-width: 992px) {
+    .grido .filter.outer {
+        height: auto;
+        width: 100%;
+    }
+
+    .grido.bootstrap.table-responsive {
+        border: none;
+    }
+
+    .grido .table-responsive {
+        width: 100%;
+    }
+
+    .grid-cell-changeRole {
+        width: auto;}
+
+    .grid-cell-actions {
+        width: auto;}
+
+    .grido td:last-child, .grido th:last-child {
+        padding: 6px 10px 0 10px;
+
+        .btn {
+            margin-bottom: 6px;
+
+        }
+    }
+
+    .grido .table {
+        width: auto;
+        max-width: 100%;
+    }
+
+    .grido tbody tr td, .grido tfoot tr td {
+        padding: 0 6px 0 6px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .grido td:last-child, .grido th:last-child {
+        .pull-right {
+            float: none !important;
+        }
+    }
+
+    .grido td:last-child, .grido th:last-child {
+        padding: 6px 10px 0 10px;
+
+        .btn {
+            margin-bottom: 6px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .table-responsive>.table>tbody>tr>td, .table-responsive>.table>tbody>tr>th, .table-responsive>.table>tfoot>tr>td, .table-responsive>.table>tfoot>tr>th, .table-responsive>.table>thead>tr>td, .table-responsive>.table>thead>tr>th {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 800px) {
+    .grido tr.head .ajax a, .grido tr.head a {
+        font-size: 11px;
+    }
+
+    .grido th.column a, .grido th.column span {
+        font-size: 11px;
+    }
+}
