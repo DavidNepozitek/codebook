@@ -101,7 +101,7 @@ class PasswordChangeForm extends Control{
                 $this->presenter->flashMessage("Pro tuto akci nemáte dostatečná oprávnění!", "error");
             }
 
-            if (!Passwords::verify($values["oldpass"], $user->getPassword())) {
+            if (!Passwords::verify($values["oldpass"], $currentUser->getPassword())) {
                 $this->presenter->flashMessage("Vaše heslo nebylo zadáno správně", "error");
                 return;
             } elseif ($values["newpass"] != $values["newpasscheck"]) {
@@ -111,7 +111,7 @@ class PasswordChangeForm extends Control{
 
             $user->setPassword(Passwords::hash($values["newpass"]));
             $this->userModel->flush();
-            $this->presenter->flashMessage("Vaše heslo bylo úspěšně změněno", "success");
+            $this->presenter->flashMessage("Heslo uživatele " . $user->getEmail() .  " bylo úspěšně změněno", "success");
 
         }
 
