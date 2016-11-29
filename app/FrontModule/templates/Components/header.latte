@@ -10,7 +10,7 @@
                 <img src="{$basePath}/assets/images/logo-w.svg" class="main-navigation__logo">
             </div>
             <div class="collapse navbar-collapse main-navigation">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right relative">
                     {foreach $menu as $item}
                         <li class="shaped menu btn main-navigation__item{if $item['active']} main-navigation__item--active{/if}">
                             <a href="{$item['link']}">
@@ -23,4 +23,11 @@
             </div>
         </div>
     </div>
+    {if $presenter->isLinkCurrent(':Front:Homepage:*')}
+    <div class="absolute text-center">
+        <h2 class="motto">Codebook vás naučí</h2>
+        <h3 class="under-motto">psát přehledný a funkční kód</h3>
+    </div>
+    {/if}
+
 </header>
