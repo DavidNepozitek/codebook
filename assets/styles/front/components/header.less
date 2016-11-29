@@ -76,7 +76,7 @@
   height: 40px;
   display: inline-block;
 }
-.btn-main{
+.nav .btn-main{
   background: transparent;
   color: white;
   border: 2px solid white;
@@ -85,10 +85,16 @@
   transition: .3s;
   margin-top: 6px;
 
+
   &:hover{
     background-color: white;
     border-color: white;
     color: @orange;
+  }
+  &:focus, &:active{
+    border-color: white;
+    background-color: transparent;
+    color: white;
   }
 }
 
@@ -97,6 +103,7 @@
 }
 .navbar-nav{
   text-align: center;
+
 }
 .navbar-brand, .navbar-nav>li>a{
   text-shadow: none;
@@ -106,7 +113,28 @@
 
     background-color: transparent;
 }
-
+.absolute{  //kvůli mobilní verzi menu - překrytí motta položkami v menu
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 100px;
+  z-index: 1;
+}
+.relative{
+  position: relative;
+  z-index: 10;
+}
+.motto{
+  color: white;
+  text-transform: uppercase;
+  text-decoration: bold;
+  font-size: 24px;
+}
+.under-motto{
+  color: rgba(255, 255, 255,.5);
+  font-style: italic;
+}
+// MOBILY
 @media (max-width: 767px){
   .btn-main{
     margin-top: 5px;
@@ -114,8 +142,11 @@
   .navbar-nav{
     background-color: @orange;
     padding-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 
   }
+
   .navbar{
     border: 0;
   }
@@ -129,11 +160,20 @@
   }
 
 }
+//NOTEBOOKY A VYSSI
 @media(min-width: 768px){
+.nav .btn-main{ //IE a Safari debug - menu s tlacitkem v rovině
+  float: right;
+}
 .main-header{
   padding-top:20px;
   height: 80px;
+  &--big{
+    height: 300px;
+    border-bottom: 5px solid rgba(255,255,255,.5);
+  }
 }
+
 .main-navigation ul{
   margin-top: 0;
   text-align: center;
