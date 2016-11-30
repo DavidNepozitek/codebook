@@ -29,12 +29,13 @@
 
 <body>
 
-{ifset $gaView}
+
 <script n:inner-snippet="ga-token">
-	var gaView = {$gaView};
-	var gaAccessToken = {$gaAccessToken};
+	{if $ga}
+		var gaView = {$gaView};
+		var gaAccessToken = {$gaAccessToken};
+	{/if}
 </script>
-{/ifset}
 
 <div class="js-loader"></div>
 
