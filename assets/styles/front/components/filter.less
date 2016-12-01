@@ -15,9 +15,7 @@
 }
 .tab label {
   background: white;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 10px 20px;
   border: 1px solid #d6dee6;
   border-right: 1px solid transparent;
   position: relative;
@@ -25,8 +23,9 @@
   cursor: pointer;
   font-style: italic;
   font-weight: 200;
+  transition: .3s;
   &:hover{
-    background: rgba(248,83,75,.2);
+    background: rgba(248,83,75,.05);
   }
 }
 .tab:last-of-type label{
@@ -35,8 +34,6 @@
 .tab [type=radio] {
   display: none;
 }
-
-
 [type=radio]:checked ~ label {
   background: rgba(248,83,75,.3);
   border: 1px solid @orange;
@@ -48,27 +45,35 @@ input[type="text"].filter-text, select.filter-select{
   padding: 10px;
   border: 1px solid #d6dee6;
   color: #6b7992;
+  transition: .3s;
   &:hover, &:active, &:focus{
     border: 1px solid @orange;
+
   }
 }
 input[type="text"].filter-text{
-  width: 100%;
+  width: 60%;
 }
 
 select.filter-select{
   width: 35%;
   margin-left: 10px;
   cursor:pointer;
+  position: relative;
   & option{
     padding: 10px;
     cursor: pointer;
-//    &:hover{ this doesnt work - why?
-//      background: @orange;
-//      color: white;
-//    }
-
-    }
+  }
+  &:after{
+    content: '\f078';
+    font-family: FontAwesome;
+    color: #c7cbd4;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    pointer-events: none;
   }
 
 }
@@ -82,4 +87,11 @@ select.filter-select{ //DEBUG MOZ arr down
 }
 select.filter-select::-ms-expand { //DEBUG IE11
   display: none;
+}
+
+//MEDIA
+@media(max-width: 1200px) {
+  .tab label {
+    padding: 10px 10px;
+  }
 }
