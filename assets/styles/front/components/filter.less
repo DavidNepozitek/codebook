@@ -1,14 +1,8 @@
-//border colors input - #d6dee6
-//ikonka lupy c7cbd4
-
-//text input select neaktivni - c7cbd4
-//text inputs - #6b7992
 .full-width{
   width: 100%;
 }
 .tabs {
   border-left: #d6dee6;
-  clear: both;
 }
 .tab {
   float: left;
@@ -52,29 +46,35 @@ input[type="text"].filter-text, select.filter-select{
   }
 }
 input[type="text"].filter-text{
-  width: 60%;
+  width: 100%;
 }
 
 select.filter-select{
-  width: 35%;
-  margin-left: 10px;
+  width: 100%;
   cursor:pointer;
   position: relative;
   & option{
     padding: 10px;
     cursor: pointer;
   }
-  &:after{
-    content: '\f078';
-    font-family: FontAwesome;
-    color: #c7cbd4;
-    display: inline-block;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 20px;
-    pointer-events: none;
-  }
+
+}
+.case:after{ //obal section kvuli ikonkam
+  font-family: FontAwesome;
+  color: #c7cbd4;
+  display: inline-block;
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  font-size: 15px;
+  height: 10px;
+  pointer-events: none;
+}
+.arrow:after{
+  content: '\f078';
+}
+.search:after{
+  content: '\f002';
 
 }
 
@@ -85,7 +85,7 @@ select.filter-select{ //DEBUG MOZ arr down
   -moz-appearance: none;
   appearance: none;
 }
-select.filter-select::-ms-expand { //DEBUG IE11
+select.filter-select::-ms-expand { //DEBUG arr down IE11
   display: none;
 }
 
@@ -93,5 +93,14 @@ select.filter-select::-ms-expand { //DEBUG IE11
 @media(max-width: 1200px) {
   .tab label {
     padding: 10px 10px;
+  }
+  .tabs{
+    margin-left: 15px;
+  }
+
+}
+@media(max-width: 767px){
+  .tabs{
+    margin-top: 10px;
   }
 }
