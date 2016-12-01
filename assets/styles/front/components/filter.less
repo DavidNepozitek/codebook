@@ -19,6 +19,7 @@
   position: relative;
   color: #6b7992;
   cursor: pointer;
+  font-style: italic;
 }
 .tab:last-of-type label{
  border-right: 1px solid #d6dee6;
@@ -35,12 +36,19 @@
 
 }
 input[type="text"].filter-text, select.filter-select{
+  font-style: italic;
   padding: 10px;
   border: 1px solid #d6dee6;
   color: #6b7992;
-  &:hover{
+  &:hover, &:active, &:focus{
     border: 1px solid @orange;
   }
+}
+input[type="text"].filter-text{
+  width: 60%;
+}
+select.filter-select{
+  width: 39%;
 }
 
 //DEBUGS
