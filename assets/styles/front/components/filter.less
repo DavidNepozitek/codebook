@@ -1,43 +1,55 @@
+//border colors input - #d6dee6
+//ikonka lupy c7cbd4
+
+//text input select neaktivni - c7cbd4
+//text inputs - #6b7992
+
 .tabs {
-  position: relative;
-  min-height: 200px;  clear: both;
-  margin: 25px 0;
+  border-left: #d6dee6;
+  clear: both;
 }
 .tab {
   float: left;
 }
 .tab label {
-  background: #eee;
+  background: white;
   padding: 10px;
-  border: 1px solid #5d7683;
+  border: 1px solid #d6dee6;
   border-right: 1px solid transparent;
- border-left: 1px solid transparent;
-
   position: relative;
-
-}
-.tab:first-of-type label{
-
+  color: #6b7992;
+  cursor: pointer;
 }
 .tab:last-of-type label{
- // border-right: 1px solid #5d7683;
+ border-right: 1px solid #d6dee6;
 }
 .tab [type=radio] {
   display: none;
 }
-/*.content {
-  position: absolute;
-  top: 28px;
-  left: 0;
-  background: white;
-  right: 0;
-  bottom: 0;
-  padding: 20px;
-  border: 1px solid #ccc;
-}*/
+
 
 [type=radio]:checked ~ label {
   background: rgba(248,83,75,.3);
   border: 1px solid @orange;
+  color: @orange;
 
+}
+input[type="text"].filter-text, select.filter-select{
+  padding: 10px;
+  border: 1px solid #d6dee6;
+  color: #6b7992;
+  &:hover{
+    border: 1px solid @orange;
+  }
+}
+
+//DEBUGS
+select.filter-select{ //DEBUG MOZ arr down
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+select.filter-select::-ms-expand { //DEBUG IE11
+  display: none;
 }
