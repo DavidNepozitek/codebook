@@ -3,7 +3,9 @@
 
 //text input select neaktivni - c7cbd4
 //text inputs - #6b7992
-
+.full-width{
+  width: 100%;
+}
 .tabs {
   border-left: #d6dee6;
   clear: both;
@@ -45,10 +47,24 @@ input[type="text"].filter-text, select.filter-select{
   }
 }
 input[type="text"].filter-text{
-  width: 60%;
+  width: 100%;
 }
+
 select.filter-select{
-  width: 39%;
+  width: 35%;
+  margin-left: 10px;
+  cursor:pointer;
+  & option{
+    padding: 10px;
+    cursor: pointer;
+//    &:hover{ this doesnt work - why?
+//      background: @orange;
+//      color: white;
+//    }
+
+    }
+  }
+
 }
 
 //DEBUGS
