@@ -7,13 +7,13 @@
             <div class="article__wrapper--bottom">
                 <div class="article__wrapper--difficulty">
                     {for $i = 0; $i <= $tutorial->getDifficulty(); $i++}
-                        <i class="fa fa-cog article__icon article__icon--active" aria-hidden="true"></i>
+                        <i class="fa fa-cog article__icon article__icon--active" title="Obtížnost" aria-hidden="true"></i>
                     {/for}
                     {for $i = 2; $i > $tutorial->getDifficulty(); $i--}
-                        <i class="fa fa-cog article__icon" aria-hidden="true"></i>
+                        <i class="fa fa-cog article__icon" title="Obtížnost" aria-hidden="true"></i>
                     {/for}
-                    <span class="article__likes">{$tutorial->getSeenCount()}</span>
-                    <i class="fa fa-eye article__eye" aria-hidden="true"></i>
+                    <span title="Počet zhlédnutí" class="article__likes">{$tutorial->getSeenCount()}</span>
+                    <i class="fa fa-eye article__eye" title="Počet zhlédnutí" aria-hidden="true"></i>
                 </div>
             </div>
             <h2 class="article__title">{$tutorial->getTitle()}</h2>
