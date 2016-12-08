@@ -70,12 +70,21 @@ select.filter-select{
   height: 10px;
   pointer-events: none;
 }
+.case.arrow, .case.search{
+  padding-left: 0px;
+}
 .arrow:after{
   content: '\f078';
 }
 .search:after{
   content: '\f002';
 
+}
+.no-padding-left{
+  padding-left:0px;
+}
+.no-padding-right{
+  padding-right: 0px;
 }
 
 //DEBUGS
@@ -100,7 +109,7 @@ select.filter-select::-ms-expand { //DEBUG arr down IE11
 
 }
 @media(max-width: 767px){
-  .tabs{
+  .tabs, .case{
     margin-top: 10px;
   }
 }
