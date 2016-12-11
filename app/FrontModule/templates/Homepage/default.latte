@@ -23,8 +23,8 @@
                         {for $i = 2; $i > $chosenTut[0]->getDifficulty(); $i--}
                             <i class="fa fa-cog article__icon" title="Obtížnost" aria-hidden="true"></i>
                         {/for}
-                        <span class="article__likes" title="Počet shlédnutí">{$chosenTut[0]->getSeenCount()}</span>
-                        <i class="fa fa-eye" title="Počet shlédnutí" aria-hidden="true"></i>
+                        <span class="article__likes" title="Počet zhlédnutí">{$chosenTut[0]->getSeenCount()}</span>
+                        <i class="fa fa-eye" title="Počet zhlédnutí" aria-hidden="true"></i>
                     </div><a class="btn btn--blue article__btn" n:href="Tutorial:detail $chosenTut[0]->getId()">Číst více</a></div>
 
             </article>
