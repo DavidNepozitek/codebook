@@ -57,16 +57,14 @@ class TutorialPresenter extends BasePresenter
     public function reloadFilter($search, $category, $difficulty, $page)
     {
         $this->template->search = $search;
-        $this->template->category = $category;
+
+        if (!isset($this->tutorialModel->difficulties[$difficulty]) AND $difficulty != -2) {
+            $difficulty = -2;
+        }
         $this->template->difficulty = $difficulty;
-        $this->template->page = $page;
 
         $paginator = new Nette\Utils\Paginator();
         $paginator->setItemsPerPage(8);
-
-        if (isset($page)) {
-            $paginator->page = $page;
-        }
 
         $this->template->paginator = $paginator;
 
@@ -82,8 +80,15 @@ class TutorialPresenter extends BasePresenter
         if (isset($category)) {
             $tag = $this->tutorialModel->getOne(Tag::class, array("name" => $category));
 
-            $q->andWhere(":tag MEMBER OF tutorial.tags");
-            $q->setParameter("tag", $tag);
+            if ($tag) {
+                $this->template->category = $category;
+                $q->andWhere(":tag MEMBER OF tutorial.tags");
+                $q->setParameter("tag", $tag);
+            } else {
+                $this->template->category = NULL;
+            }
+        } else {
+            $this->template->category = NULL;
         }
 
         if (isset($search)) {
@@ -95,12 +100,22 @@ class TutorialPresenter extends BasePresenter
         $count = $q->getQuery()->getSingleScalarResult();
         $paginator->setItemCount($count);
 
+        if (isset($page) AND $page <= $paginator->getLastPage() AND $page >= 1) {
+            $paginator->setPage($page);
+        } elseif ($page > $paginator->getLastPage()) {
+            $paginator->setPage($paginator->getLastPage());
+        } else {
+            $paginator->setPage(1);
+        }
+
         $q->select('tutorial');
         $q->setMaxResults($paginator->getItemsPerPage());
         $q->setFirstResult($paginator->getOffset());
         $tutorials = $q->getQuery()->getResult();
 
         $this->template->tutorials = $tutorials;
+
+
 
     }
 }

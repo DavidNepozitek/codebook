@@ -51,9 +51,12 @@ input[type="text"].filter-text{
 
 select.filter-select{
   width: 100%;
-  cursor:pointer;
+  cursor: pointer;
   position: relative;
+  text-transform: uppercase;
+
   & option{
+    text-transform: uppercase;
     padding: 10px;
     cursor: pointer;
   }
@@ -157,4 +160,5 @@ select.filter-select::-ms-expand { //DEBUG arr down IE11
 
 .filter__result {
   position: relative;
+  margin-bottom: 30px;
 }
