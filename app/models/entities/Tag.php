@@ -23,4 +23,9 @@ class Tag
      */
     protected $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Tutorial", mappedBy="tags")
+     */
+    protected $tutorials;
+
 }

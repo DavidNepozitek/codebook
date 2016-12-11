@@ -35,4 +35,13 @@ abstract class BasePresenter extends Presenter
         );
     }
 
+    public function beforeRender()
+    {
+        parent::beforeRender();
+
+        if ($this->isAjax()) {
+            $this->redrawControl("content");
+        }
+    }
+
 }

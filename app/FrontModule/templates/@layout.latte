@@ -41,13 +41,14 @@
 	<link rel="stylesheet" href="{$basePath}/assets/styles/front.min.css">
 </head>
 
-<body>
+<body class="front">
 
 {if !$presenter->isLinkCurrent(":Front:Error4xx:*")}
 	{include Components/header.latte}
 {/if}
 
-	<div class="container">
+
+	<div class="container" n:inner-snippet="content">
 		{include content}
 	</div>
 

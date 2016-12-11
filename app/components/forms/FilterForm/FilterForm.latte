@@ -1,48 +1,30 @@
 {block content}
 
-<section>
+<section class="row">
+    <form n:name="form" class="ajax js-filter">
         <div class="col-md-10 col-md-offset-1">
-            <h1 class="title--page">Návody</h1>
             <div class="col-sm-6 no-padding-right">
-
-
                 <div class="input-group full-width">
                     <div class="col-sm-7 case search">
-                        <input placeholder="Hledej..." class="filter-text" type="text">
+                        <input n:name="search" type="text" class="filter-text" value="{$search}" />
                     </div>
                     <div class="col-sm-5 case arrow">
-                        <select class="filter-select">
-                            <option value="">Kategorie</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
+                        {input "category" class => "filter-select"}
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 no-padding-left" >
                 <div class="tabs">
-                    <div class="tab">
-                        <input type="radio" id="tab-1" name="tab-group-1" checked>
-                        <label for="tab-1">Vše</label>
-                    </div>
-
-                    <div class="tab">
-                        <input type="radio" id="tab-2" name="tab-group-1">
-                        <label for="tab-2">Začátečník</label>
-                    </div>
-
-                    <div class="tab" >
-                        <input type="radio" id="tab-3" name="tab-group-1">
-                        <label for="tab-3">Pokročilý</label>
-                    </div>
-                    <div class="tab" >
-                        <input type="radio" id="tab-4" name="tab-group-1">
-                        <label for="tab-4">Zkušený</label>
-                    </div>
-
+                    {foreach $form[difficulty]->items as $key => $label}
+                        <div class="tab">
+                            <input n:name="difficulty:$key">
+                            <label n:name="difficulty:$key">{$label}</label>
+                        </div>
+                    {/foreach}
                 </div>
 
             </div>
+            <input type="submit" value="Vyhledat" class="hidden">
         </div>
+    </form>
 </section>

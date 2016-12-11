@@ -8,6 +8,7 @@ use App\Model\Entities\Tutorial;
 use App\Model\Entities\User;
 use Kdyby\Doctrine\EntityManager;
 use Nette\Neon\Exception;
+use Tracy\Debugger;
 
 class TutorialModel extends BaseModel
 {
@@ -190,5 +191,15 @@ class TutorialModel extends BaseModel
             $this->remove($tutorial);
             $this->flush();
         }
+
+        foreach ($this->getAll(Tag::class) as $tag) {
+            $tutorials = $tag->getTutorials();
+
+            if (!isset($tutorials[0])) {
+                $this->remove($tag);
+            }
+        }
+
+        $this->flush();
     }
 }

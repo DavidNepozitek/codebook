@@ -1,5 +1,22 @@
 {block content}
 
-{control filterForm}
+<h1 class="title--page">Návody</h1>
 
-{include ../Components/pagination.latte}
+{control filterForm, $search, $category, $difficulty}
+
+    <section class="row filter__result">
+        <div class="filter__loader"></div>
+        {ifset $tutorials[0]}
+            {foreach $tutorials as $tutorial}
+                {include ../Components/tutorial.latte, tutorial => $tutorial}
+            {/foreach}
+        {else}
+            Žádný návod nevyhovuje vašim požadavkům :(
+        {/ifset}
+    </section>
+
+{import ../Components/pagination.latte}
+
+{if $paginator->getLastPage() > 1}
+    {include pagination}
+{/if}

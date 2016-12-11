@@ -2,6 +2,7 @@
 
 namespace App\Components;
 
+use App\Model\Entities\Tag;
 use App\Model\TutorialModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
@@ -12,15 +13,23 @@ class FilterForm extends Control{
     /** @var TutorialModel */
     private $tutorialModel;
 
+    private $parameters;
+
     public function __construct(TutorialModel $tutorialModel)
     {
         parent::__construct();
         $this->tutorialModel = $tutorialModel;
     }
 
-    public function render()
+    public function render($search = NULL, $category = NULL, $difficulty = NULL)
     {
         $template = $this->template;
+        $template->search = $search;
+        $template->category = $category;
+        $template->difficulty = $difficulty;
+
+        $this->parameters = array("search" => $search, "category" => $category, "difficulty" => $difficulty);
+
         $template->setFile(__DIR__ . "/FilterForm.latte");
         $template->render();
     }
@@ -29,13 +38,24 @@ class FilterForm extends Control{
     {
         $form = new Form();
 
-        $form->addText("email")
-            ->setType("email")
-            ->setAttribute("placeholder", "E-mail")
-            ->setRequired("Vyplňte prosím svůj email");
-        $form->addPassword("password")
-            ->setAttribute("placeholder", "Heslo")
-            ->setRequired("Vyplňte prosím své heslo");
+        foreach ($this->tutorialModel->getAll(Tag::class) as $tag) {
+            $tags[$tag->getName()] = $tag->getName();
+        }
+
+        $difficulties = $this->tutorialModel->difficulties;
+        $difficulties["-2"] = "Vše";
+
+        $form->addText("search")
+            ->setAttribute("placeholder", "Hledej...");
+        $form->addSelect('category', 'Kategorie:', $tags)
+            ->setPrompt('Kategorie');
+        $form->addRadioList("difficulty", "Obtížnost", $difficulties);
+
+        $form->setDefaults(array(
+            "search" => $this->parameters["search"],
+            "category" => $this->parameters["category"],
+            "difficulty" => $this->parameters["difficulty"],
+        ));
 
         $form->addSubmit("submit", "Přihlásit se");
 
@@ -48,13 +68,9 @@ class FilterForm extends Control{
     {
         $values = $form->getValues();
 
-        try {
-            $this->presenter->getUser()->login($values["email"], $values["password"]);
-            $this->presenter->getUser()->setExpiration(0, TRUE);
-            $this->presenter->redirect("Dashboard:default");
-        } catch (AuthenticationException $e) {
-            $this->flashMessage($e->getMessage(), "error");
-        }
+        $this->presenter->redirect("default",
+            array("search" => $values["search"], "category" => $values["category"],
+                "difficulty" => $values["difficulty"]));
     }
 
 }

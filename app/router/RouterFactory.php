@@ -32,9 +32,7 @@ class RouterFactory
 
 		$frontRouter = new RouteList("Front");
 
-
-
-		$frontRouter[] = new Route("navody", "Tutorial:default");
+		$frontRouter[] = new Route("navody[/s-<search>][/c-<category>][/d-<difficulty>][/p-<page>]", "Tutorial:default");
 		$frontRouter[] = new Route("navod/<id>", "Tutorial:detail");
 		$frontRouter[] = new Route("<name>", array(
 			"presenter" => "Page",

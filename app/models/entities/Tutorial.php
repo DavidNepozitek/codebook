@@ -55,7 +55,7 @@ class Tutorial
     protected $seenCount;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="tutorials")
      */
     protected $tags;
 
