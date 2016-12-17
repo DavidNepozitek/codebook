@@ -194,8 +194,7 @@ class TutorialModel extends BaseModel
 
         foreach ($this->getAll(Tag::class) as $tag) {
             $tutorials = $tag->getTutorials();
-
-            if (!isset($tutorials[0])) {
+            if ($tutorials->isEmpty()) {
                 $this->remove($tag);
             }
         }
