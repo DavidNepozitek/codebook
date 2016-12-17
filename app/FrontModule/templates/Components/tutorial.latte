@@ -6,7 +6,7 @@
             <h2 class="article__title">{$tutorial->getTitle()}</h2>
         </div>
         <h3 class="article__tags">zařazeno do<span class="article__category">
-                {foreach $tutorial->getTags() as $tag} {$tag->getName()} {sep}&bull;{/sep}{/foreach}
+                {foreach $tutorial->getTags() as $tag} <a href="{plink Tutorial:default, category => $tag->getName()}">{$tag->getName()}</a> {sep}&bull;{/sep}{/foreach}
             </span>
         </h3>
         <p class="article__text">{$tutorial->getPerex()|truncate:330}</p>

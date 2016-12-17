@@ -12,7 +12,7 @@
                 </div>
                 <h3 class="article__tags">zařazeno do
                     <span class="article__category">
-                        {foreach $chosenTut[0]->getTags() as $tag} {$tag->getName()} {sep}&bull;{/sep}{/foreach}
+                        {foreach $chosenTut[0]->getTags() as $tag} <a href="{plink Tutorial:default, category => $tag->getName()}">{$tag->getName()}</a> {sep}&bull;{/sep}{/foreach}
                     </span>
                 </h3>
                 <p class="article__text">{$chosenTut[0]->getPerex()|truncate:280}</p>
