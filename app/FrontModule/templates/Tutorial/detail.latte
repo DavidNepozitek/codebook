@@ -1,4 +1,6 @@
+{block title}{ifset $tutorial}{$tutorial->getTitle()}{/ifset}{/block}
 {block content}
+
 
     <div class="all-tutorials"><a n:href="Tutorial:default" class="all-tutorials__link"><i class="fa fa-caret-left all-tutorials__arrow" aria-hidden="true"></i> Všechny návody</a></div>
     {ifset $tutorial}

@@ -114,8 +114,7 @@ class TutorialPresenter extends BasePresenter
         $tutorials = $q->getQuery()->getResult();
 
         $this->template->tutorials = $tutorials;
-
-
+        
 
     }
 }

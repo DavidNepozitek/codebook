@@ -2,20 +2,20 @@
 
 namespace App\Components;
 
-use App\Model\UserModel;
+use App\Model\User\UserRegistration;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 
 class RegisterForm extends Control
 {
 
-    /** @var UserModel */
-    public $userModel;
+    /** @var UserRegistration */
+    public $userRegistration;
 
-    public function __construct(UserModel $userModel)
+    public function __construct(UserRegistration $userRegistration)
     {
         parent::__construct();
-        $this->userModel = $userModel;
+        $this->userRegistration = $userRegistration;
     }
 
     public function render($registered = false)
@@ -51,7 +51,7 @@ class RegisterForm extends Control
     {
         $values = $form->getValues();
 
-        $user = $this->userModel->createUser($values);
+        $user = $this->userRegistration->createUser($values);
 
         if ($user) {
             $this->presenter->redirect("this", array("registered" => true));

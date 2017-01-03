@@ -85,14 +85,6 @@ abstract class BasePresenter extends Presenter
                 "link" => $this->link("User:list"),
                 "active" => "User:*"
             );
-
-            $menu[] = array(
-                "name" => "Nastavení",
-                "icon" => "cogs",
-                "link" => $this->link("Settings:default"),
-                "active" => "Settings:*"
-            );
-            
         }
         
         $this->template->menu = $menu;
@@ -114,7 +106,6 @@ abstract class BasePresenter extends Presenter
             }
 
             if ($redirect["redraw"] == TRUE) {
-
                 $this->redrawControl('title');
                 $this->redrawControl('header');
                 $this->redrawControl('headerTitle');
@@ -122,7 +113,6 @@ abstract class BasePresenter extends Presenter
                 $this->redrawControl('content');
                 $this->redrawControl('ga-token');
             } else {
-
                 $this->redrawControl('title');
                 $this->redrawControl('header');
                 $this->redrawControl('headerTitle');

@@ -22,6 +22,10 @@ services:
 	- App\Model\PageModel
 	- App\Model\RedirectHelper
 	- App\Model\CronModel
+	- App\Model\User\UserRegistration
+
+	- App\Models\Log\FileLogger
+	- App\Models\Log\RegistrationLog
 
 	- App\Model\Authenticator
 
@@ -32,6 +36,10 @@ services:
 	- App\Components\IImageUploadFormFactory
 	- App\Components\IPageFormFactory
 	- App\Components\IFilterFormFactory
+
+	listeners:
+		class: App\Models\Listeners\RegistrationListener
+		tags: [kdyby.subscriber]
 
 
 extensions:

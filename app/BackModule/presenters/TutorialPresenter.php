@@ -187,7 +187,6 @@ class TutorialPresenter extends BasePresenter
             }
         }
 
-
     }
 
 }
