@@ -1,18 +1,11 @@
 <?php
 
-namespace App\Models\Log;
+namespace App\Model\Log;
 
 class FileLogger implements ILogger
 {
     CONST FILE_PATH = "log/app.log";
-
-    public function __construct()
-    {
-        if (!file_exists($this::FILE_PATH)) {
-            touch($this::FILE_PATH);
-        }
-    }
-
+    
     public function log($message)
     {
         $date = new \DateTime();

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Log;
+namespace App\Model\Log;
 
 interface ILogger
 {
