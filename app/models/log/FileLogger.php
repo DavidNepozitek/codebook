@@ -12,6 +12,7 @@ class FileLogger implements ILogger
 
         $log = "[". $date->format("Y-m-d H-i-s") ."] " . $message;
 
+        touch($this::FILE_PATH);
         $fileContents = file_get_contents($this::FILE_PATH);
         file_put_contents($this::FILE_PATH, $log . "\n" . $fileContents);
     }
