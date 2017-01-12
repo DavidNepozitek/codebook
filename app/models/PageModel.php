@@ -3,9 +3,26 @@
 namespace App\Model;
 
 use App\Model\Entities\Page;
+use Kdyby\Doctrine\EntityManager;
+use Kdyby\Events\Event;
+use Nette\Security\User;
 
 class PageModel extends BaseModel
 {
+
+    /** @var User */
+    private $user;
+
+    /** @var array|Event  */
+    public $onSuccess = [];
+
+
+    public function __construct(EntityManager $em, User $user)
+    {
+        parent::__construct($em);
+
+        $this->user = $user;
+    }
 
     /**
      * Updates or creates a page
@@ -36,5 +53,7 @@ class PageModel extends BaseModel
         }
 
         $this->flush();
+
+        $this->onSuccess($name, $this->user->getIdentity());
     }
 }

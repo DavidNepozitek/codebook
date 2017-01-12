@@ -7,6 +7,7 @@ use App\Model\Entities\Tag;
 use App\Model\Entities\Tutorial;
 use App\Model\Entities\User;
 use Kdyby\Doctrine\EntityManager;
+use Kdyby\Events\Event;
 use Nette\Neon\Exception;
 use Tracy\Debugger;
 
@@ -15,6 +16,15 @@ class TutorialModel extends BaseModel
 
     /** @var  ImageModel */
     private $imageModel;
+
+    /** @var array|Event  */
+    public $onCreateSuccess = [];
+
+    /** @var array|Event  */
+    public $onCreateError = [];
+
+    /** @var array|Event  */
+    public $onEditSuccess = [];
 
     public $difficulties = Array("Začátečník", "Pokročilý", "Zkušený");
 
@@ -85,6 +95,8 @@ class TutorialModel extends BaseModel
         $this->persist($tutorial);
         $this->flush();
 
+
+
         return $tutorial;
 
     }
@@ -112,7 +124,7 @@ class TutorialModel extends BaseModel
             throw new Exception("Návod, který se snažíte upravit, neexistuje.");
         }
 
-        if ($tutorialByName and $tutorialByName != $tutorial) {
+        if ($tutorialByName AND $tutorialByName != $tutorial) {
             throw new Exception("Návod s tímto jménem již existuje.");
         }
 

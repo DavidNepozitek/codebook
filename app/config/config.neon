@@ -28,6 +28,7 @@ services:
 
 	- App\Model\Log\FileLogger
 	- App\Model\Log\SignLog
+	- App\Model\Log\contentChangeLog
 
 	- App\Model\Authenticator
 
@@ -39,8 +40,11 @@ services:
 	- App\Components\IPageFormFactory
 	- App\Components\IFilterFormFactory
 
-	listeners:
+	SignListener:
 		class: App\Model\Listeners\SignListener
+		tags: [kdyby.subscriber]
+	PageListener:
+		class: App\Model\Listeners\PageListener
 		tags: [kdyby.subscriber]
 
 
