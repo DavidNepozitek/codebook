@@ -30,7 +30,8 @@ class SignListener extends Object implements Subscriber
         return array(
             UserRegistration::class . '::onSuccess' => 'onRegistrationSuccess',
             Authenticator::class . '::onSuccess' => 'onSignInSuccess',
-            Authenticator::class . '::onError' => 'onSignInError'
+            Authenticator::class . '::onError' => 'onSignInError',
+
         );
     }
 
