@@ -7,7 +7,6 @@ use App\Model\Entities\Tag;
 use App\Model\Entities\Tutorial;
 use App\Model\TutorialModel;
 use Nette;
-use Tracy\Debugger;
 
 
 class TutorialPresenter extends BasePresenter

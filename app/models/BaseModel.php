@@ -5,6 +5,7 @@ namespace App\Model;
 use Nette\Object;
 use Kdyby\Doctrine\EntityManager;
 
+
 abstract class BaseModel extends Object
 {
     /** @var \Doctrine\ORM\EntityManager */

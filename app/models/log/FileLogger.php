@@ -10,6 +10,8 @@ class FileLogger implements ILogger
     {
         $date = new \DateTime();
 
+        touch($this::FILE_PATH);
+
         $log = "[". $date->format("Y-m-d H-i-s") ."] " . $message;
 
         $fileContents = file_get_contents($this::FILE_PATH);
