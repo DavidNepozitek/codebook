@@ -41,14 +41,14 @@ class TutorialForm extends Control
         if ($this->id) {
             $this->tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $this->id));
         }
-
+        
         $template = $this->template;
         $template->setFile(__DIR__ . "/TutorialForm.latte");
         $template->render();
     }
 
 
-    protected function createComponentForm()
+    protected function createComponentTutorialForm()
     {
         $form = new Form();
 
@@ -68,12 +68,19 @@ class TutorialForm extends Control
             ->setAttribute("placeholder", "Obsah článku");
         $form->addCheckbox('published', 'Publikovat ihned');
 
+        $form->addText("images");
+
         $form->addInteger("id", "id");
 
         if ($this->tutorial) {
 
             foreach ($this->tutorial->getTags()->toArray() as $tag) {
                 $tags[] = $tag->getName();
+            }
+
+            if (isset($tags)) {
+                $tags = json_encode($tags);
+                $form->setDefaults(array("tags" => $tags));
             }
             
             $form->setDefaults(array(
@@ -84,12 +91,6 @@ class TutorialForm extends Control
                 "published" => $this->tutorial->getPublished(),
                 "id" => $this->tutorial->getId(),
             ));
-
-            if (isset($tags)) {
-                $tags = json_encode($tags);
-                $form->setDefaults(array("tags" => $tags));
-            }
-
         }
 
         $form->addSubmit("submit", "Přidat článek");
@@ -107,25 +108,24 @@ class TutorialForm extends Control
             try {
                 $this->tutorialModel->editTutorial(
                     $values["id"], $values["title"], $values["perex"], $values["source"],
-                    $values["difficulty"], $values["published"], $values["tags"], $this->presenter->images
+                    $values["difficulty"], $values["published"], $values["tags"], $values["images"]
                 );
                 $this->presenter->flashMessage("Článek byl úspěšně upraven!", "success");
             } catch (Exception $e) {
                 $this->presenter->flashMessage($e->getMessage(), "error");
             }
             $this->presenter->redrawControl("flashMessages");
-
+            $this->redirectHelper->setRedirect(NULL, FALSE);
         } else {
             try {
                 $tutorial = $this->tutorialModel->createTutorial(
                     $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"],
-                    $values["tags"], $this->presenter->images, $this->presenter->getUser()->getId()
+                    $values["tags"], $values["images"], $this->presenter->getUser()->getId()
                 );
 
                 $this->presenter->flashMessage("Nový článek byl úspěšně přidán! Zde ho můžete dále upravovat.", "success");
                 if ($this->presenter->isAjax()) {
-                    /*$this->redirectHelper->setRedirect($this->presenter->link("Tutorial:edit", $tutorial->getId()));
-                    $this->presenter->forward("Tutorial:edit", $tutorial->getId());*/
+                    $this->redirectHelper->setRedirect(NULL, FALSE);
                     $this->presenter->redirect("Tutorial:edit", $tutorial->getId());
                 } else {
                     $this->presenter->redirect("this");
@@ -134,7 +134,6 @@ class TutorialForm extends Control
                 $this->presenter->flashMessage($e->getMessage(), "error");
             }
             $this->presenter->redrawControl("flashMessages");
-
         }
     }
 

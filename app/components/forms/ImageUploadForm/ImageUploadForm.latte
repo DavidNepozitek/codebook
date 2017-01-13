@@ -28,7 +28,7 @@
     {/if}
 
     <div n:snippet="images" class="js-imageList image-upload__list">
-        {ifset $images}
+        {if !empty($images)}
             {foreach $images as $image}
                 <div data-image-id="{$image->getId()}" class="js-image image-upload">
                     <div class="thumbnail">
@@ -46,6 +46,6 @@
                     </a>
                 </div>
             {/foreach}
-        {/ifset}
+        {/if}
     </div>
 </form>

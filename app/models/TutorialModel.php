@@ -87,7 +87,7 @@ class TutorialModel extends BaseModel
             }
         }
 
-        foreach ($images as $imageId) {
+        foreach (json_decode($images) as $imageId) {
             $image = $this->getOne(Image::class, array("id" => $imageId));
             $image->setTutorial($tutorial);
         }
@@ -155,7 +155,7 @@ class TutorialModel extends BaseModel
 
         $tutorial->clearImages();
 
-        foreach ($images as $imageId) {
+        foreach (json_decode($images) as $imageId) {
             $image = $this->getOne(Image::class, array("id" => $imageId));
             $image->setTutorial($tutorial);
         }

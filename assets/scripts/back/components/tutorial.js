@@ -20,6 +20,7 @@ $(document).on("click", ".js-tutorial-delete", function (e) {
 });
 
 
+
 /**
  * Image markdown copy to clipboard
  */
@@ -33,3 +34,6 @@ $(document).on("click", ".js-code-copy", function () {
     document.execCommand("copy");
 
 });
+
+
+

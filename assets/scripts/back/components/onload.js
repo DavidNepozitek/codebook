@@ -65,7 +65,22 @@ var onLoad = function () {
 
     });
 
-    $(".js-tutorialForm").netteFormValidate()
+    $(".js-tutorialForm").netteFormValidate();
+
+    /** Input image ids to TutorialForm*/
+
+    $(function () {
+        if($(".js-imageList")) {
+            var images = [];
+
+            $(".js-imageList").find(".js-image").each(function (i, element) {
+                var id = $(element).data("image-id");
+                images.push(id);
+            });
+
+            $(".js-imagesJSON").val(JSON.stringify(images));
+        }
+    });
 };
 
 

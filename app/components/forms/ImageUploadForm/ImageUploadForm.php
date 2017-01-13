@@ -34,16 +34,8 @@ class ImageUploadForm extends Control{
     {
         $this->id = $id;
 
-        if ($this->id) {
-            $tutorial = $this->imageModel->getOne(Tutorial::class, array("id" => $this->id));
+        $this->updateTemplateImages(FALSE);
 
-            foreach ($tutorial->getImages()->toArray() as $image) {
-                $this->presenter->images[$image->getId()] = $image->getId();
-            }
-
-            $this->template->images = $tutorial->getImages()->toArray();
-        }
-        
         $template = $this->template;
         $template->setFile(__DIR__ . "/ImageUploadForm.latte");
         $template->render();
@@ -74,8 +66,7 @@ class ImageUploadForm extends Control{
             $image = $this->imageModel->createImage($imageData);
             $this->presenter->images[$image->getId()] = $image->getId();
         }
-
-        Debugger::barDump($this->presenter->images);
+        
         $this->updateTemplateImages();
 
         $this->redirectHelper->setRedirect(NULL, FALSE);
@@ -94,7 +85,7 @@ class ImageUploadForm extends Control{
         $this->updateTemplateImages();
     }
 
-    public function updateTemplateImages()
+    public function updateTemplateImages($redraw = TRUE)
     {
         $images = Array();
         
@@ -103,10 +94,14 @@ class ImageUploadForm extends Control{
             $images[] = $image;
         }
 
-        $this->template->images = $images;
-        $this->presenter->redrawControl("imageUploadForm");
-    }
+        if(!empty($images)) {
+            $this->template->images = $images;
+        }
 
+        if ($redraw) {
+            $this->presenter->redrawControl("imageUploadForm");
+        }
+    }
 }
 
 interface IImageUploadFormFactory

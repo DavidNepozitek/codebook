@@ -47,6 +47,9 @@ class TutorialPresenter extends BasePresenter
 
     public function renderEdit($id)
     {
+
+        $this->template->_tutorialForm = $this['tutorialForm'];
+
         $this->tutorialId = $id;
         $this->template->id = $id;
 
@@ -56,6 +59,10 @@ class TutorialPresenter extends BasePresenter
             $imageId = $image->getId();
             $this->images[$imageId] = $imageId;
         }
+
+        Debugger::barDump($this->images);
+        Debugger::barDump($tutorial->getImages());
+
     }
     
     

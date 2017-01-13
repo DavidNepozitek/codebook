@@ -1,6 +1,6 @@
 {block content}
 
-    <form n:name="form" class="ajax js-tutorialForm">
+    <form n:name="tutorialForm" class="ajax js-tutorialForm">
         <div class="form-group">
             {input "id" class => "form-control", type => "hidden"}
         </div>
@@ -31,6 +31,12 @@
         <div class="form-group form__create-article--publish">
             {input "published" class => "form-control"}
         </div>
+
+
+        <input n:name="images" {ifset $imagesJSON}value="{$imagesJSON}"{/ifset} class="js-imagesJSON"/>
+
+
+
         {snippet flashMessages}
             {if $flashes}
                 <div class="form-error">
@@ -53,11 +59,11 @@
                 </div>
             {/if}
         {/snippet}
-            <button n:name="submit" class="btn btn--blue button__create-article" type="submit">
-                {if $presenter->isLinkCurrent("Tutorial:edit")}
-                    Upravit návod
-                {else}
-                    Přidat návod
-                {/if}
-            </button>
+        <button n:name="submit" class="btn btn--blue button__create-article" type="submit">
+            {if $presenter->isLinkCurrent("Tutorial:edit")}
+                Upravit návod
+            {else}
+                Přidat návod
+            {/if}
+        </button>
     </form>
