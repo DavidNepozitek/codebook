@@ -24,11 +24,16 @@
             </div>
         </div>
     </div>
+
     {if $presenter->isLinkCurrent(':Front:Homepage:*')}
-    <div class="absolute text-center">
-        <h2 class="motto">Codebook vás naučí</h2>
-        <h3 class="under-motto">psát přehledný a funkční kód</h3>
-    </div>
+        <div class="js-mottoList motto text-center">
+            <h2 class="motto__top">Codebook vás naučí</h2>
+
+            <h3 class="js-motto motto__bottom motto__bottom--active">psát přehledný a funkční kód</h3>
+            <h3 class="js-motto motto__bottom">vytvářet responzivní weby</h3>
+            <h3 class="js-motto motto__bottom">používat pokročilé techniky kódování</h3>
+
+        </div>
     {/if}
 
 </header>

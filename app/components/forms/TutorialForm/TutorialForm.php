@@ -8,7 +8,6 @@ use App\Model\TutorialModel;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Nette\Neon\Exception;
-use Tracy\Debugger;
 
 class TutorialForm extends Control
 {
@@ -68,7 +67,7 @@ class TutorialForm extends Control
             ->setAttribute("placeholder", "Obsah článku");
         $form->addCheckbox('published', 'Publikovat ihned');
 
-        $form->addText("images");
+        $form->addHidden("images");
 
         $form->addInteger("id", "id");
 
