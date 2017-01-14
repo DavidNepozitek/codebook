@@ -13,18 +13,22 @@ class CronModel extends BaseModel
     /** @var  ImageModel */
     private $imageModel;
 
-    public $jobs = array(
-        "removeImages" => "+1 day"
-    );
+    private $configModel;
+
+    private $jobs = [];
 
     private $currentTime;
 
-    public function __construct(EntityManager $em, ImageModel $imageModel)
+
+    public function __construct(EntityManager $em, ImageModel $imageModel, ConfigModel $configModel)
     {
         parent::__construct($em);
 
         $this->imageModel = $imageModel;
         $this->currentTime = new DateTime();
+        $this->configModel = $configModel;
+
+        $this->jobs = $this->configModel->getSection("crons");
 
     }
 

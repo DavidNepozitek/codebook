@@ -17,7 +17,7 @@ class RegistrationMailer implements IMailer
         $mail->addTo($user->getEmail());
         $mail->setSubject("Vítejte na Codebooku!");
 
-        $mail->setHtmlBody("<p>Dobrý den,</p><p>právě jsme pro Vás vytvořili účet na stránce http://codebook.gym-karvina.cz/. Abyste mohli upravovat obsah webu, je nutné, aby Vám učitel Váš účet aktivoval. </p>");
+        $mail->setHtmlBody("<p>Dobrý den,</p><p>právě jsme pro Vás vytvořili účet na stránce http://codebook.gym-karvina.cz/. Abyste mohli upravovat obsah webu, je nutné, aby Vám učitel Váš účet aktivoval. </p><br /><p>S přáním příjemného dne</p><p>tým Codebooku</p>");
 
         $mailer = new SendmailMailer();
 

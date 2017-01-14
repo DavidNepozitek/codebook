@@ -1,0 +1,8 @@
+{
+  "mailing": {
+    "onRegistration": false
+  },
+  "crons": {
+    "removeImages": "+1 day"
+  }
+}

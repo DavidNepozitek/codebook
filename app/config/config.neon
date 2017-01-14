@@ -22,6 +22,7 @@ services:
 	- App\Model\PageModel
 	- App\Model\RedirectHelper
 	- App\Model\CronModel
+	- App\Model\ConfigModel
 	- App\Model\User\UserRegistration
 
 	- App\Model\Mailer\RegistrationMailer
