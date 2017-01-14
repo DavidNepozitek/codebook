@@ -60,9 +60,6 @@ class TutorialPresenter extends BasePresenter
             $this->images[$imageId] = $imageId;
         }
 
-        Debugger::barDump($this->images);
-        Debugger::barDump($tutorial->getImages());
-
     }
     
     
