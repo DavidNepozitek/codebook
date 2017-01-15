@@ -232,3 +232,19 @@ $.nette.ext({
         }
     }
 });
+
+
+
+
+/*------------------------------------*\
+ #Wrap tables
+\*------------------------------------*/
+
+
+$(function () {
+    var tables = $("#tutorial-source").find("table");
+
+    if (tables.length > 0) {
+        tables.wrap("<div class='table-responsive'></div>");
+    }
+});
