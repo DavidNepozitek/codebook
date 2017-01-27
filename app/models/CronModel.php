@@ -13,6 +13,7 @@ class CronModel extends BaseModel
     /** @var  ImageModel */
     private $imageModel;
 
+    /** @var ConfigModel  */
     private $configModel;
 
     private $jobs = [];

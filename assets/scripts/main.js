@@ -94,7 +94,6 @@ function CDloader(selector, transitionDur, height) {
     
     this.inc = function () {
 
-
         var incAmount;
 
         if (this.status < 0.5) {
@@ -141,18 +140,18 @@ $.fn.netteFormValidate = function () {
     });
 
     function checkIfValid(e) {
-        //If there is an error -> do not submit the form
-        if ( form.find(".has-error").length > 0 ) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-        }
-
         //Validates each input with rules
         inputs.each(function () {
             if($(this).data("nette-rules")){
                 validateInput($(this));
             }
         });
+
+        //If there is an error -> do not submit the form
+        if ( form.find(".has-error").length > 0 ) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        }
     }
     
 

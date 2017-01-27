@@ -10,18 +10,10 @@ use Nette\Security\User;
 class PageModel extends BaseModel
 {
 
-    /** @var User */
-    private $user;
-
-    /** @var array|Event  */
-    public $onSuccess = [];
-
-
-    public function __construct(EntityManager $em, User $user)
+    public function __construct(EntityManager $em)
     {
         parent::__construct($em);
 
-        $this->user = $user;
     }
 
     /**

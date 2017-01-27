@@ -66,8 +66,9 @@ var onLoad = function () {
     });
 
     $(".js-tutorialForm").netteFormValidate();
+    $(".js-passwordChange").netteFormValidate();
 
-    /** Input image ids to TutorialForm*/
+    /** Input image ids to TutorialForm */
 
     $(function () {
         if($(".js-imageList")) {

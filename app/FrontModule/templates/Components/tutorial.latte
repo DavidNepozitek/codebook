@@ -8,6 +8,9 @@
         <h3 class="article__tags">zařazeno do<span class="article__category">
                 {foreach $tutorial->getTags() as $tag} <a href="{plink Tutorial:default, category => $tag->getName()}">{$tag->getName()}</a> {sep}&bull;{/sep}{/foreach}
             </span>
+            {if (time() - $tutorial->getPubDate()->getTimeStamp()) < 604800}
+                <span class="article__new">Novinka</span>
+            {/if}
         </h3>
         <p class="article__text">{$tutorial->getPerex()|truncate:330}</p>
         <div class="article__wrapper--bottom">
