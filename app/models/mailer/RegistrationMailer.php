@@ -3,6 +3,7 @@
 namespace App\Model\Mailer;
 
 use App\Model\Entities\User;
+use Latte\Engine;
 use Nette\Mail\Message;
 use Nette\Mail\SendmailMailer;
 
@@ -12,12 +13,14 @@ class RegistrationMailer implements IMailer
     public function sendMail(User $user)
     {
         $mail = new Message();
+        
+        $latte = new Engine();
 
         $mail->setFrom("codebook@gym-karvina.cz", "Codebook");
         $mail->addTo($user->getEmail());
         $mail->setSubject("Vítejte na Codebooku!");
 
-        $mail->setHtmlBody("<p>Dobrý den,</p><p>právě jsme pro Vás vytvořili účet na stránce http://codebook.gym-karvina.cz/. Abyste mohli upravovat obsah webu, je nutné, aby Vám učitel Váš účet aktivoval. </p><br /><p>S přáním příjemného dne</p><p>tým Codebooku</p>");
+        $mail->setHtmlBody($latte->renderToString("app/MailTemplates/RegistrationMail.latte"));
 
         $mailer = new SendmailMailer();
 

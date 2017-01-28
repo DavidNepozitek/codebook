@@ -39,29 +39,28 @@
 
 <div class="js-loader"></div>
 
-	<div class="container flashmsg" n:inner-snippet="flashMessages" data-ajax-append>
-	{if $flashes}
-		{foreach $flashes as $flash}
-			{if $flash->type == "error"}
-				<div class="flashmsg__msg flashmsg__msg--error">{$flash->message}</div>
+	{if !$presenter->isLinkCurrent("Login:*")}
+		<div class="js-flashMsg container flashmsg" n:inner-snippet="flashMessages" data-ajax-append>
+			{if $flashes}
+				{foreach $flashes as $flash}
+					{if $flash->type == "error"}
+						<div class="flashmsg__msg flashmsg__msg--error">{$flash->message}</div>
+					{/if}
+					{if $flash->type == "success"}
+						<div class="flashmsg__msg flashmsg__msg--success">{$flash->message}</div>
+					{/if}
+				{/foreach}
 			{/if}
-			{if $flash->type == "success"}
-				<div class="flashmsg__msg flashmsg__msg--success">{$flash->message}</div>
-			{/if}
-		{/foreach}
-	{/if}
-	</div>
+		</div>
 
-    {if !$presenter->isLinkCurrent("Login:*")}
+		{snippetArea header}
+			{import Components/header.latte}
+			{include header}
+		{/snippetArea}
 
-    {snippetArea header}
-        {import Components/header.latte}
-        {include header}
-    {/snippetArea}
-
-	{snippet navigation}
-        {include Components/menu.latte}
-	{/snippet}
+		{snippet navigation}
+			{include Components/menu.latte}
+		{/snippet}
 
 		<div class="container container--admin">
 	{/if}

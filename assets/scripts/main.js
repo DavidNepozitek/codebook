@@ -151,6 +151,12 @@ $.fn.netteFormValidate = function () {
         if ( form.find(".has-error").length > 0 ) {
             e.preventDefault();
             e.stopImmediatePropagation();
+
+            var flashContainer = $(".js-flashMsg");
+
+            if(flashContainer.length > 0) {
+                flashContainer.append("<div class='flashmsg__msg flashmsg__msg--error'>Zkontrolujte, zda jste zadali všechny hodnoty správně.</div>");
+            }
         }
     }
     
