@@ -18,7 +18,7 @@ services:
 	- App\Model\UserModel
 	- App\Model\TutorialModel
 	- App\Model\Parser
-	- App\Model\ImageModel
+	- App\Model\AttachmentModel
 	- App\Model\PageModel
 	- App\Model\RedirectHelper
 	- App\Model\CronModel
@@ -37,7 +37,7 @@ services:
 	- App\Components\ILoginFormFactory
 	- App\Components\ITutorialFormFactory
 	- App\Components\IPasswordChangeFormFactory
-	- App\Components\IImageUploadFormFactory
+	- App\Components\IAttachmentUploadFormFactory
 	- App\Components\IPageFormFactory
 	- App\Components\IFilterFormFactory
 

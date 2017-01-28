@@ -2,11 +2,11 @@
 
 namespace App\BackModule\Presenters;
 
-use App\Components\IImageUploadFormFactory;
+use App\Components\IAttachmentUploadFormFactory;
 use App\Components\ITutorialFormFactory;
-use App\Model\Entities\Image;
+use App\Model\Entities\Attachment;
 use App\Model\Entities\Tutorial;
-use App\Model\ImageModel;
+use App\Model\AttachmentModel;
 use App\Model\TutorialModel;
 use Grido\DataSources\Doctrine;
 use Grido\Grid;
@@ -21,28 +21,28 @@ class TutorialPresenter extends BasePresenter
     /** @var  ITutorialFormFactory @inject */
     public $tutorialFormFactory;
 
-    /** @var  IImageUploadFormFactory @inject */
-    public $imageUploadFormFactory;
+    /** @var  IAttachmentUploadFormFactory @inject */
+    public $attachmentUploadFormFactory;
 
     /** @var TutorialModel @inject */
     public $tutorialModel;
 
-    /** @var  ImageModel */
-    public $imageModel;
+    /** @var  AttachmentModel */
+    public $attachmentModel;
 
     private $tutorialId;
 
     /** @persistent array */
-    public $images = Array();
+    public $attachments = Array();
 
     protected function createComponentTutorialForm()
     {
         return $this->tutorialFormFactory->create();
     }
 
-    protected function createComponentImageUploadForm()
+    protected function createComponentAttachmentUploadForm()
     {
-        return $this->imageUploadFormFactory->create();
+        return $this->attachmentUploadFormFactory->create();
     }
 
     public function renderEdit($id)
@@ -55,10 +55,12 @@ class TutorialPresenter extends BasePresenter
 
         $tutorial = $this->tutorialModel->getOne(Tutorial::class, array("id" => $id));
 
-        foreach ($tutorial->getImages() as $image) {
-            $imageId = $image->getId();
-            $this->images[$imageId] = $imageId;
+        foreach ($tutorial->getAttachments() as $attachment) {
+            $attachmentId = $attachment->getId();
+            $this->attachments[$attachmentId] = $attachmentId;
         }
+
+        Debugger::barDump($this->attachments);
 
     }
     

@@ -67,7 +67,7 @@ class TutorialForm extends Control
             ->setAttribute("placeholder", "Obsah článku");
         $form->addCheckbox('published', 'Publikovat ihned');
 
-        $form->addHidden("images");
+        $form->addHidden("attachments");
 
         $form->addInteger("id", "id");
 
@@ -107,7 +107,7 @@ class TutorialForm extends Control
             try {
                 $this->tutorialModel->editTutorial(
                     $values["id"], $values["title"], $values["perex"], $values["source"],
-                    $values["difficulty"], $values["published"], $values["tags"], $values["images"]
+                    $values["difficulty"], $values["published"], $values["tags"], $values["attachments"]
                 );
                 $this->presenter->flashMessage("Článek byl úspěšně upraven!", "success");
             } catch (Exception $e) {
@@ -119,7 +119,7 @@ class TutorialForm extends Control
             try {
                 $tutorial = $this->tutorialModel->createTutorial(
                     $values["title"], $values["perex"], $values["source"],$values["difficulty"], $values["published"],
-                    $values["tags"], $values["images"], $this->presenter->getUser()->getId()
+                    $values["tags"], $values["attachments"], $this->presenter->getUser()->getId()
                 );
 
                 $this->presenter->flashMessage("Nový článek byl úspěšně přidán! Zde ho můžete dále upravovat.", "success");

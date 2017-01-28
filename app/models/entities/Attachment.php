@@ -8,7 +8,7 @@ use Kdyby\Doctrine\Entities\MagicAccessors;
 /**
  * @ORM\Entity
  */
-class Image
+class Attachment
 {
     use MagicAccessors;
 
@@ -34,7 +34,7 @@ class Image
     protected $upDate;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="images")
+     * @ORM\ManyToOne(targetEntity="Tutorial", inversedBy="attachments")
      */
     protected $tutorial;
 

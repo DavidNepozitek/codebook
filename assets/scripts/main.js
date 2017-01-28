@@ -173,8 +173,8 @@ $.fn.netteFormValidate = function () {
 
                 //If has a rule and the rule is violated
                 if (( rule.op == ":filled" && input.val() == "" ) ||
-                    ( rule.op == ":minLength" &&  input.val().length < rule.arg) ||
-                    ( rule.op == ":email" &&  !validateEmail(input.val()))) {
+                    ( rule.op == ":minLength" &&  input.val().length < rule.arg )
+                    ) {
 
                     input.parent().addClass("has-error");
 

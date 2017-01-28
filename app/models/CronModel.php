@@ -10,7 +10,7 @@ class CronModel extends BaseModel
 
     CONST FILE = "temp/cron.json";
 
-    /** @var  ImageModel */
+    /** @var  AttachmentModel */
     private $imageModel;
 
     /** @var ConfigModel  */
@@ -21,7 +21,7 @@ class CronModel extends BaseModel
     private $currentTime;
 
 
-    public function __construct(EntityManager $em, ImageModel $imageModel, ConfigModel $configModel)
+    public function __construct(EntityManager $em, AttachmentModel $imageModel, ConfigModel $configModel)
     {
         parent::__construct($em);
 
@@ -53,7 +53,7 @@ class CronModel extends BaseModel
 
                     switch ($job) {
                         case "removeImages":
-                            $this->imageModel->purgeImages();
+                            $this->imageModel->purgeAttachments();
                             break;
                     }
 

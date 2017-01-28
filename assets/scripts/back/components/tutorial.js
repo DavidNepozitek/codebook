@@ -36,4 +36,31 @@ $(document).on("click", ".js-code-copy", function () {
 });
 
 
+/**
+ * Attachment size check
+ */
+
+$('.js-attachmentInput').on('change', function(e) {
+    var rules = $(this).data("nette-rules");
+    var msg;
+    var maxSize;
+
+    rules.forEach(function (rule) {
+        if (rule.op == ":fileSize") {
+            maxSize = rule.arg;
+            msg = rule.msg;
+        }
+    });
+
+    for (var i = 0; i < this.files.length; i++) {
+
+        file = this.files[i];
+
+        if(file.size > maxSize) {
+            alert("Soubor " + file.name + " přesáhl maximální povolenou velikost. " + msg);
+        }
+    }
+
+});
+
 

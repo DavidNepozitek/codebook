@@ -1,0 +1,61 @@
+{block content}
+
+<form n:name="form" class="ajax js-imageUpload">
+    <div class="form-group">
+        <label class="form__create-article">Nahrávání příloh</label>
+        {input "attachments" class => "js-attachmentInput form-control image-upload__upload"}
+    </div>
+    <button n:name="submit" type="submit" class="btn btn--blue image-upload__button">Nahrát přílohu</button>
+    {if $flashes}
+        <div class="form-error">
+            <ul n:ifcontent>
+                {foreach $flashes as $flash}
+                    {if $flash->type == "error"}
+                        <li>{$flash->message}</li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </div>
+        <div class="form-success">
+            <ul n:ifcontent>
+                {foreach $flashes as $flash}
+                    {if $flash->type == "success"}
+                        <li>{$flash->message}</li>
+                    {/if}
+                {/foreach}
+            </ul>
+        </div>
+    {/if}
+
+    <div n:snippet="attachment" class="js-imageList image-upload__list">
+        {if !empty($attachments)}
+            {foreach $attachments as $attachment}
+                <div data-image-id="{$attachment->getId()}" class="js-image image-upload">
+                    <div class="thumbnail">
+                        {if $attachment->getExtension() == "pdf"}
+                            <i class="fa fa-file-pdf-o image-upload__file-icon" aria-hidden="true"></i>
+                        {else}
+                            <img src="{$basePath}/assets/attachments/{$attachment->getName()}.{$attachment->getExtension()}">
+                        {/if}
+                    </div>
+                    <div class="image-upload--right">
+                        <label class="image-upload__markdown-text" for="{$attachment->getName()}">Markdown:</label>
+                        <input class="js-image-input form-control image-upload__link" id="{$attachment->getName()}" type="text"
+                                {if $attachment->getExtension() == "pdf"}
+                                    value="[Text odkazu na PDF]({$baseUrl}/assets/attachments/{$attachment->getName()}.{$attachment->getExtension()})"
+                                {else}
+                                    value="![alt text]({$baseUrl}/assets/attachments/{$attachment->getName()}.{$attachment->getExtension()} 'Název obrázku')"
+                                {/if}
+                        >
+                        <div class="js-code-copy image-upload__copy">
+                            <i aria-hidden="true" class="fa fa-clone"></i><span class="image-upload__copy-link">Kopírovat</span>
+                        </div>
+                    </div>
+                    <a class="ajax js-removeImage image-upload__remove btn btn--orange " n:href="remove!, 'id' => $attachment->getId()">
+                        <i aria-hidden="true" class="fa fa-trash"></i>
+                    </a>
+                </div>
+            {/foreach}
+        {/if}
+    </div>
+</form>

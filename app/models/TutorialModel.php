@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Model\Entities\Image;
+use App\Model\Entities\Attachment;
 use App\Model\Entities\Tag;
 use App\Model\Entities\Tutorial;
 use App\Model\Entities\User;
@@ -14,8 +14,8 @@ use Tracy\Debugger;
 class TutorialModel extends BaseModel
 {
 
-    /** @var  ImageModel */
-    private $imageModel;
+    /** @var  AttachmentModel */
+    private $attachmentModel;
 
     /** @var array|Event  */
     public $onCreateSuccess = [];
@@ -28,11 +28,11 @@ class TutorialModel extends BaseModel
 
     public $difficulties = Array("Začátečník", "Pokročilý", "Zkušený");
 
-    public function __construct(EntityManager $em, ImageModel $imageModel)
+    public function __construct(EntityManager $em, AttachmentModel $attachmentModel)
     {
         parent::__construct($em);
 
-        $this->imageModel = $imageModel;
+        $this->attachmentModel = $attachmentModel;
     }
 
 
@@ -45,12 +45,12 @@ class TutorialModel extends BaseModel
      * @param $difficulty
      * @param $published
      * @param $tags
-     * @param $images
+     * @param $attachments
      * @param $userId
      * @return Tutorial|mixed|null|object
      * @throws Exception
      */
-    public function createTutorial($title, $perex, $source, $difficulty, $published, $tags, $images, $userId)
+    public function createTutorial($title, $perex, $source, $difficulty, $published, $tags, $attachments, $userId)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("title" => $title));
@@ -87,9 +87,9 @@ class TutorialModel extends BaseModel
             }
         }
 
-        foreach (json_decode($images) as $imageId) {
-            $image = $this->getOne(Image::class, array("id" => $imageId));
-            $image->setTutorial($tutorial);
+        foreach (json_decode($attachments) as $attachmentId) {
+            $attachment = $this->getOne(Attachment::class, array("id" => $attachmentId));
+            $attachment->setTutorial($tutorial);
         }
 
         $this->persist($tutorial);
@@ -111,10 +111,10 @@ class TutorialModel extends BaseModel
      * @param $difficulty
      * @param $published
      * @param $tags
-     * @param $images
+     * @param $attachments
      * @throws Exception
      */
-    public function editTutorial($id, $title, $perex, $source, $difficulty, $published, $tags, $images)
+    public function editTutorial($id, $title, $perex, $source, $difficulty, $published, $tags, $attachments)
     {
 
         $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
@@ -153,11 +153,11 @@ class TutorialModel extends BaseModel
             }
         }
 
-        $tutorial->clearImages();
+        $tutorial->clearAttachments();
 
-        foreach (json_decode($images) as $imageId) {
-            $image = $this->getOne(Image::class, array("id" => $imageId));
-            $image->setTutorial($tutorial);
+        foreach (json_decode($attachments) as $attachmentId) {
+            $attachment = $this->getOne(Attachment::class, array("id" => $attachmentId));
+            $attachment->setTutorial($tutorial);
         }
 
         $this->flush();
@@ -183,22 +183,22 @@ class TutorialModel extends BaseModel
     }
 
     /**
-     * Removes a tutorial and all images assigned to it
+     * Removes a tutorial and all attachments assigned to it
      *
      * @param $id
      */
     public function deleteTutorial($id)
     {
         $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
-        $imageIds = array();
+        $attachmentIds = array();
 
         if ($tutorial) {
 
-            foreach($tutorial->getImages() as $image) {
-                $imageIds[] = $image->getId();
+            foreach($tutorial->getAttachments() as $attachment) {
+                $attachmentIds[] = $attachment->getId();
             }
 
-            $this->imageModel->deleteImage($imageIds);
+            $this->attachmentModel->deleteAttachment($attachmentIds);
 
             $this->remove($tutorial);
             $this->flush();

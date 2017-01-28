@@ -416,6 +416,15 @@
       &:hover {
         text-decoration: none;
       }
+
+      &[href$=".pdf"] {
+
+        &::before {
+          content: "\f1c1";
+          font-family: FontAwesome;
+          margin-right: 5px;
+        }
+      }
     }
 
     pre {

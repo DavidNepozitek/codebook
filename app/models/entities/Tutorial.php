@@ -60,10 +60,10 @@ class Tutorial
     protected $tags;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="tutorial",
+     * @ORM\OneToMany(targetEntity="Attachment", mappedBy="tutorial",
      * cascade={"persist"})
      */
-    protected $images;
+    protected $attachments;
 
     /**
      * @ORM\Column(type="boolean")
@@ -80,7 +80,7 @@ class Tutorial
         $this->pubDate = new \DateTime();
         $this->seenCount = 0;
         $this->tags = new ArrayCollection();
-        $this->images = new ArrayCollection();
+        $this->attachments = new ArrayCollection();
     }
 
     public function clearTags()
@@ -88,14 +88,14 @@ class Tutorial
         $this->tags->clear();
     }
 
-    public function clearImages()
+    public function clearAttachments()
     {
-        $this->images->clear();
+        $this->attachments->clear();
     }
 
-    public function addImage(Image $image)
+    public function addImage(Attachment $image)
     {
-        $this->images->add($image);
+        $this->attachments->add($image);
         $image->setTutorial($this);
     }
 
