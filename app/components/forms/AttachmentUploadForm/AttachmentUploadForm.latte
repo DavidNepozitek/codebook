@@ -4,6 +4,7 @@
     <div class="form-group">
         <label class="form__create-article">Nahrávání příloh</label>
         {input "attachments" class => "js-attachmentInput form-control image-upload__upload"}
+        <input type="hidden" n:name="id"/>
     </div>
     <button n:name="submit" type="submit" class="btn btn--blue image-upload__button">Nahrát přílohu</button>
     {if $flashes}

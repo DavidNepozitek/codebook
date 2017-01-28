@@ -20,7 +20,8 @@ class AttachmentUploadForm extends Control{
 
     private $attachments;
 
-    private $id;
+    /** @persistent */
+    public $id;
 
     public function __construct(AttachmentModel $attachmentModel, RedirectHelper $redirectHelper)
     {
@@ -32,7 +33,6 @@ class AttachmentUploadForm extends Control{
 
     public function render($id = NULL)
     {
-
         $this->id = $id;
 
         $this->updateTemplateAttachments(FALSE);
@@ -50,6 +50,11 @@ class AttachmentUploadForm extends Control{
         $form->addMultiUpload('attachments', 'Přílohy')
             ->setRequired()
             ->addRule(Form::MAX_FILE_SIZE, 'Maximální velikost souboru je 2 MB.', 2 * 1024 * 1024);
+        $form->addInteger("id", "id");
+
+        if(isset($this->id)) {
+            $form->setDefaults(array("id" => $this->id));
+        }
 
         $form->addSubmit("submit", "Nahrát obrázky");
 
@@ -62,10 +67,20 @@ class AttachmentUploadForm extends Control{
     {
         $values = $form->getValues();
 
+        if(isset($values["id"])) {
+            $tutorial = $this->attachmentModel->getOne(Tutorial::class, array("id" => $values["id"]));
+        }
+
         foreach ($values["attachments"] as $attachmentData) {
             $attachment = $this->attachmentModel->createAttachment($attachmentData);
             $this->presenter->attachments[$attachment->getId()] = $attachment->getId();
+
+            if(isset($tutorial)) {
+                $attachment->setTutorial($tutorial);
+            }
         }
+
+        $this->attachmentModel->flush();
         
         $this->updateTemplateAttachments();
 
