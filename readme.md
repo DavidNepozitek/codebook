@@ -1,6 +1,8 @@
 Codebook
 ========
 
+[![buddy pipeline](https://app.buddy.works/nepozitek-1/codebook/pipelines/pipeline/37417/badge.svg?token=8429d5241b5b1f8d5f8c84c4ae62d02bdf82e750b13498d6a5c840f81ca20d0a "buddy pipeline")](https://app.buddy.works/nepozitek-1/codebook/pipelines/pipeline/37417)
+
 Front-end handbook for students and teachers.
 
 **Authors:**
