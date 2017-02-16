@@ -7,6 +7,7 @@ use App\Model\Entities\Tutorial;
 use App\Model\SotdModel;
 use App\Model\TutorialModel;
 use Nette;
+use Tracy\Debugger;
 
 
 class HomepagePresenter extends BasePresenter
@@ -36,6 +37,8 @@ class HomepagePresenter extends BasePresenter
         $q = $this->tutorialModel->findBy(Tutorial::class, array("published" => "1"), array("pubDate" => "DESC"), 6);
 
         $this->template->tutorials = $q;
+
+        Debugger::barDump($q);
 
 
     }

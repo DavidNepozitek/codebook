@@ -11,6 +11,12 @@ $.fn.makeTags = function () {
     var result = [];
     var isRemovable = false;
 
+    function tagExist(content) {
+
+        return $.inArray(content, result) != -1;
+
+    }
+
     if (resultInput.val()) {
         result =  $.parseJSON(resultInput.val());
 
@@ -48,12 +54,6 @@ $.fn.makeTags = function () {
 
     function updateResultInput() {
         resultInput.val(JSON.stringify(result));
-    }
-
-    function tagExist(content) {
-
-        return $.inArray(content, result) != -1;
-
     }
 
     newtag.keydown(function (event) {

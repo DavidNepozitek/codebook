@@ -36,17 +36,6 @@ hljs.initHighlightingOnLoad();
  #Loader
 \*------------------------------------*/
 
-var loader = new CDloader(".js-loader", 200, "2px");
-
-$.nette.ext({
-    start: function () {
-        loader.start();
-    },
-    success: function () {
-        loader.end();
-    }
-});
-
 
 function CDloader(selector, transitionDur, height) {
     var loader = $(selector);
@@ -115,7 +104,16 @@ function CDloader(selector, transitionDur, height) {
     }
 }
 
+var loader = new CDloader(".js-loader", 200, "2px");
 
+$.nette.ext({
+    start: function () {
+        loader.start();
+    },
+    success: function () {
+        loader.end();
+    }
+});
 
 
 
