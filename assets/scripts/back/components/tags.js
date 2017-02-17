@@ -17,6 +17,10 @@ $.fn.makeTags = function () {
 
     }
 
+    function updateResultInput() {
+        resultInput.val(JSON.stringify(result));
+    }
+
     if (resultInput.val()) {
         result =  $.parseJSON(resultInput.val());
 
@@ -30,7 +34,7 @@ $.fn.makeTags = function () {
 
         var content = value.toLowerCase().trim();
         
-        if (content == "" || tagExist(content)) {
+        if (content === "" || tagExist(content)) {
 
             newtag.val("");
             return;
@@ -52,10 +56,6 @@ $.fn.makeTags = function () {
         updateResultInput();
     }
 
-    function updateResultInput() {
-        resultInput.val(JSON.stringify(result));
-    }
-
     newtag.keydown(function (event) {
 
         switch (event.which) {
@@ -73,7 +73,7 @@ $.fn.makeTags = function () {
 
         switch (event.which) {
             case 8:
-                if (newtag.val() == "") {
+                if (newtag.val() === "") {
                     if (isRemovable) {
                         event.preventDefault();
                         deleteTag(tags.children(".tags__tag:last-of-type").text());
@@ -95,7 +95,7 @@ $.fn.makeTags = function () {
 
     $(document).on("click", ".tags__delete", function (event) {
 
-        if ($(event.target).parents(this).length == 0) {
+        if ($(event.target).parents(this).length === 0) {
             return;
         }
 

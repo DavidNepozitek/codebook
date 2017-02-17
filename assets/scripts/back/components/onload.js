@@ -6,9 +6,9 @@ var onLoad = function () {
 
     $(function(){
 
-        if ($('.grido').length > 0 && $(".grido").data("loaded") != "true") {
+        if ($(".grido").length > 0 && $(".grido").data("loaded") !== "true") {
 
-            $('.grido').grido();
+            $(".grido").grido();
 
             $(".grido").data("loaded", "true");
         }
@@ -17,7 +17,7 @@ var onLoad = function () {
 
     $(function(){
 
-        if ($(".js-editor-add").length > 0 && $(".js-editor").data("loaded") != "true") {
+        if ($(".js-editor-add").length > 0 && $(".js-editor").data("loaded") !== "true") {
 
             var simplemde = new SimpleMDE({
                 element: $(".js-editor-add")[0] ,
@@ -35,7 +35,7 @@ var onLoad = function () {
             $(".js-editor").data("loaded", "true");
 
 
-        } else if ($(".js-editor").length > 0 && $(".js-editor").data("loaded") != "true") {
+        } else if ($(".js-editor").length > 0 && $(".js-editor").data("loaded") !== "true") {
 
             var simplemde = new SimpleMDE({
                 element: $(".js-editor")[0] ,
@@ -58,7 +58,7 @@ var onLoad = function () {
     $(function(){
         var tags = $(".tags");
 
-        if (tags.length > 0 && tags.data("loaded") != "true") {
+        if (tags.length > 0 && tags.data("loaded") !== "true") {
             tags.makeTags();
             tags.data("loaded", "true");
         }

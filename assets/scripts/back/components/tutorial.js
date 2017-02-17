@@ -14,7 +14,7 @@ $(document).on("click", ".js-tutorial-delete", function (e) {
     
     var isOk = confirm("Opravdu chcete smazat návod " + name + " ?");
 
-    if (isOk == true) {
+    if (isOk === true) {
         $(this).netteAjax(e);
     }
 });
@@ -40,13 +40,13 @@ $(document).on("click", ".js-code-copy", function () {
  * Attachment size check
  */
 
-$('.js-attachmentInput').on('change', function(e) {
+$(".js-attachmentInput").on("change", function(e) {
     var rules = $(this).data("nette-rules");
     var msg;
     var maxSize;
 
     rules.forEach(function (rule) {
-        if (rule.op == ":fileSize") {
+        if (rule.op === ":fileSize") {
             maxSize = rule.arg;
             msg = rule.msg;
         }
@@ -54,7 +54,7 @@ $('.js-attachmentInput').on('change', function(e) {
 
     for (var i = 0; i < this.files.length; i++) {
 
-        file = this.files[i];
+        var file = this.files[i];
 
         if(file.size > maxSize) {
             alert("Soubor " + file.name + " přesáhl maximální povolenou velikost. " + msg);

@@ -1,12 +1,12 @@
 $(function(){
     var nav = $(".main-navigation");
 
-    if (nav.length > 0) {
+    function handleCollapsed() {
+        $(".main-navigation__subitem--active").parent(".main-navigation__submenu").css("display", "block");
+        $(".main-navigation__subitem--active").parents(".main-navigation__item").removeClass("collapsed");
+    }
 
-        function handleCollapsed() {
-            $(".main-navigation__subitem--active").parent(".main-navigation__submenu").css("display", "block");
-            $(".main-navigation__subitem--active").parents(".main-navigation__item").removeClass("collapsed");
-        }
+    if (nav.length > 0) {
 
         $(document).on("click", ".main-navigation__item--sub > a",function (e) {
 
@@ -41,10 +41,10 @@ $(function(){
                     var path = window.location.pathname;
                     var href = $(element).attr("href");
 
-                    if (path.indexOf(href) == 0) {
+                    if (path.indexOf(href) === 0) {
 
                         if(href.match(/admin\/$/)) {
-                            if (path != href) {
+                            if (path !== href) {
                                 return true;
                             }
                         }
