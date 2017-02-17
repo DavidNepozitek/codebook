@@ -1,5 +1,11 @@
 $(function () {
 
+    var list = $(".js-mottoList");
+
+    var lastIndex;
+
+    var timeout = 4500;
+
     function init() {
         list.find(".js-motto").each(function (i, element) {
             $(element).attr("data-motto-index", i);
@@ -34,12 +40,6 @@ $(function () {
     }
 
    if($(".js-mottoList").length > 0) {
-
-       var list = $(".js-mottoList");
-
-       var lastIndex;
-
-       var timeout = 4500;
 
        init();
 
