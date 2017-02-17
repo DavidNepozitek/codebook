@@ -93,10 +93,6 @@ class AttachmentUploadForm extends Control{
 
         $this->attachmentModel->deleteAttachment($id);
 
-        foreach ($this->presenter->attachments as $id) {
-            $attachments[] = $this->attachmentModel->getOne(Attachment::class, array("id" => $id));
-        }
-
         $this->updateTemplateAttachments();
     }
 

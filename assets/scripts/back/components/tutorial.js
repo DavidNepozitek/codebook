@@ -44,6 +44,7 @@ $(".js-attachmentInput").on("change", function(e) {
     var rules = $(this).data("nette-rules");
     var msg;
     var maxSize;
+    var file;
 
     rules.forEach(function (rule) {
         if (rule.op === ":fileSize") {
@@ -54,7 +55,7 @@ $(".js-attachmentInput").on("change", function(e) {
 
     for (var i = 0; i < this.files.length; i++) {
 
-        var file = this.files[i];
+        file = this.files[i];
 
         if(file.size > maxSize) {
             alert("Soubor " + file.name + " přesáhl maximální povolenou velikost. " + msg);

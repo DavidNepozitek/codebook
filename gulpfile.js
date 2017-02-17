@@ -11,7 +11,7 @@ var autoprefixer = require("gulp-autoprefixer");
 var plumberOpts = {
     errorHandler: function(error) {
         console.log(error.toString());
-        this.emit('end');
+        this.emit("end");
     }
 };
 
