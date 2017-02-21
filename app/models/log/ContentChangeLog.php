@@ -4,7 +4,11 @@ namespace App\Model\Log;
 
 class contentChangeLog
 {
-    /** @var ILogger  */
+    /**
+* 
+     *
+ * @var ILogger  
+*/
     private $logger;
 
     public function __construct(FileLogger $logger)
@@ -15,12 +19,12 @@ class contentChangeLog
     public function logPageChange($name, $email)
     {
         switch ($name) {
-            case "about":
-                $name = "\"O projektu\"";
-                break;
-            case "links":
-                $name = "\"Odkazy\"";
-                break;
+        case "about":
+            $name = "\"O projektu\"";
+            break;
+        case "links":
+            $name = "\"Odkazy\"";
+            break;
         }
 
         $message = "User " . $email . " changed the content of the page " . $name;

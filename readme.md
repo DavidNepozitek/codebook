@@ -2,6 +2,7 @@ Codebook
 ========
 
 [![buddy pipeline](https://app.buddy.works/nepozitek-1/codebook/pipelines/pipeline/37417/badge.svg?token=8429d5241b5b1f8d5f8c84c4ae62d02bdf82e750b13498d6a5c840f81ca20d0a "buddy pipeline")](https://app.buddy.works/nepozitek-1/codebook/pipelines/pipeline/37417)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d00fbeb3d6cf4dff84143397968c7446)](https://www.codacy.com/app/DavidNepozitek/codebook?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DavidNepozitek/codebook&amp;utm_campaign=Badge_Grade)
 
 Front-end handbook for students and teachers.
 

@@ -13,7 +13,7 @@ class ConfigModel extends BaseModel
         if (file_exists($this::CONFIG_FILE)) {
 
             $configJSON = file_get_contents($this::CONFIG_FILE);
-            $config = json_decode($configJSON, TRUE);
+            $config = json_decode($configJSON, true);
             
             return $config[$section];
         } else {

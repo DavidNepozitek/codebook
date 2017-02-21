@@ -7,7 +7,11 @@ use App\Model\Entities\User;
 class SignLog
 {
 
-    /** @var ILogger  */
+    /**
+* 
+     *
+ * @var ILogger  
+*/
     private $logger;
 
     public function __construct(FileLogger $logger)
@@ -24,20 +28,20 @@ class SignLog
     public function logSignIn($email, $error = 0)
     {
         switch ($error) {
-            case 0:
-                $message = "User ". $email . " signed in";
-                break;
-            case 1:
-                $message = "Someone tried to log as ". $email . ", but this identity was not found";
-                break;
-            case 2:
-                $message = "Someone tried to log as ". $email . " with wrong password";
-                break;
-            case 4:
-                $message = "User ". $email . " tried to log with guest role";
-                break;
-            default:
-                $message = "Someone tried to log as ". $email . " signed in";
+        case 0:
+            $message = "User ". $email . " signed in";
+            break;
+        case 1:
+            $message = "Someone tried to log as ". $email . ", but this identity was not found";
+            break;
+        case 2:
+            $message = "Someone tried to log as ". $email . " with wrong password";
+            break;
+        case 4:
+            $message = "User ". $email . " tried to log with guest role";
+            break;
+        default:
+            $message = "Someone tried to log as ". $email . " signed in";
         }
         
         $this->logger->log($message);

@@ -31,11 +31,11 @@
 		"erusev/parsedown-extra": "^0.7.1",
 		"o5/grido": "dev-master",
 		"vojtech-dobes/nette-ajax-history": "^2.0",
-		"google/apiclient": "2.0"
+		"google/apiclient": "2.0",
+		"squizlabs/php_codesniffer": "*"
 	},
 	"require-dev": {
-		"nette/tester": "^1.6",
-		"phpstan/phpstan": "^0.6.3"
+		"nette/tester": "^1.6"
 	},
 	"minimum-stability": "stable"
 }

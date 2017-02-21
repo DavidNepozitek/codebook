@@ -28,20 +28,23 @@ class AttachmentModel extends BaseModel
         $name = uniqid("att_");
 
         switch ($fileData->getContentType()) {
-            case "image/jpeg":
-                $extension = "jpeg";
-                break;
-            case "image/png":
-                $extension = "png";
-                break;
-            case "image/gif":
-                $extension = "gif";
-                break;
-            case "application/pdf":
-                $extension = "pdf";
-                break;
-            default:
-                throw new \Exception("Nahraný soubor musí být obrázek nebo PDF", $this::INVALID_FORMAT);
+        case "image/jpeg":
+            $extension = "jpeg";
+            break;
+        case "image/png":
+            $extension = "png";
+            break;
+        case "image/gif":
+            $extension = "gif";
+            break;
+        case "application/pdf":
+            $extension = "pdf";
+            break;
+        default:
+            throw new \Exception(
+                "Nahraný soubor musí být obrázek nebo PDF", 
+                $this::INVALID_FORMAT
+            );
         }
         
 
@@ -53,7 +56,7 @@ class AttachmentModel extends BaseModel
 
         move_uploaded_file($fileData->getTemporaryFile(), $target);
 
-        if(file_exists($target)) {
+        if (file_exists($target)) {
             $this->persist($attachment);
             $this->flush();
         }
@@ -62,8 +65,9 @@ class AttachmentModel extends BaseModel
     }
 
     /**
-     * Deletes an attachment with given ID OR deletes all attachments from the array of IDs as a parameter
-     *
+     * Deletes an attachment with given ID 
+     * OR deletes all attachments from the array of IDs as a parameter
+     * 
      * @param $id
      */
     public function deleteAttachment($id)
@@ -71,12 +75,16 @@ class AttachmentModel extends BaseModel
 
         if (is_array($id)) {
             foreach ($id as $attachmentId) {
-                $attachment = $this->getOne(Attachment::class, array("id" => $attachmentId));
+                $attachment = $this->getOne(
+                    Attachment::class, 
+                    array("id" => $attachmentId)
+                );
 
                 if ($attachment) {
-                    $target = $this::UPLOAD_PATH . $attachment->getName() . "." . $attachment->getExtension();
+                    $target = $this::UPLOAD_PATH . 
+                        $attachment->getName() . "." . $attachment->getExtension();
 
-                    if(file_exists($target)){
+                    if (file_exists($target)) {
                         unlink($target);
                     }
 
@@ -89,9 +97,10 @@ class AttachmentModel extends BaseModel
             $attachment = $this->getOne(Attachment::class, array("id" => $id));
 
             if ($attachment) {
-                $target = $this::UPLOAD_PATH . $attachment->getName() . "." . $attachment->getExtension();
+                $target = $this::UPLOAD_PATH . 
+                    $attachment->getName() . "." . $attachment->getExtension();
 
-                if(file_exists($target)){
+                if (file_exists($target)) {
                     unlink($target);
                 }
 
@@ -105,7 +114,8 @@ class AttachmentModel extends BaseModel
     }
 
     /**
-     * Deletes all attachments, which aren't assigned to a tutorial and are at least 1 day old
+     * Deletes all attachments, which aren't assigned to a tutorial
+     * and are at least 1 day old
      */
     public function purgeAttachments()
     {
@@ -113,12 +123,13 @@ class AttachmentModel extends BaseModel
         $time = new \DateTime();
         $time->modify("-1 day");
 
-        $query = $this->getEm()->createQuery('
-            SELECT i
+        $query = $this->getEm()->createQuery(
+            'SELECT i
             FROM App\Model\Entities\Attachment i
             WHERE i.tutorial is NULL
-            AND i.upDate < :time'
-        )->setParameter('time', $time);
+            AND i.upDate < :time
+            ')
+            ->setParameter('time', $time);
         $attachments = $query->getResult();
 
         foreach ($attachments as $attachment) {

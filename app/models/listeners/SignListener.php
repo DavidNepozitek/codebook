@@ -14,13 +14,25 @@ use Nette\Object;
 class SignListener extends Object implements Subscriber
 {
 
-    /** @var  SignLog */
+    /**
+* 
+     *
+ * @var SignLog 
+*/
     private $signLog;
 
-    /** @var  RegistrationMailer */
+    /**
+* 
+     *
+ * @var RegistrationMailer 
+*/
     private $registrationMailer;
 
-    /** @var ConfigModel  */
+    /**
+* 
+     *
+ * @var ConfigModel  
+*/
     private $configModel;
 
     public function __construct(SignLog $signLog, RegistrationMailer $registrationMailer, ConfigModel $configModel)

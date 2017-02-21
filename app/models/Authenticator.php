@@ -43,13 +43,21 @@ class Authenticator extends Object implements IAuthenticator
 
         if (!$user) {
             $this->onError($email, self::IDENTITY_NOT_FOUND);
-            throw new AuthenticationException('Uživatel s tímto e-mailem není zaregistrován.', self::IDENTITY_NOT_FOUND);
+            throw new AuthenticationException(
+                'Uživatel s tímto e-mailem není zaregistrován.', 
+                self::IDENTITY_NOT_FOUND
+            );
         } elseif (!Passwords::verify($password, $user->getPassword())) {
             $this->onError($email, self::INVALID_CREDENTIAL);
-            throw new AuthenticationException('Zadané heslo nesouhlasí.', self::INVALID_CREDENTIAL);
+            throw new AuthenticationException(
+                'Zadané heslo nesouhlasí.', 
+                self::INVALID_CREDENTIAL
+            );
         } elseif ($user->getRole() == "guest") {
             $this->onError($email, self::NOT_APPROVED);
-            throw new AuthenticationException("Váš účet ještě není aktivován. O aktivaci požádejte učitele.");
+            throw new AuthenticationException(
+                "Váš účet ještě není aktivován. O aktivaci požádejte učitele."
+            );
         }
 
         $arr = array(
