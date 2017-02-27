@@ -58,8 +58,6 @@ class SotdModel extends BaseModel
 
             $this->persist($newItem);
             $this->flush();
-
-
         }
     }
 

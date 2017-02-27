@@ -107,13 +107,11 @@ class TutorialPresenter extends BasePresenter
             $paginator->setPage(1);
         }
 
-        $q->select('tutorial');
+        $q->select('tutorial')->addOrderBy("tutorial.seenCount", "DESC");
         $q->setMaxResults($paginator->getItemsPerPage());
         $q->setFirstResult($paginator->getOffset());
         $tutorials = $q->getQuery()->getResult();
 
         $this->template->tutorials = $tutorials;
-        
-
     }
 }

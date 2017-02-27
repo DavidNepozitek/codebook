@@ -34,8 +34,8 @@
 		"google/apiclient": "2.0",
 		"squizlabs/php_codesniffer": "*"
 	},
+	"minimum-stability": "stable",
 	"require-dev": {
-		"nette/tester": "^1.6"
-	},
-	"minimum-stability": "stable"
+		"nette/tester": "^1.7"
+	}
 }

@@ -38,9 +38,6 @@ class HomepagePresenter extends BasePresenter
 
         $this->template->tutorials = $q;
 
-        Debugger::barDump($q);
-
-
     }
 
 }

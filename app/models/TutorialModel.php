@@ -50,8 +50,10 @@ class TutorialModel extends BaseModel
      * @return Tutorial|mixed|null|object
      * @throws Exception
      */
-    public function createTutorial($title, $perex, $source, $difficulty, $published, $tags, $attachments, $userId)
-    {
+    public function createTutorial(
+        $title, $perex, $source, $difficulty,
+        $published, $tags, $attachments, $userId
+    ) {
 
         $tutorial = $this->getOne(Tutorial::class, array("title" => $title));
 
@@ -88,7 +90,9 @@ class TutorialModel extends BaseModel
         }
 
         foreach (json_decode($attachments) as $attachmentId) {
-            $attachment = $this->getOne(Attachment::class, array("id" => $attachmentId));
+            $attachment = $this->getOne(
+                Attachment::class, array("id" => $attachmentId)
+            );
             $attachment->setTutorial($tutorial);
         }
 
@@ -114,8 +118,10 @@ class TutorialModel extends BaseModel
      * @param $attachments
      * @throws Exception
      */
-    public function editTutorial($id, $title, $perex, $source, $difficulty, $published, $tags, $attachments)
-    {
+    public function editTutorial(
+        $id, $title, $perex, $source, $difficulty,
+        $published, $tags, $attachments
+    ) {
 
         $tutorial = $this->getOne(Tutorial::class, array("id" => $id));
         $tutorialByName = $this->getOne(Tutorial::class, array("title" => $title));
@@ -156,7 +162,9 @@ class TutorialModel extends BaseModel
         $tutorial->clearAttachments();
 
         foreach (json_decode($attachments) as $attachmentId) {
-            $attachment = $this->getOne(Attachment::class, array("id" => $attachmentId));
+            $attachment = $this->getOne(
+                Attachment::class, array("id" => $attachmentId)
+            );
             $attachment->setTutorial($tutorial);
         }
 
@@ -194,7 +202,7 @@ class TutorialModel extends BaseModel
 
         if ($tutorial) {
 
-            foreach($tutorial->getAttachments() as $attachment) {
+            foreach ($tutorial->getAttachments() as $attachment) {
                 $attachmentIds[] = $attachment->getId();
             }
 
