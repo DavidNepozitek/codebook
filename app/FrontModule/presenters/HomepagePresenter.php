@@ -22,7 +22,7 @@ class HomepagePresenter extends BasePresenter
     public function renderDefault()
     {
 
-        if ($this->sotdModel->checkRecency() == false) {
+        if ($this->sotdModel->checkRecency() === false) {
             $this->sotdModel->updateSotd();
         }
 

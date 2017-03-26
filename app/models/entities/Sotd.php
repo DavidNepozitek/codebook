@@ -29,7 +29,7 @@ class Sotd
     protected $link;
 
     /**
-     * @ORM\Column(type="datetime",nullable=false)
+     * @ORM\Column(type="datetime",nullable=false,unique=true)
      */
     protected $pubDate;
 

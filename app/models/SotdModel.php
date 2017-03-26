@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Model\Entities\Sotd;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Tracy\Debugger;
 
 class SotdModel extends BaseModel
@@ -21,7 +22,7 @@ class SotdModel extends BaseModel
         $interval = $actualDate->diff($lastImportedPubDate);
 
 
-        if ($interval->d >= 1 OR $lastImportedSotd[0][1] == "") {
+        if ($interval->d >= 1 OR $lastImportedSotd[0][1] == "" OR 1 == 1) {
             return false;
         } else {
             return true;
@@ -30,7 +31,7 @@ class SotdModel extends BaseModel
 
 
     /**
-     * Imports last 5 sites of the day to the DB
+     * Imports last 4 sites of the day to the DB
      */
     public function updateSotd()
     {
@@ -57,7 +58,12 @@ class SotdModel extends BaseModel
             $newItem->setPubDate($pubDate);
 
             $this->persist($newItem);
-            $this->flush();
+
+            try {
+                $this->flush();
+            } catch (UniqueConstraintViolationException $e) {
+                break;
+            }
         }
     }
 

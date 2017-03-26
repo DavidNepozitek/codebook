@@ -32,6 +32,7 @@ class Authenticator extends Object implements IAuthenticator
      * Authenticates a user with e-mail and password
      *
      * @param array $credentials
+     *
      * @return Identity
      * @throws AuthenticationException
      */

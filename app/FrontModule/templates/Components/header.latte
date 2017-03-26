@@ -19,7 +19,7 @@
                             </a>
                         </li>
                     {/foreach}
-                    <a class="btn menu btn-default btn-main" n:href=":Back:Login:login">Přihlásit se</a>
+                    <a class="btn menu btn-default btn-main" n:href=":Back:Login:login">{if $user->isLoggedIn()}Administrace{else}Přihlásit se{/if}</a>
                 </ul>
             </div>
         </div>
