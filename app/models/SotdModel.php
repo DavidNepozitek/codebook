@@ -22,7 +22,7 @@ class SotdModel extends BaseModel
         $interval = $actualDate->diff($lastImportedPubDate);
 
 
-        if ($interval->d >= 1 OR $lastImportedSotd[0][1] == "" OR 1 == 1) {
+        if ($interval->d >= 1 OR $lastImportedSotd[0][1] == "") {
             return false;
         } else {
             return true;
