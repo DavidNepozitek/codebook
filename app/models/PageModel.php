@@ -45,7 +45,5 @@ class PageModel extends BaseModel
         }
 
         $this->flush();
-
-        $this->onSuccess($name, $this->user->getIdentity());
     }
 }
