@@ -41,7 +41,7 @@ class SignLog
             $message = "User ". $email . " tried to log with guest role";
             break;
         default:
-            $message = "Someone tried to log as ". $email . " signed in";
+            $message = "Someone tried to log as ". $email;
         }
         
         $this->logger->log($message);
